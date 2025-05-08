@@ -1,432 +1,452 @@
-<!DOCTYPE html>  <html lang="en" data-theme="dark">  
-<head>  
-  <meta charset="UTF-8" />  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />  
-  <meta name="description" content="Portfolio of Imtiaj Ahamed, a technologist passionate about AI and system design." />  
-  <title>Imtiaj Ahamed – Portfolio</title>  
-  <link rel="icon" href="favicon.ico" type="image/x-icon" />  
-  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />  
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />  
-  <style>  
-    html {  
-      scroll-behavior: smooth;  
-    }  :root {  
-  --bg-dark: #0d1117;  
-  --text-dark: #c9d1d9;  
-  --card-dark: #161b22;  
-  --accent: #58a6ff;  
-  --bg-light: #f0f6fc;  
-  --text-light: #0d1117;  
-  --card-light: #ffffffcc;  
-}  
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portfolio of Imtiaj Ahamed, a technologist passionate about AI and system design." />
+  <title>Imtiaj Ahamed – Portfolio</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
 
-[data-theme="dark"] {  
-  --bg: var(--bg-dark);  
-  --text: var(--text-dark);  
-  --card: var(--card-dark);  
-}  
+    :root {
+      --bg-dark: #0d1117;
+      --text-dark: #c9d1d9;
+      --card-dark: #161b22;
+      --accent: #58a6ff;
+      --bg-light: #f0f6fc;
+      --text-light: #0d1117;
+      --card-light: #ffffffcc;
+    }
 
-[data-theme="light"] {  
-  --bg: var(--bg-light);  
-  --text: var(--text-light);  
-  --card: var(--card-light);  
-}  
+    [data-theme="dark"] {
+      --bg: var(--bg-dark);
+      --text: var(--text-dark);
+      --card: var(--card-dark);
+    }
 
-* {  
-  margin: 0;  
-  padding: 0;  
-  box-sizing: border-box;  
-}  
+    [data-theme="light"] {
+      --bg: var(--bg-light);
+      --text: var(--text-light);
+      --card: var(--card-light);
+    }
 
-html, body {  
-  height: 100%;  
-  background-color: var(--bg);  
-  color: var(--text);  
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;  
-  transition: background 0.4s, color 0.4s;  
-}  
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-header, nav, section, footer {  
-  width: 100%;  
-  padding: 40px 20px;  
-  max-width: 1200px;  
-  margin: auto;  
-}  
+    html, body {
+      height: 100%;
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      transition: background 0.4s, color 0.4s;
+    }
 
-header {  
-  background: #010409;  
-  color: var(--accent);  
-  text-align: center;  
-  box-shadow: 0 4px 8px rgba(0,0,0,0.3);  
-}  
+    header, nav, section, footer {
+      width: 100%;
+      padding: 40px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
 
-header h1 {  
-  font-size: 3rem;  
-}  
+    header {
+      background: #010409;
+      color: var(--accent);
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    }
 
-nav {  
-  background: #161b22;  
-  text-align: center;  
-  padding: 15px 0;  
-}  
+    header h1 {
+      font-size: 3rem;
+    }
 
-nav a {  
-  color: var(--accent);  
-  margin: 0 15px;  
-  text-decoration: none;  
-  font-weight: bold;  
-  transition: color 0.3s;  
-}  
+    nav {
+      background: #161b22;
+      text-align: center;
+      padding: 15px 0;
+    }
 
-nav a:hover {  
-  color: #f0f6fc;  
-}  
+    nav a {
+      color: var(--accent);
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
 
-h2 {  
-  font-size: 2rem;  
-  margin-bottom: 20px;  
-  color: var(--accent);  
-}  
+    nav a:hover {
+      color: #f0f6fc;
+    }
 
-.card {  
-  background: var(--card);  
-  padding: 25px;  
-  margin-bottom: 20px;  
-  border-radius: 12px;  
-  box-shadow: 0 2px 10px rgba(0,0,0,0.3);  
-  transition: transform 0.3s ease, box-shadow 0.3s ease;  
-}  
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: var(--accent);
+    }
 
-.card:hover {  
-  transform: translateY(-6px);  
-  box-shadow: 0 6px 18px rgba(0,0,0,0.4);  
-}  
+    .card {
+      background: var(--card);
+      padding: 25px;
+      margin-bottom: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
 
-.about-card {  
-  display: flex;  
-  align-items: center;  
-  gap: 30px;  
-  flex-wrap: wrap;  
-}  
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+    }
 
-.about-card img {  
-  width: 180px;  
-  height: 180px;  
-  border-radius: 50%;  
-  object-fit: cover;  
-  border: 4px solid var(--accent);  
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);  
-  transition: transform 0.3s ease;  
-}  
+    .about-card {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
 
-.about-card img:hover {  
-  transform: scale(1.05);  
-}  
+    .about-card img {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid var(--accent);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+      transition: transform 0.3s ease;
+    }
 
-.about-text {  
-  flex: 1;  
-  min-width: 250px;  
-  font-size: 1.05rem;  
-  line-height: 1.6;  
-}  
+    .about-card img:hover {
+      transform: scale(1.05);
+    }
 
-.education-card {  
-  background: var(--card);  
-  padding: 25px;  
-  border-radius: 12px;  
-  box-shadow: 0 4px 12px rgba(0,0,0,0.4);  
-}  
+    .about-text {
+      flex: 1;
+      min-width: 250px;
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
 
-.edu-item {  
-  display: flex;  
-  align-items: flex-start;  
-  margin-bottom: 20px;  
-}  
+    .education-card {
+      background: var(--card);
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    }
 
-.edu-icon {  
-  color: var(--accent);  
-  font-size: 1.3rem;  
-  margin-right: 10px;  
-  margin-top: 4px;  
-  animation: floatBounce 1.2s ease-in-out infinite;  
-}  
+    .edu-item {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 20px;
+    }
 
-@keyframes floatBounce {  
-  0%, 100% { transform: translateY(0); }  
-  50% { transform: translateY(-6px); }  
-}  
+    .edu-icon {
+      color: var(--accent);
+      font-size: 1.3rem;
+      margin-right: 10px;
+      margin-top: 4px;
+      animation: floatBounce 1.2s ease-in-out infinite;
+    }
 
-.edu-content {  
-  display: flex;  
-  flex-direction: column;  
-}  
+    @keyframes floatBounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
 
-.edu-title {  
-  font-weight: bold;  
-  color: var(--accent);  
-  font-size: 1.1rem;  
-}  
+    .edu-content {
+      display: flex;
+      flex-direction: column;
+    }
 
-.edu-detail {  
-  font-size: 1rem;  
-  color: var(--text);  
-  margin-top: 2px;  
-  line-height: 1.4;  
-}  
+    .edu-title {
+      font-weight: bold;
+      color: var(--accent);
+      font-size: 1.1rem;
+    }
 
-.contact-section {  
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.05), rgba(88, 166, 255, 0.05));  
-  border: 1px solid rgba(255, 255, 255, 0.08);  
-  border-radius: 16px;  
-  padding: 40px;  
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);  
-  transition: transform 0.3s ease, box-shadow 0.3s ease;  
-  display: flex;  
-  flex-direction: column;  
-  align-items: center;  
-  gap: 30px;  
-}  
+    .edu-detail {
+      font-size: 1rem;
+      color: var(--text);
+      margin-top: 2px;
+      line-height: 1.4;
+    }
 
-.contact-section:hover {  
-  transform: translateY(-4px);  
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4);  
-}  
+    .contact-section {
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.05), rgba(88, 166, 255, 0.05));
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      padding: 40px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
+    }
 
-.email-box {  
-  padding: 15px 20px;  
-  border: 1px solid #30363d;  
-  border-radius: 10px;  
-  text-align: center;  
-  background-color: transparent;  
-  color: var(--accent);  
-  max-width: 500px;  
-  width: 100%;  
-}  
+    .contact-section:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4);
+    }
 
-.email-box a {  
-  display: inline-block;  
-  margin-top: 5px;  
-  color: var(--accent);  
-  font-size: 1.1rem;  
-  font-weight: bold;  
-  text-decoration: none;  
-}  
+    .email-box {
+      padding: 15px 20px;
+      border: 1px solid #30363d;
+      border-radius: 10px;
+      text-align: center;
+      background-color: transparent;
+      color: var(--accent);
+      max-width: 500px;
+      width: 100%;
+    }
 
-.email-box i {  
-  margin-right: 8px;  
-}  
+    .email-box a {
+      display: inline-block;
+      margin-top: 5px;
+      color: var(--accent);
+      font-size: 1.1rem;
+      font-weight: bold;
+      text-decoration: none;
+    }
 
-.contact-buttons {  
-  display: grid;  
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));  
-  gap: 16px;  
-  width: 100%;  
-  max-width: 700px;  
-}  
+    .email-box i {
+      margin-right: 8px;
+    }
 
-.contact-btn {  
-  display: flex;  
-  align-items: center;  
-  justify-content: center;  
-  padding: 12px 20px;  
-  border-radius: 12px;  
-  font-weight: bold;  
-  text-decoration: none;  
-  transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;  
-  color: white;  
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);  
-}  
+    .contact-buttons {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+      width: 100%;
+      max-width: 700px;
+    }
 
-.contact-btn i {  
-  font-size: 1.2rem;  
-  margin-right: 10px;  
-  animation: floatBounce 1.4s ease-in-out infinite;  
-}  
+    .contact-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 20px;
+      border-radius: 12px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+      color: white;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
 
-.contact-btn:hover {  
-  transform: translateY(-4px) scale(1.03);  
-  box-shadow: 0 8px 20px rgba(0,0,0,0.3);  
-}  
+    .contact-btn i {
+      font-size: 1.2rem;
+      margin-right: 10px;
+      animation: floatBounce 1.4s ease-in-out infinite;
+    }
 
-.github { background: #0d1117; border: 2px solid #58a6ff; }  
-.github:hover { background: #58a6ff; color: #0d1117; }  
+    .contact-btn:hover {
+      transform: translateY(-4px) scale(1.03);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    }
 
-.linkedin { background: #0a66c2; }  
-.linkedin:hover { background: #084ea1; }  
+    .github { background: #0d1117; border: 2px solid #58a6ff; }
+    .github:hover { background: #58a6ff; color: #0d1117; }
 
-.facebook { background: #1877f2; }  
-.facebook:hover { background: #145ecb; }  
+    .linkedin { background: #0a66c2; }
+    .linkedin:hover { background: #084ea1; }
 
-.instagram { background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4); }  
-.instagram:hover { opacity: 0.9; }  
+    .facebook { background: #1877f2; }
+    .facebook:hover { background: #145ecb; }
 
-.twitter { background: #1d9bf0; }  
-.twitter:hover { background: #1481c8; }  
+    .instagram { background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4); }
+    .instagram:hover { opacity: 0.9; }
 
-.theme-toggle {  
-  position: fixed;  
-  top: 20px;  
-  right: 20px;  
-  background: var(--card);  
-  border: 2px solid var(--accent);  
-  border-radius: 50%;  
-  width: 45px;  
-  height: 45px;  
-  display: flex;  
-  align-items: center;  
-  justify-content: center;  
-  cursor: pointer;  
-  z-index: 9999;  
-  transition: transform 0.3s ease, opacity 0.3s ease;  
-}  
+    .twitter { background: #1d9bf0; }
+    .twitter:hover { background: #1481c8; }
 
-.theme-toggle i {  
-  color: var(--accent);  
-  font-size: 1.2rem;  
-}  
+    .theme-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: var(--card);
+      border: 2px solid var(--accent);
+      border-radius: 50%;
+      width: 45px;
+      height: 45px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 9999;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
 
-.theme-toggle.hidden {  
-  opacity: 0;  
-  transform: translateY(100px);  
-}  
+    .theme-toggle i {
+      color: var(--accent);
+      font-size: 1.2rem;
+    }
 
-footer {  
-  background: #010409;  
-  text-align: center;  
-  padding: 20px;  
-  color: #8b949e;  
-}  
+    .theme-toggle.hidden {
+      opacity: 0;
+      transform: translateY(100px);
+    }
 
-@media (max-width: 768px) {  
-  header h1 {  
-    font-size: 2rem;  
-  }  
+    footer {
+      background: #010409;
+      text-align: center;
+      padding: 20px;
+      color: #8b949e;
+    }
 
-  h2 {  
-    font-size: 1.5rem;  
-  }  
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2rem;
+      }
 
-  nav {  
-    font-size: 14px;  
-  }  
+      h2 {
+        font-size: 1.5rem;
+      }
 
-  .about-card {  
-    flex-direction: column;  
-    align-items: center;  
-    text-align: center;  
-  }  
+      nav {
+        font-size: 14px;
+      }
 
-  .contact-section {  
-    padding: 30px 20px;  
-  }  
+      .about-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
 
-  .theme-toggle {  
-    top: 10px;  
-    right: 10px;  
-    width: 40px;  
-    height: 40px;  
-  }  
-}
+      .contact-section {
+        padding: 30px 20px;
+      }
 
-  </style>  
-</head>  
-<body>  
-  <div class="theme-toggle" id="themeToggle" title="Toggle Theme">  
-    <i class="fas fa-moon" id="themeIcon"></i>  
-  </div>    <header data-aos="fade-down">  
-    <h1>Imtiaj Ahamed</h1>  
-    <p>Technologist, Student and Dreamer</p>  
-  </header>    <nav data-aos="fade-up">  
-    <a href="#about">About</a>  
-    <a href="#projects">Projects</a>  
-    <a href="#education">Education</a>  
-    <a href="#contact">Contact</a>  
-  </nav>    <section id="about" data-aos="fade-up">  
-    <h2>About Me</h2>  
-    <div class="card about-card" data-aos="zoom-in">  
-      <img src="https://raw.githubusercontent.com/imtiajahamed17/imtiaj-portfolio/main/IMG-20250507-WA0037.jpg" alt="Imtiaj Ahamed Profile Photo" />  
-      <div class="about-text">  
-        <p>I’m Imtiaj, passionate about artificial intelligence, system design, and natural language processing. I love building impactful projects that solve real-world problems.</p>  
-      </div>  
-    </div>  
-  </section>    <section id="projects" data-aos="fade-up">  
-    <h2>Projects</h2>  
-    <div class="card" data-aos="zoom-in"><h3>KothonAI</h3><p>Bengali generative AI tool for complex morphology.</p></div>  
-    <div class="card" data-aos="zoom-in" data-aos-delay="100"><h3>BanglaCode</h3><p>Meme programming language in Bangla syntax.</p></div>  
-    <div class="card" data-aos="zoom-in" data-aos-delay="200"><h3>RoktoJog</h3><p>Blood donation platform to connect donors and recipients.</p></div>  
-    <div class="card" data-aos="zoom-in" data-aos-delay="300"><h3>Everyday One Taka Fund</h3><p>Micro-donation initiative for small daily contributions.</p></div>  
-    <div class="card" data-aos="zoom-in" data-aos-delay="400"><h3>Basic System Kernel</h3><p>Built with C and Assembly to demonstrate OS concepts.</p></div>  
-    <div class="card" data-aos="zoom-in" data-aos-delay="500"><h3>DeWin</h3><p>Windows debloating utility using PowerShell.</p></div>  
-  </section>    <section id="education" data-aos="fade-up">  
-    <h2>Education</h2>  
-    <div class="education-card" data-aos="zoom-in">  
-      <div class="edu-item" style="padding-left: 4px;">  
-        <i class="fas fa-university edu-icon"></i>  
-        <div class="edu-content">  
-          <span class="edu-title">Higher Secondary (HSC)</span>  
-          <span class="edu-detail">GPA 5.00 (A+)<br> Cumilla Cantonment College</span>  
-        </div>  
-      </div>  
-      <div class="edu-item">  
-        <i class="fas fa-graduation-cap edu-icon"></i>  
-        <div class="edu-content">  
-          <span class="edu-title">Secondary (SSC)</span>  
-          <span class="edu-detail">GPA 5.00 (A+)<br> Monohorgonj High School And College</span>  
-        </div>  
-      </div>  
-      <div class="edu-item">  
-        <i class="fas fa-school edu-icon"></i>  
-        <div class="edu-content">  
-          <span class="edu-title">Junior Secondary (JSC)</span>  
-          <span class="edu-detail">GPA 5.00 (A+)<br> Monohorgonj High School And College</span>  
-        </div>  
-      </div>  
-      <div class="edu-item">  
-        <i class="fas fa-desktop edu-icon"></i>  
-        <div class="edu-content">  
-          <span class="edu-title">Computer Application</span>  
-          <span class="edu-detail">GPA 5.00 (A+)<br> Global Village ICT Park</span>  
-        </div>  
-      </div>  
-    </div>  
-  </section>    <section id="contact" data-aos="fade-up">  
-    <h2>Contact Me</h2>  
-    <div class="contact-section">  
-      <div class="email-box">  
-        <p><i class="fas fa-envelope"></i> Email me at:</p>  
-        <a href="mailto:imtiajahmed2005@gmail.com">imtiajahmed2005@gmail.com</a>  
-      </div>  
-      <div class="contact-buttons">  
-        <a href="https://github.com/imtiajahamed17" target="_blank" class="contact-btn github"><i class="fab fa-github"></i> GitHub</a>  
-        <a href="https://linkedin.com/in/imtiajahamed17" target="_blank" class="contact-btn linkedin"><i class="fab fa-linkedin"></i> LinkedIn</a>  
-        <a href="https://www.facebook.com/imtiajahamed17" target="_blank" class="contact-btn facebook"><i class="fab fa-facebook"></i> Facebook</a>  
-        <a href="https://www.instagram.com/imtiajahamed17" target="_blank" class="contact-btn instagram"><i class="fab fa-instagram"></i> Instagram</a>  
-        <a href="https://x.com/imtiajahamed17" target="_blank" class="contact-btn twitter"><i class="fab fa-twitter"></i> Twitter</a>  
-      </div>  
-    </div>  
-  </section>    <footer data-aos="fade-up">  
-    <p>&copy; 2025 Imtiaj. All rights reserved.</p>  
-  </footer>    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>    <script>  
-    AOS.init({ duration: 1000, once: true });  
-  
-    const toggle = document.getElementById('themeToggle');  
-    const icon = document.getElementById('themeIcon');  
-    const html = document.documentElement;  
-  
-    toggle.addEventListener('click', () => {  
-      const currentTheme = html.getAttribute('data-theme');  
-      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';  
-      html.setAttribute('data-theme', newTheme);  
-      icon.className = newTheme === 'dark' ? 'fas fa-moon' : 'fas fa-sun';  
-    });  
-  
-    window.addEventListener('scroll', function () {  
-      const currentScroll = window.pageYOffset || document.documentElement.scrollTop;  
-      if (currentScroll <= 50) {  
-        toggle.classList.remove('hidden');  
-      } else {  
-        toggle.classList.add('hidden');  
-      }  
-    });  
-  </script>  </body>  
-  </html>
+      .theme-toggle {
+        top: 10px;
+        right: 10px;
+        width: 40px;
+        height: 40px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="theme-toggle" id="themeToggle" title="Toggle Theme">
+    <i class="fas fa-moon" id="themeIcon"></i>
+  </div>
+
+  <header data-aos="fade-down">
+    <h1>Imtiaj Ahamed</h1>
+    <p>Technologist, Student and Dreamer</p>
+  </header>
+
+  <nav data-aos="fade-up">
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#education">Education</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <section id="about" data-aos="fade-up">
+    <h2>About Me</h2>
+    <div class="card about-card" data-aos="zoom-in">
+      <img src="https://raw.githubusercontent.com/imtiajahamed17/imtiaj-portfolio/main/IMG-20250507-WA0037.jpg" alt="Imtiaj Ahamed Profile Photo" />
+      <div class="about-text">
+        <p>I’m Imtiaj, passionate about artificial intelligence, system design, and natural language processing. I love building impactful projects that solve real-world problems.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" data-aos="fade-up">
+    <h2>Projects</h2>
+    <div class="card" data-aos="zoom-in"><h3>KothonAI</h3><p>Bengali generative AI tool for complex morphology.</p></div>
+    <div class="card" data-aos="zoom-in" data-aos-delay="100"><h3>BanglaCode</h3><p>Meme programming language in Bangla syntax.</p></div>
+    <div class="card" data-aos="zoom-in" data-aos-delay="200"><h3>RoktoJog</h3><p>Blood donation platform to connect donors and recipients.</p></div>
+    <div class="card" data-aos="zoom-in" data-aos-delay="300"><h3>Everyday One Taka Fund</h3><p>Micro-donation initiative for small daily contributions.</p></div>
+    <div class="card" data-aos="zoom-in" data-aos-delay="400"><h3>Basic System Kernel</h3><p>Built with C and Assembly to demonstrate OS concepts.</p></div>
+    <div class="card" data-aos="zoom-in" data-aos-delay="500"><h3>DeWin</h3><p>Windows debloating utility using PowerShell.</p></div>
+  </section>
+
+  <section id="education" data-aos="fade-up">
+    <h2>Education</h2>
+    <div class="education-card" data-aos="zoom-in">
+      <div class="edu-item" style="padding-left: 4px;">
+        <i class="fas fa-university edu-icon"></i>
+        <div class="edu-content">
+          <span class="edu-title">Higher Secondary (HSC)</span>
+          <span class="edu-detail">GPA 5.00 (A+)<br> Cumilla Cantonment College</span>
+        </div>
+      </div>
+      <div class="edu-item">
+        <i class="fas fa-graduation-cap edu-icon"></i>
+        <div class="edu-content">
+          <span class="edu-title">Secondary (SSC)</span>
+          <span class="edu-detail">GPA 5.00 (A+)<br> Monohorgonj High School And College</span>
+        </div>
+      </div>
+      <div class="edu-item">
+        <i class="fas fa-school edu-icon"></i>
+        <div class="edu-content">
+          <span class="edu-title">Junior Secondary (JSC)</span>
+          <span class="edu-detail">GPA 5.00 (A+)<br> Monohorgonj High School And College</span>
+        </div>
+      </div>
+      <div class="edu-item">
+        <i class="fas fa-desktop edu-icon"></i>
+        <div class="edu-content">
+          <span class="edu-title">Computer Application</span>
+          <span class="edu-detail">GPA 5.00 (A+)<br> Global Village ICT Park</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" data-aos="fade-up">
+    <h2>Contact Me</h2>
+    <div class="contact-section">
+      <div class="email-box">
+        <p><i class="fas fa-envelope"></i> Email me at:</p>
+        <a href="mailto:imtiajahmed2005@gmail.com">imtiajahmed2005@gmail.com</a>
+      </div>
+      <div class="contact-buttons">
+        <a href="https://github.com/imtiajahamed17" target="_blank" class="contact-btn github"><i class="fab fa-github"></i> GitHub</a>
+        <a href="https://linkedin.com/in/imtiajahamed17" target="_blank" class="contact-btn linkedin"><i class="fab fa-linkedin"></i> LinkedIn</a>
+        <a href="https://www.facebook.com/imtiajahamed17" target="_blank" class="contact-btn facebook"><i class="fab fa-facebook"></i> Facebook</a>
+        <a href="https://www.instagram.com/imtiajahamed17" target="_blank" class="contact-btn instagram"><i class="fab fa-instagram"></i> Instagram</a>
+        <a href="https://x.com/imtiajahamed17" target="_blank" class="contact-btn twitter"><i class="fab fa-twitter"></i> Twitter</a>
+      </div>
+    </div>
+  </section>
+
+  <footer data-aos="fade-up">
+    <p>&copy; 2025 Imtiaj. All rights reserved.</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 1000, once: true });
+
+    const toggle = document.getElementById('themeToggle');
+    const icon = document.getElementById('themeIcon');
+    const html = document.documentElement;
+
+    toggle.addEventListener('click', () => {
+      const currentTheme = html.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', newTheme);
+      icon.className = newTheme === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
+    });
+
+    window.addEventListener('scroll', function () {
+      const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+      if (currentScroll <= 50) {
+        toggle.classList.remove('hidden');
+      } else {
+        toggle.classList.add('hidden');
+      }
+    });
+  </script>
+</body>
+</html>
