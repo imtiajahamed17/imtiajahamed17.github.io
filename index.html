@@ -47,8 +47,6 @@
       color: var(--text);
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       transition: background 0.4s, color 0.4s;
-      max-width: 100vw;
-      overflow-x: hidden;
     }
 
     header, nav, section, footer {
@@ -69,56 +67,24 @@
       font-size: 3rem;
     }
 
-    /* Responsive NAVBAR */
     nav {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      position: relative;
       background: #161b22;
+      text-align: center;
       padding: 15px 0;
-      gap: 20px;
-    }
-
-    .nav-toggle {
-      display: none;
-      background: none;
-      border: none;
-      font-size: 2rem;
-      color: var(--accent);
-      cursor: pointer;
-      margin-left: auto;
-      margin-right: 16px;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 15px;
-      flex-wrap: nowrap;
-      overflow-x: auto;
-      white-space: nowrap;
-      width: 100%;
-      justify-content: center;
-      align-items: center;
     }
 
     nav a {
       color: var(--accent);
+      margin: 0 15px;
       text-decoration: none;
       font-weight: bold;
-      padding: 8px 12px;
-      border-radius: 6px;
-      transition: background 0.2s;
-      font-size: 1rem;
-      margin: 0 0;
+      transition: color 0.3s;
     }
 
     nav a:hover {
-      background: #222c36;
       color: #f0f6fc;
     }
 
-    /* About, Cards, Sections */
     h2 {
       font-size: 2rem;
       margin-bottom: 20px;
@@ -193,16 +159,16 @@
       50% { transform: translateY(-6px); }
     }
 
-    .edu-content {
+.edu-content {
       display: flex;
       flex-direction: column;
     }
 
-    .edu-title {
-      font-weight: bold;
-      color: var(--text);
-      font-size: 1.1rem;
-    }
+.edu-title {
+  font-weight: bold;
+  color: var(--text);
+  font-size: 1.1rem;
+}
 
     .edu-detail {
       font-size: 1rem;
@@ -240,14 +206,14 @@
       width: 100%;
     }
 
-    .email-box a {
-      display: inline-block;
-      margin-top: 5px;
-      color: var(--text);
-      font-size: 1.1rem;
-      font-weight: bold;
-      text-decoration: none;
-    }
+.email-box a {
+  display: inline-block;
+  margin-top: 5px;
+  color: var(--text);
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-decoration: none;
+}
 
     .email-box i {
       margin-right: 8px;
@@ -334,37 +300,29 @@
       color: #8b949e;
     }
 
-    /* ----------- RESPONSIVE ----------- */
-    @media (max-width: 900px) {
-      header, nav, section, footer {
-        padding: 24px 6px;
-      }
-      .about-card img {
-        width: 120px;
-        height: 120px;
-      }
-    }
-
     @media (max-width: 768px) {
       header h1 {
         font-size: 2rem;
       }
+
       h2 {
         font-size: 1.5rem;
       }
+
       nav {
         font-size: 14px;
-        gap: 10px;
-        padding: 10px 0;
       }
+
       .about-card {
         flex-direction: column;
         align-items: center;
         text-align: center;
       }
+
       .contact-section {
-        padding: 30px 8px;
+        padding: 30px 20px;
       }
+
       .theme-toggle {
         top: 10px;
         right: 10px;
@@ -373,51 +331,22 @@
       }
     }
 
-    @media (max-width: 600px) {
-      nav {
-        flex-direction: row;
-        align-items: center;
-        justify-content: flex-start;
-        gap: 0;
-        padding: 0;
-      }
-      .nav-toggle {
-        display: block;
-        position: absolute;
-        right: 14px;
-        top: 6px;
-        z-index: 1100;
-      }
-      .nav-links {
-        display: none;
-        flex-direction: column;
-        align-items: stretch;
-        width: 100vw;
-        position: absolute;
-        left: 0;
-        top: 100%;
-        background: #161b22;
-        z-index: 1000;
-      }
-      .nav-links.open {
-        display: flex;
-      }
-      nav a {
-        display: block;
-        padding: 14px 18px;
-        margin: 0;
-        border-bottom: 1px solid #222c36;
-        font-size: 1rem;
-        white-space: normal;
-      }
-    }
-
-    @media (max-width: 480px) {
-      header h1 { font-size: 1.2rem; }
-      h2 { font-size: 1.1rem; }
-      .card { padding: 10px; }
-      .about-card img { width: 70px; height: 70px; }
-    }
+.credential-btn {
+  background: #004080;
+  color: #fff !important;
+  text-decoration: none;
+  border-radius: 6px;
+  display: inline-block;
+  padding: 8px 16px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+.credential-btn i {
+  color: #fff !important;
+  margin-right: 6px;
+}
+    
   </style>
 </head>
 <body>
@@ -430,18 +359,12 @@
     <p>Technologist, Student and Dreamer</p>
   </header>
 
-  <!-- NAVBAR -->
-  <nav data-aos="fade-up">
-    <button class="nav-toggle" id="navToggle" aria-label="Open navigation">
-      <i class="fas fa-bars"></i>
-    </button>
-    <div class="nav-links" id="navLinks">
-      <a href="#projects">Projects</a>
-      <a href="#certifications">Credentials</a>
-      <a href="#education">Education</a>
-      <a href="#contact">Contact</a>
-    </div>
-  </nav>
+<nav data-aos="fade-up">
+  <a href="#projects">Projects</a>
+  <a href="#certifications">Credentials</a>
+  <a href="#education">Education</a>
+  <a href="#contact">Contact</a>
+</nav>
 
   <section id="about" data-aos="fade-up">
     <h2>About Me</h2>
@@ -495,44 +418,50 @@
     </div>
   </section>
 
-  <section id="certifications" data-aos="fade-up">
-    <h2 style="color: var(--accent); margin-bottom: 20px; text-align: left;">Licenses and Certifications</h2>
-    <div class="card certification-card" data-aos="zoom-in" style="padding: 15px; border-radius: 10px; background: var(--card); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); transition: transform 0.3s;">
-      <h3 class="certification-title" style="font-size: 1.2rem; color: var(--text); margin-bottom: 8px;">Computer Basics Certificate</h3>
-      <p class="certification-detail" style="font-size: 0.9rem; color: var(--text); margin-bottom: 15px;">Issued on: March 25, 2022</p>
-      <a href="/img/computer-basic-skill.jpg" target="_blank" class="credential-btn">
-        <i class="fas fa-file-alt"></i> View Credential
-      </a>
-    </div>
-  </section>
+<section id="certifications" data-aos="fade-up">
+  <h2 style="color: var(--accent); margin-bottom: 20px; text-align: left;">Licenses and Certifications</h2>
+  <div class="card certification-card" data-aos="zoom-in" style="padding: 15px; border-radius: 10px; background: var(--card); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); transition: transform 0.3s;">
+    <h3 class="certification-title" style="font-size: 1.2rem; color: var(--text); margin-bottom: 8px;">Computer Basics Certificate</h3>
+    <p class="certification-detail" style="font-size: 0.9rem; color: var(--text); margin-bottom: 15px;">Issued on: March 25, 2022</p>
+    <a href="/img/computer-basic-skill.jpg" target="_blank" class="credential-btn">
+  <i class="fas fa-file-alt"></i> View Credential
+    </a>
+  </div>
+</section>
 
-  <section id="interests" data-aos="fade-up">
-    <h2>Interests & Activities</h2>
-    <div class="card" data-aos="zoom-in">
-      <h3>Scientific Research & Writing</h3>
-      <p>Engaging in research and contributing to advancements in AI, quantum computing, and robotics. Served as a beta reader for the mathematically rigorous book "Cha Coffee and General Relativity".</p>
-    </div>
-    <div class="card" data-aos="zoom-in" data-aos-delay="100">
-      <h3>Graphic Design & Data Visualization</h3>
-      <p>Creating technical illustrations, infographics, and presentations for academic and professional projects.</p>
-    </div>
-    <div class="card" data-aos="zoom-in" data-aos-delay="200">
-      <h3>Technical Reading</h3>
-      <p>Engaging with research papers, scientific journals, and advanced textbooks on AI, machine learning, and computational sciences.</p>
-    </div>
-    <div class="card" data-aos="zoom-in" data-aos-delay="300">
-      <h3>Nature Photography</h3>
-      <p>Capturing landscapes, wildlife, and environmental changes to document the beauty and science of nature.</p>
-    </div>
-    <div class="card" data-aos="zoom-in" data-aos-delay="400">
-      <h3>Music & Cognitive Science</h3>
-      <p>Exploring the intersection of music and neuroscience, focusing on its impact on learning and creativity. I love to listen and play music, and I play instruments such as the violin, flute, piano, and harmonium.</p>
-    </div>
-    <div class="card" data-aos="zoom-in" data-aos-delay="500">
-      <h3>Games & Sports</h3>
-      <p>Enjoy playing video games, as well as chess and cricket. These activities help in developing strategic thinking, teamwork, and physical fitness.</p>
-    </div>
-  </section>
+<section id="interests" data-aos="fade-up">
+  <h2>Interests & Activities</h2>
+  
+  <div class="card" data-aos="zoom-in">
+    <h3>Scientific Research & Writing</h3>
+    <p>Engaging in research and contributing to advancements in AI, quantum computing, and robotics. Served as a beta reader for the mathematically rigorous book "Cha Coffee and General Relativity".</p>
+  </div>
+  
+  <div class="card" data-aos="zoom-in" data-aos-delay="100">
+    <h3>Graphic Design & Data Visualization</h3>
+    <p>Creating technical illustrations, infographics, and presentations for academic and professional projects.</p>
+  </div>
+  
+  <div class="card" data-aos="zoom-in" data-aos-delay="200">
+    <h3>Technical Reading</h3>
+    <p>Engaging with research papers, scientific journals, and advanced textbooks on AI, machine learning, and computational sciences.</p>
+  </div>
+  
+  <div class="card" data-aos="zoom-in" data-aos-delay="300">
+    <h3>Nature Photography</h3>
+    <p>Capturing landscapes, wildlife, and environmental changes to document the beauty and science of nature.</p>
+  </div>
+  
+  <div class="card" data-aos="zoom-in" data-aos-delay="400">
+    <h3>Music & Cognitive Science</h3>
+    <p>Exploring the intersection of music and neuroscience, focusing on its impact on learning and creativity. I love to listen and play music, and I play instruments such as the violin, flute, piano, and harmonium.</p>
+  </div>
+  
+  <div class="card" data-aos="zoom-in" data-aos-delay="500">
+    <h3>Games & Sports</h3>
+    <p>Enjoy playing video games, as well as chess and cricket. These activities help in developing strategic thinking, teamwork, and physical fitness.</p>
+  </div>
+</section>
 
   <section id="contact" data-aos="fade-up">
     <h2>Contact Me</h2>
@@ -559,16 +488,17 @@
   <script>
     AOS.init({ duration: 1000, once: true });
 
-    // Theme toggle
     const toggle = document.getElementById('themeToggle');
     const icon = document.getElementById('themeIcon');
     const html = document.documentElement;
+
     toggle.addEventListener('click', () => {
       const currentTheme = html.getAttribute('data-theme');
       const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
       html.setAttribute('data-theme', newTheme);
       icon.className = newTheme === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
     });
+
     window.addEventListener('scroll', function () {
       const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
       if (currentScroll <= 50) {
@@ -577,19 +507,6 @@
         toggle.classList.add('hidden');
       }
     });
-
-
-    const navToggle = document.getElementById('navToggle');
-    const navLinks = document.getElementById('navLinks');
-    navToggle.addEventListener('click', () => {
-      navLinks.classList.toggle('open');
-    });
-  
-    navLinks.querySelectorAll('a').forEach(link =>
-      link.addEventListener('click', () => {
-        if (window.innerWidth <= 600) navLinks.classList.remove('open');
-      })
-    );
   </script>
 </body>
 </html>
