@@ -13,7 +13,7 @@
 
   <!-- Social Media / Open Graph Tags -->
   <meta property="og:title" content="Chat with Imtiaj">
-  <meta property="og:description" content="Connect with Imtiaj instantly via WhatsApp. Stylish profile page.">
+  <meta property="og:description" content="Connect with Imtiaj instantly via WhatsApp.">
   <meta property="og:image" content="https://imtiajahamed17.github.io/img/imtiaj-profile.jpg">
   <meta property="og:url" content="https://imtiajahamed17.github.io/whatsapp">
   <meta property="og:type" content="website">
@@ -21,7 +21,7 @@
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Chat with Imtiaj">
-  <meta name="twitter:description" content="Connect with Imtiaj instantly via WhatsApp. Stylish profile page.">
+  <meta name="twitter:description" content="Connect with Imtiaj instantly via WhatsApp.">
   <meta name="twitter:image" content="https://imtiajahamed17.github.io/img/imtiaj-profile.jpg">
 
   <!-- Favicon -->
@@ -86,7 +86,9 @@
     }
 
     .btn {
-      display:inline-block;
+      display: inline-flex; /* changed to flex to align icon and text */
+      align-items: center;
+      justify-content: center;
       background: linear-gradient(135deg,#075E54,#128C7E);
       color:white;
       padding:14px 25px;
@@ -99,23 +101,14 @@
       position:relative;
       box-shadow:0 4px 15px rgba(0,0,0,0.3);
       animation:pulse 2s infinite;
+      gap:10px; /* space between icon and text */
     }
     .btn:hover {
       background: linear-gradient(135deg,#128C7E,#075E54);
     }
     .whatsapp-icon {
-      position:absolute;
-      left:15px;
-      top:50%;
-      transform:translateY(-50%);
       width:22px;
       height:22px;
-      animation:bounce 1.5s infinite;
-    }
-
-    @keyframes bounce {
-      0%,100% { transform: translateY(-50%) translateY(0); }
-      50% { transform: translateY(-50%) translateY(-5px); }
     }
 
     @keyframes pulse {
