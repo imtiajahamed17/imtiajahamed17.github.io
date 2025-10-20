@@ -1,11 +1,165 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="refresh" content="0; url=https://wa.me/8801302014230?text=Hello%20Imtiaj%2C%20I%20found%20your%20profile%20and%20would%20like%20to%20discuss%20a%20project" />
-    <title>Redirecting to WhatsApp...</title>
-  </head>
-  <body>
-    <p>If you are not redirected automatically, <a href="https://wa.me/8801302014230?text=Hello%20Imtiaj%2C%20I%20found%20your%20profile%20and%20would%20like%20to%20discuss%20a%20project">click here to chat on WhatsApp</a>.</p>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Chat with Imtiaj 🥷</title>
+  <style>
+    * {margin:0; padding:0; box-sizing:border-box;}
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: 'Arial', sans-serif;
+      color: white;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    /* Animated gradient background */
+    body::before {
+      content: '';
+      position: fixed;
+      top:0; left:0; width:100%; height:100%;
+      background: linear-gradient(45deg, #25D366, #128C7E, #075E54, #128C7E);
+      background-size: 600% 600%;
+      animation: gradientShift 15s ease infinite;
+      z-index: -1;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .container {
+      background: rgba(0,0,0,0.3);
+      padding: 30px 20px;
+      border-radius: 20px;
+      width: 100%;
+      max-width: 400px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+    }
+
+    .avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      border: 3px solid white;
+      margin: 0 auto 15px;
+      object-fit: cover;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 12px;
+      line-height: 1.2;
+    }
+
+    /* Animated name container */
+    .stylish-name {
+      font-size: 2rem;
+      display: block;
+      margin-bottom: 12px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    p {
+      font-size: 1rem;
+      margin-bottom: 25px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: linear-gradient(135deg, #075E54, #128C7E);
+      color: white;
+      padding: 14px 25px;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: 0.3s;
+      width: 100%;
+      position: relative;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      animation: pulse 2s infinite;
+    }
+
+    .btn:hover {
+      background: linear-gradient(135deg, #128C7E, #075E54);
+    }
+
+    .whatsapp-icon {
+      position: absolute;
+      left: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 22px;
+      height: 22px;
+      animation: bounce 1.5s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(-50%) translateY(0); }
+      50% { transform: translateY(-50%) translateY(-5px); }
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(0,0,0,0.3); }
+      70% { box-shadow: 0 0 20px 10px rgba(0,0,0,0.2); }
+      100% { box-shadow: 0 0 0 0 rgba(0,0,0,0.3); }
+    }
+
+    /* Letter animation */
+    .letter {
+      opacity: 0;
+      display: inline-block;
+      transform: translateY(-10px);
+      animation: fadeInLetter 0.5s forwards;
+    }
+
+    @keyframes fadeInLetter {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+
+  <!-- Redirect after 4 seconds -->
+  <meta http-equiv="refresh" content="4; url=https://wa.me/8801302014230?text=Hello%20Imtiaj%F0%9F%A5%B7">
+</head>
+<body>
+  <div class="container">
+    <!-- Avatar -->
+    <img src="imtiaj-profile.jpg" alt="Imtiaj Avatar" class="avatar">
+
+    <!-- Animated Name -->
+    <h1 class="stylish-name" id="animatedName"></h1>
+    <p>Click the button below or wait a moment to start chatting on WhatsApp!</p>
+
+    <a href="https://wa.me/8801302014230?text=Hello%20Imtiaj%F0%9F%A5%B7" class="btn">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="whatsapp-icon">
+      💬 Chat Now
+    </a>
+  </div>
+
+  <script>
+    // Name in bold Unicode: 𝗜𝗺𝘁𝗶𝗮𝗷 🥷
+    const stylishName = '𝗜𝗺𝘁𝗶𝗮𝗷 🥷';
+    const container = document.getElementById('animatedName');
+
+    stylishName.split('').forEach((char, index) => {
+      const span = document.createElement('span');
+      span.textContent = char;
+      span.className = 'letter';
+      span.style.animationDelay = `${index * 0.15}s`;
+      container.appendChild(span);
+    });
+  </script>
+</body>
 </html>
