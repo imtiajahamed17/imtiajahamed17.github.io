@@ -141,10 +141,23 @@
 
     <p>Click the button below to start chatting on WhatsApp instantly!</p>
 
-    <a href="https://wa.me/8801302014230?text=Hello%20Imtiaj." target="_blank" class="btn">
+    <a href="whatsapp://send?phone=8801302014230&text=Hello%20Imtiaj." class="btn" id="whatsappBtn">
       <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="whatsapp-icon">
       Chat Now
     </a>
   </div>
+
+  <script>
+    const btn = document.getElementById('whatsappBtn');
+
+    btn.addEventListener('click', function(e) {
+      const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+      if (!isMobile) {
+        e.preventDefault(); // Stop redirect on non-mobile devices
+        alert("Open this page on your mobile device with WhatsApp installed.");
+      }
+      // On mobile, whatsapp:// will attempt to open WhatsApp app directly
+    });
+  </script>
 </body>
 </html>
