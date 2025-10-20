@@ -1,513 +1,312 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Portfolio of Imtiaj Ahamed, a technologist passionate about AI and system design." />
-  <title>Imtiaj Ahamed – Portfolio</title>
-  <link rel="icon" href="favicon.ico" type="image/x-icon" />
-  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+  <title>Foysal | Free Fire</title>
+
+  <link rel="icon" href="favicon.ico" />
+  <link rel="apple-touch-icon" href="favicon.png" />
+  <meta name="theme-color" content="#0f172a">
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
   <style>
-    html {
-      scroll-behavior: smooth;
-    }
-
-    :root {
-      --bg-dark: #0d1117;
-      --text-dark: #c9d1d9;
-      --card-dark: #161b22;
-      --accent: #58a6ff;
-      --bg-light: #f0f6fc;
-      --text-light: #0d1117;
-      --card-light: #ffffffcc;
-    }
-
-    [data-theme="dark"] {
-      --bg: var(--bg-dark);
-      --text: var(--text-dark);
-      --card: var(--card-dark);
-    }
-
-    [data-theme="light"] {
-      --bg: var(--bg-light);
-      --text: var(--text-light);
-      --card: var(--card-light);
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    :root{
+      --accent:#2563eb;
+      --accent-dark:#1e40af;
+      --card-bg: rgba(255,255,255,0.05);
+      --muted: #e2e8f0;
     }
 
     html, body {
-      height: 100%;
-      background-color: var(--bg);
-      color: var(--text);
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      transition: background 0.4s, color 0.4s;
-    }
-
-    header, nav, section, footer {
-      width: 100%;
-      padding: 40px 20px;
-      max-width: 1200px;
-      margin: auto;
-    }
-
-    header {
-      background: #010409;
-      color: var(--accent);
-      text-align: center;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-    }
-
-    header h1 {
-      font-size: 3rem;
-    }
-
-    nav {
-      background: #161b22;
-      text-align: center;
-      padding: 15px 0;
-    }
-
-    nav a {
-      color: var(--accent);
-      margin: 0 15px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: color 0.3s;
-    }
-
-    nav a:hover {
-      color: #f0f6fc;
-    }
-
-    h2 {
-      font-size: 2rem;
-      margin-bottom: 20px;
-      color: var(--accent);
-    }
-
-    .card {
-      background: var(--card);
-      padding: 25px;
-      margin-bottom: 20px;
-      border-radius: 12px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 6px 18px rgba(0,0,0,0.4);
-    }
-
-    .about-card {
-      display: flex;
-      align-items: center;
-      gap: 30px;
-      flex-wrap: wrap;
-    }
-
-    .about-card img {
-      width: 180px;
-      height: 180px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 4px solid var(--accent);
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
-      transition: transform 0.3s ease;
-    }
-
-    .about-card img:hover {
-      transform: scale(1.05);
-    }
-
-    .about-text {
-      flex: 1;
-      min-width: 250px;
-      font-size: 1.05rem;
-      line-height: 1.6;
-    }
-
-    .education-card {
-      background: var(--card);
-      padding: 25px;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-    }
-
-    .edu-item {
-      display: flex;
-      align-items: flex-start;
-      margin-bottom: 20px;
-    }
-
-    .edu-icon {
-      color: var(--accent);
-      font-size: 1.3rem;
-      margin-right: 10px;
-      margin-top: 4px;
-      animation: floatBounce 1.2s ease-in-out infinite;
-    }
-
-    @keyframes floatBounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-6px); }
-    }
-
-.edu-content {
-      display: flex;
-      flex-direction: column;
-    }
-
-.edu-title {
-  font-weight: bold;
-  color: var(--text);
-  font-size: 1.1rem;
-}
-
-    .edu-detail {
-      font-size: 1rem;
-      color: var(--text);
-      margin-top: 2px;
-      line-height: 1.4;
-    }
-
-    .contact-section {
-      background: linear-gradient(145deg, rgba(255, 255, 255, 0.05), rgba(88, 166, 255, 0.05));
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 16px;
-      padding: 40px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 30px;
-    }
-
-    .contact-section:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4);
-    }
-
-    .email-box {
-      padding: 15px 20px;
-      border: 1px solid #30363d;
-      border-radius: 10px;
-      text-align: center;
-      background-color: transparent;
-      color: var(--accent);
-      max-width: 500px;
-      width: 100%;
-    }
-
-.email-box a {
-  display: inline-block;
-  margin-top: 5px;
-  color: var(--text);
-  font-size: 1.1rem;
-  font-weight: bold;
-  text-decoration: none;
-}
-
-    .email-box i {
-      margin-right: 8px;
-    }
-
-    .contact-buttons {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 16px;
-      width: 100%;
-      max-width: 700px;
-    }
-
-    .contact-btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 12px 20px;
-      border-radius: 12px;
-      font-weight: bold;
-      text-decoration: none;
-      transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #0f172a, #1e293b);
       color: white;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
     }
 
-    .contact-btn i {
-      font-size: 1.2rem;
-      margin-right: 10px;
-      animation: floatBounce 1.4s ease-in-out infinite;
+    .container {
+      max-width: 700px;
+      margin: 28px auto;
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 30px;
+      box-shadow: 0 8px 30px rgba(2,6,23,0.6);
+      text-align: center;
     }
 
-    .contact-btn:hover {
-      transform: translateY(-4px) scale(1.03);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    /* This is the class that makes the profile pic circular */
+    .profile-pic {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;  /* This makes it a circle */
+      object-fit: cover;    /* This prevents the image from stretching */
+      border: 4px solid var(--accent);
+      margin: 0 auto 16px;
+      box-shadow: 0 8px 30px rgba(37,99,235,0.18);
+      display:block;
     }
 
-    .github { background: #0d1117; border: 2px solid #58a6ff; }
-    .github:hover { background: #58a6ff; color: #0d1117; }
+    h1{
+      font-size: 1.8rem;
+      margin: 8px 0;
+      font-weight:600;
+    }
 
-    .linkedin { background: #0a66c2; }
-    .linkedin:hover { background: #084ea1; }
+    p.lead {
+      font-size: 1rem;
+      color: var(--muted);
+      margin: 6px 0 20px;
+      line-height:1.5;
+    }
 
-    .facebook { background: #1877f2; }
-    .facebook:hover { background: #145ecb; }
+    /* Contact buttons (modern look with subtle gradient & icon) */
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 6px;
+    }
 
-    .instagram { background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4); }
-    .instagram:hover { opacity: 0.9; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 16px;
+      border-radius: 10px;
+      text-decoration: none;
+      color: white;
+      font-weight: 500;
+      transition: transform .12s ease, box-shadow .12s ease, background .12s ease;
+      box-shadow: 0 6px 18px rgba(2,6,23,0.4);
+      border: 0;
+    }
 
-    .twitter { background: #1d9bf0; }
-    .twitter:hover { background: #1481c8; }
+    .btn:active { transform: translateY(1px); }
 
-    .theme-toggle {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      background: var(--card);
-      border: 2px solid var(--accent);
-      border-radius: 50%;
-      width: 45px;
-      height: 45px;
+    /* brand colors / gradients */
+    .btn.whatsapp { background: linear-gradient(135deg,#25D366,#1DA851); color: #04260a; }
+    .btn.facebook { background: linear-gradient(135deg,#1877F2,#165fc1); }
+    .btn.instagram { background: linear-gradient(135deg,#f58529,#dd2a7b,#8134af,#515bd4); }
+    .btn.tiktok { background: linear-gradient(135deg,#69C9D0,#EE1D52); }
+    
+    /* NEW: Emergency button styles */
+    .btn.phone { background: linear-gradient(135deg,#22c55e,#15803d); } /* Tailwind Green */
+    .btn.email { background: linear-gradient(135deg,#ef4444,#b91c1c); } /* Tailwind Red */
+    .btn.phone:hover, .btn.email:hover {
+        opacity: 0.9;
+    }
+
+    .btn .fa-fw { font-size: 18px; width: 20px; text-align: center; }
+
+    .section { margin-top: 30px; }
+
+    .section h2 {
+      margin: 0 0 10px;
+      font-size: 1.05rem;
+      color: #e6eefc;
+      letter-spacing: 0.2px;
+    }
+
+    /* Group links as stacked modern cards with icons */
+    .group-links {
+      margin-top: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: center;         /* center the column container contents */
+      width: 100%;
+    }
+
+    /* Each group card centered and limited in width so the stack sits in the middle */
+    .group-links a, .group-item { /* Added .group-item for the new text blocks */
+      width: 84%;
+      max-width: 560px;            /* keep cards a consistent max width */
+      margin: 0 auto;              /* center each card horizontally */
       display: flex;
       align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      z-index: 9999;
-      transition: transform 0.3s ease, opacity 0.3s ease;
+      gap: 12px;
+      padding: 10px 12px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius: 12px;
+      text-decoration: none;
+      color: var(--muted);
+      transition: transform .1s ease, background .12s ease, box-shadow .12s ease;
+      box-shadow: 0 6px 18px rgba(2,6,23,0.25);
     }
-
-    .theme-toggle i {
-      color: var(--accent);
-      font-size: 1.2rem;
-    }
-
-    .theme-toggle.hidden {
-      opacity: 0;
-      transform: translateY(100px);
-    }
-
-    footer {
-      background: #010409;
-      text-align: center;
-      padding: 20px;
-      color: #8b949e;
-    }
-
-    @media (max-width: 768px) {
-      header h1 {
-        font-size: 2rem;
-      }
-
-      h2 {
-        font-size: 1.5rem;
-      }
-
-      nav {
-        font-size: 14px;
-      }
-
-      .about-card {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-      }
-
-      .contact-section {
-        padding: 30px 20px;
-      }
-
-      .theme-toggle {
-        top: 10px;
-        right: 10px;
-        width: 40px;
-        height: 40px;
-      }
-    }
-
-.credential-btn {
-  background: #004080;
-  color: #fff !important;
-  text-decoration: none;
-  border-radius: 6px;
-  display: inline-block;
-  padding: 8px 16px;
-  font-size: 0.8rem;
-  font-weight: bold;
-  transition: background 0.3s;
-}
-.credential-btn i {
-  color: #fff !important;
-  margin-right: 6px;
-}
     
+    /* Style for the new Admin Service items (which are not links) */
+    .group-item {
+        color: #f8fafc; /* Make text a bit brighter */
+        cursor: default;
+        padding: 10px 18px; /* Slight padding adjust for non-link item */
+        font-weight: 500;
+        text-align: left;
+    }
+    
+    .group-links a:hover { transform: translateY(-4px); background: rgba(255,255,255,0.035); color: #fff; }
+
+    .group-links .icon-wrap {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: linear-gradient(135deg,var(--accent),var(--accent-dark));
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color: white;
+      flex-shrink: 0;
+      box-shadow: 0 6px 14px rgba(37,99,235,0.18);
+    }
+    
+    /* NEW: Icon wrap for the Admin Service items (Trust/Security theme) */
+    .group-item .icon-wrap {
+        background: linear-gradient(135deg, #00b06b, #00804d); /* A nice green for trust */
+    }
+
+    .group-links .text {
+      text-align: left;
+      flex: 1 1 auto;
+      font-weight: 600;
+      color: #f8fafc;
+    }
+
+    .group-links .small {
+      display:block;
+      font-weight:400;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    /* smaller screens */
+    @media (max-width:480px){
+      .container { padding: 18px; margin: 18px 12px; }
+      .profile-pic { width: 110px; height: 110px; }
+      .btn { padding: 8px 12px; font-size: 0.95rem; }
+      .group-links a, .group-item { width: 92%; padding: 8px 10px; gap:10px; }
+      .group-links .icon-wrap { width: 40px; height: 40px; }
+    }
   </style>
 </head>
 <body>
-  <div class="theme-toggle" id="themeToggle" title="Toggle Theme">
-    <i class="fas fa-moon" id="themeIcon"></i>
-  </div>
+  <div class="container">
+    
+    <img src="img/foysal.jpg" alt="Admin Foysal" class="profile-pic">
+    
+    <h1>Admin Foysal Hossain</h1>
+    <p class="lead">
+      Free Fire ID &amp; Diamond Seller<br>
+      ID Deal &amp; Exchange Specialist • Trusted • Fast • Secure
+    </p>
+    
+    <div class="section">
+      <h2>Connect With Me</h2>
+      <div class="links" role="list">
+        <a class="btn whatsapp" role="listitem" href="https://wa.me/qr/AH2CTGSNMX2YE1" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+          <i class="fab fa-whatsapp fa-fw" aria-hidden="true"></i>
+          WhatsApp
+        </a>
 
-  <header data-aos="fade-down">
-    <h1>Imtiaj Ahamed</h1>
-    <p>Organizer, Analyzer, Data Specialist</p>
-  </header>
+        <a class="btn facebook" role="listitem" href="https://facebook.com/FOYSALHOSSAIN.6T9" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+          <i class="fab fa-facebook-f fa-fw" aria-hidden="true"></i>
+          Facebook
+        </a>
 
-<nav data-aos="fade-up">
-  <a href="#projects">Projects</a>
-  <a href="#certifications">Credentials</a>
-  <a href="#education">Education</a>
-  <a href="#contact">Contact</a>
-</nav>
+        <a class="btn instagram" role="listitem" href="https://www.instagram.com/foysal_187?igsh=a2cwYmp5ZHRicXM2&utm_source=qr" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <i class="fab fa-instagram fa-fw" aria-hidden="true"></i>
+          Instagram
+        </a>
 
-  <section id="about" data-aos="fade-up">
-    <h2>About Me</h2>
-    <div class="card about-card" data-aos="zoom-in">
-       <img src="https://imtiajahamed17.github.io/img/imtiaj-profile.jpg" alt="Imtiaj Ahamed Profile Photo" />
-      <div class="about-text">
-        <p>I’m Imtiaj, a dedicated Data Entry Specialist focused on accuracy, efficiency, and organization. I turn raw data into reliable information that helps drive smart decisions.</p>
+        <a class="btn tiktok" role="listitem" href="https://www.tiktok.com/@foysal_xoxo_?_t=ZS-90gHDcnIMbp&_r=1" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+          <i class="fab fa-tiktok fa-fw" aria-hidden="true"></i>
+          TikTok
+        </a>
       </div>
     </div>
-  </section>
 
-  <section id="projects" data-aos="fade-up">
-    <h2>Projects</h2>
-    <div class="card" data-aos="zoom-in"><h3>Project Clarity</h3><p>Automated data quality assurance system for large-scale financial records.</p></div>
-    <div class="card" data-aos="zoom-in" data-aos-delay="100"><h3>Digital Archive Initiative (DAI)</h3><p>Digitization and indexing of historical paper documents for a public library collection.</p></div>
-    <div class="card" data-aos="zoom-in" data-aos-delay="200"><h3>Customer Insight Capture</h3><p>Standardizing and cleansing raw customer feedback data from multiple channels for sentiment analysis.</p></div>
-    <div class="card" data-aos="zoom-in" data-aos-delay="300"><h3>Inventory Streamline</h3><p>Developing a database and process to manage and verify product SKUs and stock levels across warehouses.</p></div>
-    <div class="card" data-aos="zoom-in"><h3>Health Record Validation</h3><p>Secure and HIPAA-compliant system for anonymized medical data input and error checking.</p></div>
-  </section>
+    <div class="section">
+      <h2>Buy &amp; Sell Groups</h2>
+      <div class="group-links" role="list">
+        <a href="https://m.me/j/AbbBxmmAZIMju_bV/" target="_blank" rel="noopener noreferrer" role="listitem" aria-label="Group 1">
+          <span class="icon-wrap" aria-hidden="true"><i class="fas fa-users"></i></span>
+          <span class="text">Group 1 <span class="small">Buy & Sell</span></span>
+        </a>
 
-  <section id="education" data-aos="fade-up">
-    <h2>Education</h2>
-    <div class="education-card" data-aos="zoom-in">
-      <div class="edu-item" style="padding-left: 4px;">
-        <i class="fas fa-university edu-icon"></i>
-        <div class="edu-content">
-          <span class="edu-title">Higher Secondary (HSC)</span>
-          <span class="edu-detail">GPA 5.00 (A+)<br> Cumilla Cantonment College</span>
-        </div>
+        <a href="https://m.me/j/Abb2qTjSrHsszgxa/" target="_blank" rel="noopener noreferrer" role="listitem" aria-label="Group 2">
+          <span class="icon-wrap" aria-hidden="true"><i class="fas fa-users"></i></span>
+          <span class="text">Group 2 <span class="small">Buy & Sell</span></span>
+        </a>
+
+        <a href="https://m.me/j/AbZF404bCzfiL7yF/" target="_blank" rel="noopener noreferrer" role="listitem" aria-label="Group 3">
+          <span class="icon-wrap" aria-hidden="true"><i class="fas fa-users"></i></span>
+          <span class="text">Group 3 <span class="small">Buy & Sell</span></span>
+        </a>
+
+        <a href="https://m.me/j/AbYjVzhRdUUjBUDt/" target="_blank" rel="noopener noreferrer" role="listitem" aria-label="Group 4">
+          <span class="icon-wrap" aria-hidden="true"><i class="fas fa-users"></i></span>
+          <span class="text">Group 4 <span class="small">Buy & Sell</span></span>
+        </a>
+
+        <a href="https://m.me/j/AbbnraqU6sCXm2Dx/" target="_blank" rel="noopener noreferrer" role="listitem" aria-label="Group 5">
+          <span class="icon-wrap" aria-hidden="true"><i class="fas fa-users"></i></span>
+          <span class="text">Group 5 <span class="small">Buy & Sell</span></span>
+        </a>
+
+        <a href="https://m.me/j/AbZy-wnpx26AE7qq/" target="_blank" rel="noopener noreferrer" role="listitem" aria-label="Group 6">
+          <span class="icon-wrap" aria-hidden="true"><i class="fas fa-users"></i></span>
+          <span class="text">Group 6 <span class="small">Buy & Sell</span></span>
+        </a>
+
+        <a href="https://m.me/j/AbYMdlDy4P1WitWg/" target="_blank" rel="noopener noreferrer" role="listitem" aria-label="Group 7">
+          <span class="icon-wrap" aria-hidden="true"><i class="fas fa-users"></i></span>
+          <span class="text">Group 7 <span class="small">Buy & Sell</span></span>
+        </a>
       </div>
-      <div class="edu-item">
-        <i class="fas fa-graduation-cap edu-icon"></i>
-        <div class="edu-content">
-          <span class="edu-title">Secondary (SSC)</span>
-          <span class="edu-detail">GPA 5.00 (A+)<br> Monohorgonj High School And College</span>
+    </div>
+    
+    <div class="section">
+      <h2>ADMIN FOYSAL</h2>
+      <div class="group-links">
+        <div class="group-item" role="listitem">
+          <span class="icon-wrap" aria-hidden="true"><i class="fas fa-shield-halved"></i></span>
+          <span class="text">ALL DEAL MANAGED BY ADMIN</span>
         </div>
-      </div>
-      <div class="edu-item">
-        <i class="fas fa-school edu-icon"></i>
-        <div class="edu-content">
-          <span class="edu-title">Junior Secondary (JSC)</span>
-          <span class="edu-detail">GPA 5.00 (A+)<br> Monohorgonj High School And College</span>
+        <div class="group-item" role="listitem">
+          <span class="icon-wrap" aria-hidden="true"><i class="fas fa-shield-halved"></i></span>
+          <span class="text">ID BUY SELL & EXCHANGE</span>
         </div>
-      </div>
-      <div class="edu-item">
-        <i class="fas fa-desktop edu-icon"></i>
-        <div class="edu-content">
-          <span class="edu-title">Computer Application</span>
-          <span class="edu-detail">GPA 5.00 (A+)<br> Global Village ICT Park</span>
+        <div class="group-item" role="listitem">
+          <span class="icon-wrap" aria-hidden="true"><i class="fas fa-shield-halved"></i></span>
+          <span class="text">GMAIL 100% SECURITY</span>
+        </div>
+        <div class="group-item" role="listitem">
+          <span class="icon-wrap"aria-hidden="true"><i class="fas fa-shield-halved"></i></span>
+          <span class="text">UID TOPUP LOW RATE 24 HOUR SERVICE</span>
         </div>
       </div>
     </div>
-  </section>
-
-<section id="certifications" data-aos="fade-up">
-  <h2 style="color: var(--accent); margin-bottom: 20px; text-align: left;">Licenses and Certifications</h2>
-  <div class="card certification-card" data-aos="zoom-in" style="padding: 15px; border-radius: 10px; background: var(--card); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); transition: transform 0.3s;">
-    <h3 class="certification-title" style="font-size: 1.2rem; color: var(--text); margin-bottom: 8px;">Computer Basics Certificate</h3>
-    <p class="certification-detail" style="font-size: 0.9rem; color: var(--text); margin-bottom: 15px;">Issued on: March 25, 2022</p>
-    <a href="/img/computer-basic-skill.jpg" target="_blank" class="credential-btn">
-  <i class="fas fa-file-alt"></i> View Credential
-    </a>
-  </div>
-</section>
-
-<section id="interests" data-aos="fade-up">
-  <h2>Interests & Activities</h2>
-  
-  <div class="card" data-aos="zoom-in">
-    <h3>Database & Classification Systems</h3>
-    <p>Analyzing and structuring complex information into organized, searchable formats, including practicing with relational databases and hierarchical classification.</p>
-  </div>
-  
-  <div class="card" data-aos="zoom-in" data-aos-delay="100">
-    <h3>Digital Document Archiving</h3>
-    <p>Engaging in the systematic organization, indexing, and preservation of digital documents to ensure accuracy, retrieval speed, and data integrity.</p>
-  </div>
-  
-  <div class="card" data-aos="zoom-in" data-aos-delay="200">
-    <h3>Language Translation & Proofreading</h3>
-    <p>Working with texts in multiple languages, focusing on meticulous proofreading and quality control to ensure accuracy and consistency across different documents.</p>
-  </div>
-  
-  <div class="card" data-aos="zoom-in" data-aos-delay="300">
-    <h3>Advanced Spreadsheet Modeling</h3>
-    <p>Building and maintaining intricate spreadsheet models for budgeting and resource tracking, with an emphasis on formula accuracy and data validation.</p>
-  </div>
-  
-  <div class="card" data-aos="zoom-in" data-aos-delay="400">
-    <h3>Cognitive Training & Focus</h3>
-    <p>Practicing exercises and techniques, such as the Pomodoro method and focused memory games, to enhance concentration, speed, and sustained attention to detail.</p>
-  </div>
-  
-  <div class="card" data-aos="zoom-in" data-aos-delay="500">
-    <h3>Games & Sports</h3>
-    <p>Enjoy playing video games, as well as chess and cricket. These activities help in developing strategic thinking, teamwork, and physical fitness.</p>
-  </div>
-</section>
-
-  <section id="contact" data-aos="fade-up">
-    <h2>Contact Me</h2>
-    <div class="contact-section">
-      <div class="email-box">
-        <p><i class="fas fa-envelope"></i> Email me at:</p>
-        <a href="mailto:imtiajahamed.data@gmail.com">imtiajahamed.data@gmail.com</a>
-      </div>
-      <div class="contact-buttons">
-        <a href="https://github.com/imtiajahamed17" target="_blank" class="contact-btn github"><i class="fab fa-github"></i> GitHub</a>
-        <a href="https://linkedin.com/in/imtiajahamed17" target="_blank" class="contact-btn linkedin"><i class="fab fa-linkedin"></i> LinkedIn</a>
-        <a href="https://www.facebook.com/imtiajahamed17" target="_blank" class="contact-btn facebook"><i class="fab fa-facebook"></i> Facebook</a>
-        <a href="https://www.instagram.com/imtiajahamed17" target="_blank" class="contact-btn instagram"><i class="fab fa-instagram"></i> Instagram</a>
-        <a href="https://x.com/imtiajahamed_17" target="_blank" class="contact-btn twitter"><i class="fab fa-twitter"></i> Twitter</a>
+    
+    <div class="section">
+      <h2>For Emergency contact with <br> Md Foysal</h2>
+      <div class="links" role="list">
+        <a class="btn phone" role="listitem" href="tel:+8801604469700" aria-label="Phone Number">
+          <i class="fas fa-phone fa-fw" aria-hidden="true"></i>
+          01604469700
+        </a>
+        <a class="btn email" role="listitem" href="mailto:foysalfreefiree777@gmail.com" aria-label="Email Address">
+          <i class="fas fa-envelope fa-fw" aria-hidden="true"></i>
+          Email
+        </a>
       </div>
     </div>
-  </section>
 
-  <footer data-aos="fade-up">
-    <p>&copy; 2025 Imtiaj. All rights reserved.</p>
-  </footer>
-
-  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-  <script>
-    AOS.init({ duration: 1000, once: true });
-
-    const toggle = document.getElementById('themeToggle');
-    const icon = document.getElementById('themeIcon');
-    const html = document.documentElement;
-
-    toggle.addEventListener('click', () => {
-      const currentTheme = html.getAttribute('data-theme');
-      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-      html.setAttribute('data-theme', newTheme);
-      icon.className = newTheme === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
-    });
-
-    window.addEventListener('scroll', function () {
-      const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-      if (currentScroll <= 50) {
-        toggle.classList.remove('hidden');
-      } else {
-        toggle.classList.add('hidden');
-      }
-    });
-  </script>
+  </div>
 </body>
 </html>
