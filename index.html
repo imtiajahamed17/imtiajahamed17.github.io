@@ -16,7 +16,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Professional Data Entry Expert | Fast & Accurate" />
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
-  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  <link href="https.cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
   <style>
     html {
@@ -71,29 +71,57 @@
       color: var(--accent);
       text-align: center;
       box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      padding-top: 80px; /* Added padding to avoid overlap with fixed buttons */
     }
 
     header h1 {
       font-size: 3rem;
     }
 
+    /* --- Navigation Overlay Styles --- */
     nav {
-      background: #161b22;
-      text-align: center;
-      padding: 15px 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh; /* Full viewport height */
+      background: rgba(13, 17, 23, 0.95); /* var(--bg-dark) with alpha */
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      z-index: 10000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      
+      /* Hide by default */
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-20px);
+      transition: opacity 0.4s ease, visibility 0.4s ease, transform 0.4s ease;
+      padding: 0; /* Override default padding */
+    }
+
+    nav.nav-open {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
     }
 
     nav a {
       color: var(--accent);
-      margin: 0 15px;
+      margin: 20px 0; /* Spaced out vertically */
       text-decoration: none;
       font-weight: bold;
-      transition: color 0.3s;
+      font-size: 2rem; /* Much larger for overlay */
+      transition: color 0.3s, transform 0.3s;
     }
 
     nav a:hover {
       color: #f0f6fc;
+      transform: scale(1.1);
     }
+    /* --- END: Navigation Overlay Styles --- */
 
     h2 {
       font-size: 2rem;
@@ -169,16 +197,16 @@
       50% { transform: translateY(-6px); }
     }
 
-.edu-content {
+    .edu-content {
       display: flex;
       flex-direction: column;
     }
 
-.edu-title {
-  font-weight: bold;
-  color: var(--text);
-  font-size: 1.1rem;
-}
+    .edu-title {
+      font-weight: bold;
+      color: var(--text);
+      font-size: 1.1rem;
+    }
 
     .edu-detail {
       font-size: 1rem;
@@ -216,14 +244,14 @@
       width: 100%;
     }
 
-.email-box a {
-  display: inline-block;
-  margin-top: 5px;
-  color: var(--text);
-  font-size: 1.1rem;
-  font-weight: bold;
-  text-decoration: none;
-}
+    .email-box a {
+      display: inline-block;
+      margin-top: 5px;
+      color: var(--text);
+      font-size: 1.1rem;
+      font-weight: bold;
+      text-decoration: none;
+    }
 
     .email-box i {
       margin-right: 8px;
@@ -276,21 +304,87 @@
     .twitter { background: #1d9bf0; }
     .twitter:hover { background: #1481c8; }
     
+    /* --- NEW: Modern Menu Toggle Button Styles --- */
+    .menu-toggle {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      width: 48px;
+      height: 48px;
+      background: var(--card);
+      border-radius: 10px; /* Rounded square */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 10001; /* Higher than theme toggle */
+      transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1); /* Elastic transition */
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      border: 1px solid rgba(88, 166, 255, 0.1); /* Subtle accent border */
+    }
+
+    .menu-toggle:hover {
+        transform: scale(1.05);
+        border-color: var(--accent);
+    }
+
+    .menu-toggle span {
+      display: block;
+      width: 24px;
+      height: 3px;
+      background: var(--accent);
+      border-radius: 3px;
+      transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+      position: absolute; /* Use absolute for better transform control */
+    }
+
+    /* Position the spans */
+    .menu-toggle span:nth-child(1) {
+      transform: translateY(-8px);
+    }
+    .menu-toggle span:nth-child(3) {
+      transform: translateY(8px);
+    }
+
+    /* Animate to 'X' */
+    .menu-toggle.open {
+        /* Keep it in place, don't change on hover when open */
+        transform: scale(1); 
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+    .menu-toggle.open span:nth-child(1) {
+      transform: translateY(0) rotate(45deg);
+    }
+    .menu-toggle.open span:nth-child(2) {
+      transform: scaleX(0); /* Squeeze and fade */
+      opacity: 0;
+    }
+    .menu-toggle.open span:nth-child(3) {
+      transform: translateY(0) rotate(-45deg);
+    }
+    /* --- END: Menu Toggle Button Styles --- */
+
     .theme-toggle {
       position: fixed;
       top: 20px;
       right: 20px;
       background: var(--card);
-      border: 2px solid var(--accent);
-      border-radius: 50%;
-      width: 45px;
-      height: 45px;
+      border: 1px solid rgba(88, 166, 255, 0.1);
+      border-radius: 10px; /* Match menu toggle */
+      width: 48px; /* Match menu toggle */
+      height: 48px; /* Match menu toggle */
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
       z-index: 9999;
-      transition: transform 0.3s ease, opacity 0.3s ease;
+      transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+    
+    .theme-toggle:hover {
+        transform: scale(1.05);
+        border-color: var(--accent);
     }
 
     .theme-toggle i {
@@ -298,9 +392,11 @@
       font-size: 1.2rem;
     }
 
-    .theme-toggle.hidden {
+    .theme-toggle.hidden,
+    .menu-toggle.hidden { /* MODIFIED: Both buttons hide on scroll */
       opacity: 0;
       transform: translateY(100px);
+      pointer-events: none; /* Prevent clicks when hidden */
     }
 
     footer {
@@ -319,8 +415,9 @@
         font-size: 1.5rem;
       }
 
-      nav {
-        font-size: 14px;
+      /* Adjust menu links for mobile */
+      nav a {
+        font-size: 1.5rem;
       }
 
       .about-card {
@@ -333,11 +430,19 @@
         padding: 30px 20px;
       }
 
+      /* Adjust toggles for mobile */
+      .menu-toggle {
+        top: 10px;
+        left: 10px;
+        width: 44px;
+        height: 44px;
+      }
+
       .theme-toggle {
         top: 10px;
         right: 10px;
-        width: 40px;
-        height: 40px;
+        width: 44px;
+        height: 44px;
       }
     }
 
@@ -360,6 +465,12 @@
   </style>
 </head>
 <body>
+  <div class="menu-toggle" id="menu-toggle" title="Toggle Menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
   <div class="theme-toggle" id="themeToggle" title="Toggle Theme">
     <i class="fas fa-moon" id="themeIcon"></i>
   </div>
@@ -369,10 +480,12 @@
     <p>Organizer, Analyzer, Data Specialist</p>
   </header>
 
-<nav data-aos="fade-up">
+<nav id="main-nav">
+  <a href="#about">About</a>
   <a href="#projects">Projects</a>
   <a href="#certifications">Credentials</a>
   <a href="#education">Education</a>
+  <a href="#interests">Interests</a>
   <a href="#contact">Contact</a>
 </nav>
 
@@ -416,7 +529,7 @@
         <i class="fas fa-school edu-icon"></i>
         <div class="edu-content">
           <span class="edu-title">Junior Secondary (JSC)</span>
-          <span class="edu-detail">GPA 5.00 (A+)<br> Monohorgonj High School And College</span>
+          <span class="edu-detail">GPA 5.00 (A+)<br> Monohorgonj High SchoolAnd College</span>
         </div>
       </div>
       <div class="edu-item">
@@ -499,25 +612,65 @@
   <script>
     AOS.init({ duration: 1000, once: true });
 
-    const toggle = document.getElementById('themeToggle');
+    // --- UPDATED: Menu & UI Toggle Script ---
+    const menuToggle = document.getElementById('menu-toggle');
+    const mainNav = document.getElementById('main-nav');
+    const navLinks = document.querySelectorAll('#main-nav a');
+    const themeToggle = document.getElementById('themeToggle');
     const icon = document.getElementById('themeIcon');
     const html = document.documentElement;
 
-    toggle.addEventListener('click', () => {
+    // --- Logic for hiding/showing buttons on scroll ---
+    function checkScrollAndHideButtons() {
+        const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+        
+        if (currentScroll <= 50) {
+            // At top of page: show both buttons
+            themeToggle.classList.remove('hidden');
+            menuToggle.classList.remove('hidden');
+        } else {
+            // Scrolled down: hide theme toggle
+            themeToggle.classList.add('hidden');
+            
+            // *** THE FIX: Only hide menu toggle if it is NOT open ***
+            if (!menuToggle.classList.contains('open')) {
+                menuToggle.classList.add('hidden');
+            }
+        }
+    }
+
+    // 1. Toggle menu on hamburger click
+    menuToggle.addEventListener('click', () => {
+      mainNav.classList.toggle('nav-open');
+      menuToggle.classList.toggle('open');
+
+      // If we just closed the menu, re-run scroll check
+      if (!menuToggle.classList.contains('open')) {
+          checkScrollAndHideButtons();
+      }
+    });
+
+    // 2. Close menu when a link is clicked
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mainNav.classList.remove('nav-open');
+        menuToggle.classList.remove('open');
+        // Re-run scroll check to hide button if needed
+        checkScrollAndHideButtons();
+      });
+    });
+
+    // 3. Theme Toggle Logic
+    themeToggle.addEventListener('click', () => {
       const currentTheme = html.getAttribute('data-theme');
       const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
       html.setAttribute('data-theme', newTheme);
       icon.className = newTheme === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
     });
 
-    window.addEventListener('scroll', function () {
-      const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-      if (currentScroll <= 50) {
-        toggle.classList.remove('hidden');
-      } else {
-        toggle.classList.add('hidden');
-      }
-    });
+    // 4. Main Scroll Listener
+    window.addEventListener('scroll', checkScrollAndHideButtons);
+    
   </script>
 </body>
 </html>
