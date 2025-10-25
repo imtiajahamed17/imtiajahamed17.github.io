@@ -71,28 +71,25 @@
       color: var(--accent);
       text-align: center;
       box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-      padding-top: 80px; /* Added padding to avoid overlap with fixed buttons */
+      padding-top: 80px;
     }
 
     header h1 {
       font-size: 3rem;
     }
 
-    /* --- NEW: Subtitle Carousel Style --- */
     #subtitle-carousel {
       transition: opacity 0.5s ease-in-out;
-      min-height: 1.2em; /* Prevents layout shift */
+      min-height: 1.2em;
     }
-    /* --- END: Subtitle Carousel Style --- */
 
-    /* --- Navigation Overlay Styles --- */
     nav {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
-      height: 100vh; /* Full viewport height */
-      background: rgba(13, 17, 23, 0.95); /* var(--bg-dark) with alpha */
+      height: 100vh;
+      background: rgba(13, 17, 23, 0.95);
       backdrop-filter: blur(8px);
       -webkit-backdrop-filter: blur(8px);
       z-index: 10000;
@@ -101,12 +98,11 @@
       align-items: center;
       justify-content: center;
       
-      /* Hide by default */
       opacity: 0;
       visibility: hidden;
       transform: translateY(-20px);
       transition: opacity 0.4s ease, visibility 0.4s ease, transform 0.4s ease;
-      padding: 0; /* Override default padding */
+      padding: 0;
     }
 
     nav.nav-open {
@@ -117,10 +113,10 @@
 
     nav a {
       color: var(--accent);
-      margin: 20px 0; /* Spaced out vertically */
+      margin: 20px 0;
       text-decoration: none;
       font-weight: bold;
-      font-size: 2rem; /* Much larger for overlay */
+      font-size: 2rem;
       transition: color 0.3s, transform 0.3s;
     }
 
@@ -128,7 +124,6 @@
       color: #f0f6fc;
       transform: scale(1.1);
     }
-    /* --- END: Navigation Overlay Styles --- */
 
     h2 {
       font-size: 2rem;
@@ -157,32 +152,52 @@
       flex-wrap: wrap;
     }
 
-    /* --- START: Profile Image Loader Styles --- */
     .profile-img-wrapper {
       width: 180px;
       height: 180px;
       border-radius: 50%;
-      overflow: hidden; /* Clips the blurred edges */
+      overflow: hidden;
       
-      /* Merged from original .about-card img */
       border: 4px solid var(--accent);
       box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
-      transition: transform 0.3s ease;
-      
-      /* Added for layout */
+      transition: transform 0.3s ease, background 0s 0.6s;
       display: inline-block;
       vertical-align: middle;
+
+      position: relative;
+      background: linear-gradient(100deg, #1c2128 30%, #22272e 50%, #1c2128 70%);
+      background-size: 200% 100%;
+      animation: shimmer 1.5s infinite;
+    }
+    
+    [data-theme="light"] .profile-img-wrapper {
+        background: linear-gradient(100deg, #e0e0e0 30%, #f5f5f5 50%, #e0e0e0 70%);
+        background-size: 200% 100%;
+    }
+    
+    @keyframes shimmer {
+      0% { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
     }
     
     .profile-img-wrapper:hover {
-      /* Merged from original .about-card img:hover */
       transform: scale(1.05);
+    }
+
+    .profile-img-wrapper.loaded {
+        animation: none;
+        background: none;
     }
 
     .profile-img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      
+      position: absolute;
+      top: 0;
+      left: 0;
+
       filter: blur(10px);
       opacity: 0;
       transition: filter 0.6s ease, opacity 0.6s ease;
@@ -192,7 +207,6 @@
       filter: blur(0);
       opacity: 1;
     }
-    /* --- END: Profile Image Loader Styles --- */
 
     .about-text {
       flex: 1;
@@ -334,7 +348,6 @@
     .twitter { background: #1d9bf0; }
     .twitter:hover { background: #1481c8; }
     
-    /* --- NEW: Modern Menu Toggle Button Styles --- */
     .menu-toggle {
       position: fixed;
       top: 20px;
@@ -342,15 +355,15 @@
       width: 48px;
       height: 48px;
       background: var(--card);
-      border-radius: 10px; /* Rounded square */
+      border-radius: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      z-index: 10001; /* Higher than theme toggle */
-      transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1); /* Elastic transition */
+      z-index: 10001;
+      transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
       box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-      border: 1px solid rgba(88, 166, 255, 0.1); /* Subtle accent border */
+      border: 1px solid rgba(88, 166, 255, 0.1);
     }
 
     .menu-toggle:hover {
@@ -365,10 +378,9 @@
       background: var(--accent);
       border-radius: 3px;
       transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
-      position: absolute; /* Use absolute for better transform control */
+      position: absolute;
     }
 
-    /* Position the spans */
     .menu-toggle span:nth-child(1) {
       transform: translateY(-8px);
     }
@@ -376,9 +388,7 @@
       transform: translateY(8px);
     }
 
-    /* Animate to 'X' */
     .menu-toggle.open {
-        /* Keep it in place, don't change on hover when open */
         transform: scale(1); 
         box-shadow: 0 4px 12px rgba(0,0,0,0.3);
     }
@@ -386,13 +396,12 @@
       transform: translateY(0) rotate(45deg);
     }
     .menu-toggle.open span:nth-child(2) {
-      transform: scaleX(0); /* Squeeze and fade */
+      transform: scaleX(0);
       opacity: 0;
     }
     .menu-toggle.open span:nth-child(3) {
       transform: translateY(0) rotate(-45deg);
     }
-    /* --- END: Menu Toggle Button Styles --- */
 
     .theme-toggle {
       position: fixed;
@@ -400,9 +409,9 @@
       right: 20px;
       background: var(--card);
       border: 1px solid rgba(88, 166, 255, 0.1);
-      border-radius: 10px; /* Match menu toggle */
-      width: 48px; /* Match menu toggle */
-      height: 48px; /* Match menu toggle */
+      border-radius: 10px;
+      width: 48px;
+      height: 48px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -423,10 +432,10 @@
     }
 
     .theme-toggle.hidden,
-    .menu-toggle.hidden { /* MODIFIED: Both buttons hide on scroll */
+    .menu-toggle.hidden {
       opacity: 0;
       transform: translateY(100px);
-      pointer-events: none; /* Prevent clicks when hidden */
+      pointer-events: none;
     }
 
     footer {
@@ -445,7 +454,6 @@
         font-size: 1.5rem;
       }
 
-      /* Adjust menu links for mobile */
       nav a {
         font-size: 1.5rem;
       }
@@ -460,7 +468,6 @@
         padding: 30px 20px;
       }
 
-      /* Adjust toggles for mobile */
       .menu-toggle {
         top: 10px;
         left: 10px;
@@ -648,22 +655,23 @@
   <script>
     AOS.init({ duration: 1000, once: true });
 
-    // --- NEW: Profile Image Loader ---
     const profileImg = document.getElementById("profilePic");
-    if (profileImg) {
-        // If the image is cached and already loaded
-        if (profileImg.complete) {
+    const profileWrapper = document.querySelector(".profile-img-wrapper");
+
+    if (profileImg && profileWrapper) {
+        
+        function showImage() {
             profileImg.classList.add("loaded");
+            profileWrapper.classList.add("loaded"); 
+        }
+
+        if (profileImg.complete) {
+            showImage();
         } else {
-            // If it's not loaded, add the event listener
-            profileImg.addEventListener("load", () => {
-                profileImg.classList.add("loaded");
-            });
+            profileImg.addEventListener("load", showImage);
         }
     }
-    // --- END: Profile Image Loader ---
 
-    // --- START: Subtitle Carousel Logic ---
     const subtitleElement = document.getElementById('subtitle-carousel');
     const subtitles = [
         "Organizer, Analyzer, Data Specialist",
@@ -677,22 +685,17 @@
     let subtitleIndex = 0;
 
     setInterval(() => {
-        // 1. Fade out the current text
         subtitleElement.style.opacity = 0;
 
         setTimeout(() => {
-            // 2. Update text after fade-out (0.5s)
             subtitleIndex = (subtitleIndex + 1) % subtitles.length;
             subtitleElement.textContent = subtitles[subtitleIndex];
             
-            // 3. Fade the new text back in
             subtitleElement.style.opacity = 1;
-        }, 500); // Must match the CSS transition duration
+        }, 500);
 
-    }, 5000); // 5000ms = 5 seconds
-    // --- END: Subtitle Carousel Logic ---
+    }, 5000);
 
-    // --- UPDATED: Menu & UI Toggle Script ---
     const menuToggle = document.getElementById('menu-toggle');
     const mainNav = document.getElementById('main-nav');
     const navLinks = document.querySelectorAll('#main-nav a');
@@ -700,47 +703,38 @@
     const icon = document.getElementById('themeIcon');
     const html = document.documentElement;
 
-    // --- Logic for hiding/showing buttons on scroll ---
     function checkScrollAndHideButtons() {
         const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
         
         if (currentScroll <= 50) {
-            // At top of page: show both buttons
             themeToggle.classList.remove('hidden');
             menuToggle.classList.remove('hidden');
         } else {
-            // Scrolled down: hide theme toggle
             themeToggle.classList.add('hidden');
             
-            // *** THE FIX: Only hide menu toggle if it is NOT open ***
             if (!menuToggle.classList.contains('open')) {
                 menuToggle.classList.add('hidden');
             }
         }
     }
 
-    // 1. Toggle menu on hamburger click
     menuToggle.addEventListener('click', () => {
       mainNav.classList.toggle('nav-open');
       menuToggle.classList.toggle('open');
 
-      // If we just closed the menu, re-run scroll check
       if (!menuToggle.classList.contains('open')) {
           checkScrollAndHideButtons();
       }
     });
 
-    // 2. Close menu when a link is clicked
     navLinks.forEach(link => {
       link.addEventListener('click', () => {
         mainNav.classList.remove('nav-open');
         menuToggle.classList.remove('open');
-        // Re-run scroll check to hide button if needed
         checkScrollAndHideButtons();
       });
     });
 
-    // 3. Theme Toggle Logic
     themeToggle.addEventListener('click', () => {
       const currentTheme = html.getAttribute('data-theme');
       const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
@@ -748,7 +742,6 @@
       icon.className = newTheme === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
     });
 
-    // 4. Main Scroll Listener
     window.addEventListener('scroll', checkScrollAndHideButtons);
     
   </script>
