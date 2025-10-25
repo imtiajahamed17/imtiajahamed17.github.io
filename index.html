@@ -78,6 +78,13 @@
       font-size: 3rem;
     }
 
+    /* --- NEW: Subtitle Carousel Style --- */
+    #subtitle-carousel {
+      transition: opacity 0.5s ease-in-out;
+      min-height: 1.2em; /* Prevents layout shift */
+    }
+    /* --- END: Subtitle Carousel Style --- */
+
     /* --- Navigation Overlay Styles --- */
     nav {
       position: fixed;
@@ -477,7 +484,7 @@
 
   <header data-aos="fade-down">
     <h1>Imtiaj Ahamed</h1>
-    <p>Organizer, Analyzer, Data Specialist</p>
+    <p id="subtitle-carousel">Organizer, Analyzer, Data Specialist</p>
   </header>
 
 <nav id="main-nav">
@@ -611,6 +618,35 @@
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
   <script>
     AOS.init({ duration: 1000, once: true });
+
+    // --- START: Subtitle Carousel Logic ---
+    const subtitleElement = document.getElementById('subtitle-carousel');
+    const subtitles = [
+        "Organizer, Analyzer, Data Specialist",
+        "Where Logic Meets Vision.",
+        "Insight that Anticipates Change.",
+        "Organized Mind. Analytical Vision.",
+        "Analytical Precision. Visionary Thinking.",
+        "Precision in Every Pattern.",
+        "Smart Data. Clear Decisions."
+    ];
+    let subtitleIndex = 0;
+
+    setInterval(() => {
+        // 1. Fade out the current text
+        subtitleElement.style.opacity = 0;
+
+        setTimeout(() => {
+            // 2. Update text after fade-out (0.5s)
+            subtitleIndex = (subtitleIndex + 1) % subtitles.length;
+            subtitleElement.textContent = subtitles[subtitleIndex];
+            
+            // 3. Fade the new text back in
+            subtitleElement.style.opacity = 1;
+        }, 500); // Must match the CSS transition duration
+
+    }, 5000); // 5000ms = 5 seconds
+    // --- END: Subtitle Carousel Logic ---
 
     // --- UPDATED: Menu & UI Toggle Script ---
     const menuToggle = document.getElementById('menu-toggle');
