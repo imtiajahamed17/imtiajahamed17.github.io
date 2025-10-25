@@ -157,19 +157,42 @@
       flex-wrap: wrap;
     }
 
-    .about-card img {
+    /* --- START: Profile Image Loader Styles --- */
+    .profile-img-wrapper {
       width: 180px;
       height: 180px;
       border-radius: 50%;
-      object-fit: cover;
+      overflow: hidden; /* Clips the blurred edges */
+      
+      /* Merged from original .about-card img */
       border: 4px solid var(--accent);
       box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
       transition: transform 0.3s ease;
+      
+      /* Added for layout */
+      display: inline-block;
+      vertical-align: middle;
     }
-
-    .about-card img:hover {
+    
+    .profile-img-wrapper:hover {
+      /* Merged from original .about-card img:hover */
       transform: scale(1.05);
     }
+
+    .profile-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: blur(10px);
+      opacity: 0;
+      transition: filter 0.6s ease, opacity 0.6s ease;
+    }
+
+    .profile-img.loaded {
+      filter: blur(0);
+      opacity: 1;
+    }
+    /* --- END: Profile Image Loader Styles --- */
 
     .about-text {
       flex: 1;
@@ -499,8 +522,14 @@
   <section id="about" data-aos="fade-up">
     <h2>About Me</h2>
     <div class="card about-card" data-aos="zoom-in">
-       <img src="https://imtiajahamed17.github.io/img/imtiaj-profile.jpg" alt="Imtiaj Ahamed Profile Photo" />
-      <div class="about-text">
+       
+       <div class="profile-img-wrapper">
+         <img src="https://imtiajahamed17.github.io/img/imtiaj-profile.jpg"
+              class="profile-img"
+              id="profilePic"
+              alt="Imtiaj Ahamed – Profile">
+       </div>
+       <div class="about-text">
         <p>I’m Imtiaj, a dedicated Data Entry Specialist focused on accuracy, efficiency, and organization. I turn raw data into reliable information that helps drive smart decisions.</p>
       </div>
     </div>
@@ -618,6 +647,21 @@
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
   <script>
     AOS.init({ duration: 1000, once: true });
+
+    // --- NEW: Profile Image Loader ---
+    const profileImg = document.getElementById("profilePic");
+    if (profileImg) {
+        // If the image is cached and already loaded
+        if (profileImg.complete) {
+            profileImg.classList.add("loaded");
+        } else {
+            // If it's not loaded, add the event listener
+            profileImg.addEventListener("load", () => {
+                profileImg.classList.add("loaded");
+            });
+        }
+    }
+    // --- END: Profile Image Loader ---
 
     // --- START: Subtitle Carousel Logic ---
     const subtitleElement = document.getElementById('subtitle-carousel');
