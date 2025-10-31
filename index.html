@@ -185,10 +185,6 @@
       100% { background-position: 200% 0; }
     }
     
-    .profile-img-wrapper:hover {
-      transform: scale(1.05);
-    }
-
     .profile-img-wrapper.loaded {
         animation: none;
         background: none;
@@ -491,6 +487,17 @@
       }
     }
 
+    /* --- Added this block to disable image saving --- */
+    img {
+      -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none;   /* Safari */
+      -khtml-user-select: none;  /* Konqueror HTML */
+      -moz-user-select: none;    /* Old versions of Firefox */
+      -ms-user-select: none;     /* Internet Explorer/Edge */
+      user-select: none;         /* Non-prefixed version */
+    }
+    /* --- End of added block --- */
+
     .credential-btn {
       background: #004080;
       color: #fff !important;
@@ -580,7 +587,7 @@
         <i class="fas fa-school edu-icon"></i>
         <div class="edu-content">
           <span class="edu-title">Junior Secondary (JSC)</span>
-          <span class="edu-detail">GPA 5.00 (A+)<br> Monohorgonj High SchoolAnd College</span>
+          <span class="edu-detail">GPA 5.00 (A+)<br> Monohorgonj High School And College</span>
         </div>
       </div>
       <div class="edu-item">
@@ -595,6 +602,31 @@
 
 <section id="certifications" data-aos="fade-up">
   <h2 style="color: var(--accent); margin-bottom: 20px; text-align: left;">Licenses and Certifications</h2>
+  
+  <div class="card certification-card" data-aos="zoom-in" data-aos-delay="100" style="padding: 15px; border-radius: 10px; background: var(--card); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); transition: transform 0.3s; margin-top: 20px;">
+    <h3 class="certification-title" style="font-size: 1.2rem; color: var(--text); margin-bottom: 8px;">Higher Secondary Certificate (HSC)</h3>
+    <p class="certification-detail" style="font-size: 0.9rem; color: var(--text); margin-bottom: 15px;">Issued on: August 17, 2024</p>
+    <a href="img/HSC.png" target="_blank" class="credential-btn">
+      <i class="fas fa-file-alt"></i> View Credential
+    </a>
+  </div>
+
+  <div class="card certification-card" data-aos="zoom-in" data-aos-delay="200" style="padding: 15px; border-radius: 10px; background: var(--card); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); transition: transform 0.3s; margin-top: 20px;">
+    <h3 class="certification-title" style="font-size: 1.2rem; color: var(--text); margin-bottom: 8px;">Secondary School Certificate (SSC)</h3>
+    <p class="certification-detail" style="font-size: 0.9rem; color: var(--text); margin-bottom: 15px;">Issued on: November 28, 2022</p>  
+    <a href="img/SSC.jpg" target="_blank" class="credential-btn">
+      <i class="fas fa-file-alt"></i> View Credential
+    </a>
+  </div>
+
+  <div class="card certification-card" data-aos="zoom-in" data-aos-delay="300" style="padding: 15px; border-radius: 10px; background: var(--card); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); transition: transform 0.3s; margin-top: 20px;">
+    <h3 class="certification-title" style="font-size: 1.2rem; color: var(--text); margin-bottom: 8px;">Junior School Certificate (JSC)</h3>
+    <p class="certification-detail" style="font-size: 0.9rem; color: var(--text); margin-bottom: 15px;">Issued on: april 19, 2016</p>
+    <a href="img/JSC.png" target="_blank" class="credential-btn">
+      <i class="fas fa-file-alt"></i> View Credential
+    </a>
+  </div>
+  
   <div class="card certification-card" data-aos="zoom-in" style="padding: 15px; border-radius: 10px; background: var(--card); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); transition: transform 0.3s;">
     <h3 class="certification-title" style="font-size: 1.2rem; color: var(--text); margin-bottom: 8px;">Computer Basics Certificate</h3>
     <p class="certification-detail" style="font-size: 0.9rem; color: var(--text); margin-bottom: 15px;">Issued on: March 25, 2022</p>
@@ -602,7 +634,7 @@
       <i class="fas fa-file-alt"></i> View Credential
     </a>
   </div>
-</section>
+  </section>
 
 <section id="interests" data-aos="fade-up">
   <h2>Interests & Activities</h2>
@@ -752,6 +784,9 @@
     });
 
     window.addEventListener('scroll', checkScrollAndHideButtons);
+    
+    // --- Added this line to disable right-click ---
+    document.addEventListener('contextmenu', event => event.preventDefault());
     
   </script>
 </body>
