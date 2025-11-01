@@ -544,14 +544,11 @@
       opacity: 1 !important;
       transform: scale(1);
     }
-
-    /* **REMOVED**: All CSS for #certificate-loader and .loader-bar has been deleted */
     
   </style>
 </head>
 <body>
 
-  <!-- Initial Page Loader (Cat) -->
   <div id="loader-cat" style="
       display:flex; 
       position:fixed;
@@ -572,8 +569,6 @@
           min-width:150px;
           min-height:150px;"></div>
   </div>
-
-  <!-- **REMOVED**: The HTML for #certificate-loader has been deleted -->
 
   <div class="menu-toggle" id="menu-toggle" title="Toggle Menu">
     <span></span>
@@ -642,7 +637,7 @@
         <i class="fas fa-graduation-cap edu-icon"></i>
         <div class="edu-content">
           <span class="edu-title">Secondary (SSC)</span>
-          <span class="edu-detail">GPA 5.00 (A+)<br> Monohorgonj High School And College</span>
+          <span class="edu-detail">GPA 5.00 (A+)<br> Monohorganj High School And College</span>
           <a href="img/SSC.jpg" class="credential-btn" style="margin-top: 10px;" data-gallery="credentials">
             <i class="fas fa-file-alt"></i> View Credential
           </a>
@@ -653,7 +648,7 @@
         <i class="fas fa-school edu-icon"></i>
         <div class="edu-content">
           <span class="edu-title">Junior Secondary (JSC)</span>
-          <span class="edu-detail">GPA 5.00 (A+)<br> Monohorgonj High School And College</span>
+          <span class="edu-detail">GPA 5.00 (A+)<br> Monohorganj High School And College</span>
           <a href="img/JSC.png" class="credential-btn" style="margin-top: 10px;" data-gallery="credentials">
             <i class="fas fa-file-alt"></i> View Credential
           </a>
@@ -679,12 +674,12 @@
     
     <div class="card" data-aos="zoom-in">
       <h3>Database & Classification Systems</h3>
-      <p>Analyzing and structuring complex information into organized, searchable formats, including practicing with relational databases and hierarchical classification.</p>
+      <p>Analyzing and structuring complex information into organized, searchable formats, applying relational database principles and hierarchical classification.</p>
     </div>
     
     <div class="card" data-aos="zoom-in" data-aos-delay="100">
       <h3>Digital Document Archiving</h3>
-      <p>Engaging in the systematic organization, indexing, and preservation of digital documents to ensure accuracy, retrieval speed, and data integrity.</p>
+      <p>Practicing the systematic organization, indexing, and preservation of digital documents to ensure accuracy, retrieval speed, and data integrity.</p>
     </div>
     
     <div class="card" data-aos="zoom-in" data-aos-delay="200">
@@ -699,13 +694,12 @@
     
     <div class="card" data-aos="zoom-in" data-aos-delay="400">
       <h3>Cognitive Training & Focus</h3>
-      <!-- **FIXED**: Corrected spelling from "Pomodo'method'" to "Pomodoro method" -->
       <p>Practicing exercises and techniques, such as the Pomodoro method and focused memory games, to enhance concentration, speed, and sustained attention to detail.</p>
     </div>
     
     <div class="card" data-aos="zoom-in" data-aos-delay="500">
-      <h3>Games & Sports</h3>
-      <p>Enjoy playing video games, as well as chess and cricket. These activities help in developing strategic thinking, teamwork, and physical fitness.</p>
+      <h3>Strategic & Logic Games</h3>
+      <p>Engaging in activities like chess and cricket that require deep focus, pattern recognition, and forward-planning.</p>
     </div>
   </section>
 
@@ -821,7 +815,7 @@
     document.addEventListener('contextmenu', event => event.preventDefault());
     
     
-    // --- Page Load Cat Loader ---
+    // --- **UPDATED** Page Load Cat Loader ---
     const catLoaderElement = document.getElementById('loader-cat');
     const catAnimation = lottie.loadAnimation({
         container: document.getElementById('cat-animation'),
@@ -833,16 +827,14 @@
 
     window.addEventListener('load', () => {
         if (catLoaderElement) {
-            // Fade out the cat loader
+            // Page is loaded. Fade out the loader immediately.
+            catLoaderElement.style.opacity = 0;
+            
+            // After the 500ms fade-out (matching your CSS), hide it and stop the animation
             setTimeout(() => {
-                catLoaderElement.style.opacity = 0;
-                
-                // After fade-out, hide it and stop the animation
-                setTimeout(() => {
-                    catLoaderElement.style.display = 'none';
-                    catAnimation.stop();
-                }, 500); // This 500ms matches your CSS transition
-            }, 1500); // Show loader for at least 1.5 seconds
+                catLoaderElement.style.display = 'none';
+                catAnimation.stop();
+            }, 500); // This 500ms matches your CSS transition
         }
     });
 
@@ -856,14 +848,12 @@
         loop: true,
         dragAutoClose: false,
         slideCounter: true,
-        openEffect: 'fade',     // **MODIFIED**: Set to 'fade'
-        closeEffect: 'fade',    // **MODIFIED**: Set to 'fade'
-        download: false         // **NEW**: Hides the download button
+        openEffect: 'fade',
+        closeEffect: 'fade',
+        slideEffect: 'fade',    // **ADDED THIS LINE**
+        download: false
     });
-
-    // **REMOVED**: All JavaScript for 'certificateLoader' has been deleted.
     
   </script>
 </body>
 </html>
-
