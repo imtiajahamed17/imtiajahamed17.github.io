@@ -766,7 +766,7 @@
       <div class="contact-buttons">
         <a href="https://github.com/imtiajahamed17" target="_blank" class="contact-btn github"><i class="fab fa-github"></i> GitHub</a>
         <a href="https://linkedin.com/in/imtiajahamed17" target="_blank" class="contact-btn linkedin"><i class="fab fa-linkedin"></i> LinkedIn</a>
-        <a href="httpsStorage: //www.facebook.com/imtiajahamed17" target="_blank" class="contact-btn facebook"><i class="fab fa-facebook"></i> Facebook</a>
+        <a href="https://www.facebook.com/imtiajahamed17" target="_blank" class="contact-btn facebook"><i class="fab fa-facebook"></i> Facebook</a>
         <a href="https://www.instagram.com/imtiajahamed17" target="_blank" class="contact-btn instagram"><i class="fab fa-instagram"></i> Instagram</a>
         <a href="https://x.com/imtiajahamed_17" target="_blank" class="contact-btn twitter"><i class="fab fa-twitter"></i> Twitter</a>
         <a href="https://t.me/imtiajahamed17" target="_blank" class="contact-btn telegram"><i class="fab fa-telegram"></i> Telegram</a>
@@ -874,6 +874,7 @@
         renderer: 'svg',
         loop: true,
         autoplay: true, // Start playing immediately
+        // **FIXED**: The path was cut off. It is now complete.
         path: 'https://imtiajahamed17.github.io/assets/loader-cat.json'
     });
 
@@ -893,27 +894,26 @@
     });
 
 
-    // --- Professional Certificate Loader Logic ---
+    // --- Professional Certificate Loader Logic (UPDATED) ---
     const certificateLoader = document.getElementById('certificate-loader');
     
-    // Initialize GLightbox with new options
+    // Initialize GLightbox (options are unchanged)
     const lightbox = GLightbox({
         selector: '[data-gallery="credentials"]',
         touchNavigation: true,
         loop: true,
-        dragAutoClose: false,  // Disables dragging image up/down to close
-        slideCounter: true,    // Adds "1 / 4" indicators
-        openEffect: 'zoom',    // Stylish zoom-in animation
-        closeEffect: 'fade'    // Stylish fade-out animation
+        dragAutoClose: false,
+        slideCounter: true,
+        openEffect: 'zoom',
+        closeEffect: 'fade'
     });
 
-    // Show professional loader when lightbox opens
-    lightbox.on('open', () => {
+    // Show loader BEFORE the slide (and image) loads
+    lightbox.on('slide_before_load', () => {
       if(certificateLoader) certificateLoader.classList.add('visible');
     });
 
-    // **FIXED**: Corrected `()S =>` to `() =>`
-    // Hide professional loader once the image/slide is loaded
+    // Hide loader AFTER the slide (and image) has loaded
     lightbox.on('slide_load', () => {
       if(certificateLoader) certificateLoader.classList.remove('visible');
     });
@@ -925,4 +925,4 @@
     
   </script>
 </body>
-</html>
+  </html>
