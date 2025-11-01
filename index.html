@@ -11,23 +11,29 @@
   <meta property="og:url" content="https://imtiajahamed17.github.io/">
   <meta property="og:title" content="Imtiaj Ahamed – Portfolio">
   <meta property="og:description" content="Professional Data Entry Expert | Fast & Accurate">
-  <meta property="og:image" content="https://imtiajahamed17.github.io/img/imtiaj-profile.jpg">
+  <meta property="og:image" content="https://imtiajahamed17.github.io/img/imtiaj.jpg">
   
   <meta property="twitter:card" content="summary_large_image">
   <meta property="twitter:url" content="https://imtiajahamed17.github.io/">
   <meta property="twitter:title" content="Imtiaj Ahamed – Portfolio">
   <meta property="twitter:description" content="Professional Data Entry Expert | Fast & Accurate">
-  <meta property="twitter:image" content="https://imtiajahamed17.github.io/img/imtiaj-profile.jpg">
+  <meta property="twitter:image" content="https://imtiajahamed17.github.io/img/imtiaj.jpg">
   <meta name="twitter:site" content="@imtiajahamed_17">
 
   <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
   
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+  />
+  
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.10.1/lottie.min.js"></script>
 
   <style>
-    /* ... [All your existing CSS styles are unchanged] ... */
+    /* ... [All your existing CSS styles are unchanged, e.g., :root, body, header, nav, card...] ... */
     
     html {
       scroll-behavior: smooth;
@@ -486,11 +492,6 @@
         width: 44px;
         height: 44px;
       }
-      
-      /* GLightbox arrows are hidden on mobile, but counter will still show */
-      .gnext, .gprev {
-        display: none !important;
-      }
     }
 
     img {
@@ -512,6 +513,7 @@
       font-size: 0.85rem;
       font-weight: 600;
       transition: all 0.3s ease;
+      cursor: pointer; /* ADDED: Make <a> tag behave like a button */
     }
     .credential-btn i {
       color: var(--accent) !important;
@@ -524,27 +526,103 @@
         text-decoration: underline;
     }
     
-    /* GLightbox styles */
-    @keyframes gFadeIn {
-      from { opacity: 0; transform: translate(-50%, -50%) scale(0.9); }
-      to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-    }
+    /* --- ADDED: STYLES FOR NEW MODAL, SWIPER, AND LOADER --- */
     
-    /* Hide the default GLightbox spinner */
-    .gloader {
-      display: none !important;
+    /* Modal Styles */
+    .modal {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      position: fixed;
+      z-index: 9999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.9);
     }
 
-    .gprev, .gnext {
-      opacity: 0.7 !important;
-      transform: scale(0.9);
-      transition: opacity 0.2s ease, transform 0.2s ease;
+    .modal.active {
+      display: flex;
     }
-    .gprev:hover, .gnext:hover {
-      opacity: 1 !important;
-      transform: scale(1);
+
+    .modal-content {
+      position: relative;
+      width: 90%;
+      max-width: 850px;
+    }
+
+    .modal-content img {
+      width: 100%;
+      border-radius: 12px;
+    }
+
+    #closeModal {
+      position: absolute;
+      top: -40px;
+      right: 0;
+      font-size: 35px;
+      color: white;
+      cursor: pointer;
+      user-select: none;
+      z-index: 10000; /* Ensure it's above swiper */
+    }
+
+    /* Swiper styles */
+    .swiper {
+      width: 100%;
+      height: 100%;
+    }
+
+    .swiper-slide {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .swiper-slide img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      border-radius: 10px;
+    }
+
+    /* Style for Swiper Nav Buttons */
+    .swiper-button-next,
+    .swiper-button-prev {
+      color: #ffffff; /* Make arrows white */
+      opacity: 0.7;
+      transition: opacity 0.2s ease;
+    }
+    .swiper-button-next:hover,
+    .swiper-button-prev:hover {
+      opacity: 1;
     }
     
+    .swiper-pagination-bullet {
+      background: #ffffff; /* Make pagination dots white */
+    }
+
+    /* Loader styles */
+    #loader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,0.95);
+      z-index: 10000;
+    }
+
+    #loader.active {
+      display: flex;
+    }
+    
+    /* --- END OF ADDED STYLES --- */
+
   </style>
 </head>
 <body>
@@ -627,7 +705,7 @@
         <div class="edu-content">
           <span class="edu-title">Higher Secondary (HSC)</span>
           <span class="edu-detail">GPA 5.00 (A+)<br> Cumilla Cantonment College</span>
-          <a href="img/HSC.png" class="credential-btn" style="margin-top: 10px;" data-gallery="credentials">
+          <a href="#" class="credential-btn view-credential" style="margin-top: 10px;" data-certificates='["img/HSC.png"]'>
             <i class="fas fa-file-alt"></i> View Credential
           </a>
         </div>
@@ -638,7 +716,7 @@
         <div class="edu-content">
           <span class="edu-title">Secondary (SSC)</span>
           <span class="edu-detail">GPA 5.00 (A+)<br> Monohorganj High School And College</span>
-          <a href="img/SSC.jpg" class="credential-btn" style="margin-top: 10px;" data-gallery="credentials">
+          <a href="#" class="credential-btn view-credential" style="margin-top: 10px;" data-certificates='["img/SSC.jpg"]'>
             <i class="fas fa-file-alt"></i> View Credential
           </a>
         </div>
@@ -649,7 +727,7 @@
         <div class="edu-content">
           <span class="edu-title">Junior Secondary (JSC)</span>
           <span class="edu-detail">GPA 5.00 (A+)<br> Monohorganj High School And College</span>
-          <a href="img/JSC.png" class="credential-btn" style="margin-top: 10px;" data-gallery="credentials">
+          <a href="#" class="credential-btn view-credential" style="margin-top: 10px;" data-certificates='["img/JSC.png"]'>
             <i class="fas fa-file-alt"></i> View Credential
           </a>
         </div>
@@ -660,7 +738,7 @@
         <div class="edu-content">
           <span class="edu-title">Computer Application</span>
           <span class="edu-detail">GPA 5.00 (A+)<br> Global Village ICT Park</span>
-          <a href="img/computer.png" class="credential-btn" style="margin-top: 10px;" data-gallery="credentials">
+          <a href="#" class="credential-btn view-credential" style="margin-top: 10px;" data-certificates='["img/computer.png"]'>
             <i class="fas fa-file-alt"></i> View Credential
           </a>
         </div>
@@ -721,12 +799,36 @@
     </div>
   </section>
 
+  <div id="certificateModal" class="modal">
+    <div class="modal-content">
+      <span id="closeModal">&times;</span>
+      <div class="swiper mySwiper">
+        <div class="swiper-wrapper" id="swiperWrapper"></div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="loader">
+    <lottie-player
+      src="https://imtiajahamed17.github.io/assets/loader-cat.json"
+      background="transparent"
+      speed="1"
+      style="width: 200px; height: 200px;"
+      loop
+      autoplay>
+    </lottie-player>
+  </div>
   <footer data-aos="fade-up">
     <p>&copy; 2025 Imtiaj. All rights reserved.</p>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+  
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
   <script>
     AOS.init({ duration: 1000, once: true });
 
@@ -811,11 +913,10 @@
     window.addEventListener('scroll', checkScrollAndHideButtons);
     
     // --- Standard Right-Click Disable ---
-    // This prevents "Save As" on all images, including the profile picture
     document.addEventListener('contextmenu', event => event.preventDefault());
     
     
-    // --- **UPDATED** Page Load Cat Loader ---
+    // --- Standard Page Load Cat Loader ---
     const catLoaderElement = document.getElementById('loader-cat');
     const catAnimation = lottie.loadAnimation({
         container: document.getElementById('cat-animation'),
@@ -827,32 +928,85 @@
 
     window.addEventListener('load', () => {
         if (catLoaderElement) {
-            // Page is loaded. Fade out the loader immediately.
             catLoaderElement.style.opacity = 0;
-            
-            // After the 500ms fade-out (matching your CSS), hide it and stop the animation
             setTimeout(() => {
                 catLoaderElement.style.display = 'none';
                 catAnimation.stop();
-            }, 500); // This 500ms matches your CSS transition
+            }, 500); 
         }
     });
 
 
-    // --- **UPDATED** GLightbox Certificate Configuration ---
+    // --- REMOVED: GLightbox Certificate Configuration ---
+
     
-    // Initialize GLightbox with all your requested options
-    const lightbox = GLightbox({
-        selector: '[data-gallery="credentials"]',
-        touchNavigation: true,
-        loop: true,
-        dragAutoClose: false,
-        slideCounter: true,
-        openEffect: 'fade',
-        closeEffect: 'fade',
-        slideEffect: 'fade',    // **ADDED THIS LINE**
-        download: false
+    // --- ADDED: SWIPER.JS MODAL LOGIC ---
+    const modal = document.getElementById("certificateModal");
+    const closeModal = document.getElementById("closeModal");
+    const swiperWrapper = document.getElementById("swiperWrapper");
+    const loader = document.getElementById("loader");
+    let swiperInstance = null;
+
+    // View Credential click
+    document.querySelectorAll(".view-credential").forEach(button => {
+      button.addEventListener("click", (e) => { // Added 'e'
+        e.preventDefault(); // Stop the <a> tag from navigating
+        
+        const images = JSON.parse(button.dataset.certificates);
+
+        // Show loader
+        loader.classList.add("active");
+
+        // Simulate loading delay for effect
+        setTimeout(() => {
+          // Clear and load images
+          swiperWrapper.innerHTML = "";
+          images.forEach(src => {
+            const slide = document.createElement("div");
+            slide.className = "swiper-slide";
+            slide.innerHTML = `<img src="${src}" alt="Certificate Credential" />`;
+            swiperWrapper.appendChild(slide);
+          });
+
+          // Initialize Swiper
+          if (swiperInstance) swiperInstance.destroy(true, true);
+          swiperInstance = new Swiper(".mySwiper", {
+            loop: true,
+            // FIXED: Added navigation and pagination
+            navigation: {
+              nextEl: ".swiper-button-next",
+              prevEl: ".swiper-button-prev",
+            },
+            pagination: {
+              el: ".swiper-pagination",
+              clickable: true,
+            },
+            effect: "coverflow",
+            grabCursor: true,
+            centeredSlides: true,
+            slidesPerView: "auto",
+            coverflowEffect: {
+              rotate: 20,
+              stretch: 0,
+              depth: 200,
+              modifier: 1,
+              slideShadows: true,
+            },
+          });
+
+          // Hide loader and open modal
+          loader.classList.remove("active");
+          modal.classList.add("active");
+        }, 1000); // 1s loading delay
+      });
     });
+
+    // Close modal
+    closeModal.addEventListener("click", () => modal.classList.remove("active"));
+    window.addEventListener("click", e => {
+      if (e.target === modal) modal.classList.remove("active");
+    });
+    // --- END OF ADDED JAVASCRIPT ---
     
   </script>
 </body>
