@@ -24,9 +24,11 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
   
-  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.10.1/lottie.min.js"></script>
 
   <style>
+    /* ... [All your existing CSS styles are unchanged] ... */
+    
     html {
       scroll-behavior: smooth;
     }
@@ -485,7 +487,6 @@
         height: 44px;
       }
       
-      /* Hide arrows on mobile (swipe is used) */
       .gnext, .gprev {
         display: none !important;
       }
@@ -522,55 +523,14 @@
         text-decoration: underline;
     }
     
-    /* --- NEW: GLIGHTBOX LOADER STYLES --- */
+    /* GLightbox styles are unchanged */
     @keyframes gFadeIn {
-      from {
-        opacity: 0;
-        transform: translate(-50%, -50%) scale(0.9);
-      }
-      to {
-        opacity: 1;
-        transform: translate(-50%, -50%) scale(1);
-      }
+      from { opacity: 0; transform: translate(-50%, -50%) scale(0.9); }
+      to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
     }
-
-    .gloader {
-      display: block !important;
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      /* Set size for the Lottie player (cat aspect ratio) */
-      width: 280px;
-      height: 200px;
-      margin: 0;
-      transform: translate(-50%, -50%);
-      border: none;
-      border-radius: 0;
-      z-index: 99999;
-      pointer-events: none;
-      background: transparent;
-      box-shadow: none;
-
-      /* Fade-in animation */
-      opacity: 0;
-      animation: gFadeIn 0.3s ease-out 0.1s forwards; /* Added 0.1s delay to start */
-    }
-    
-    .gloader::after {
-      content: none; /* Remove the old CSS checkmark */
-    }
-
-    /* Force fade-out on close */
-    .glightbox-closing .gloader {
-      opacity: 0 !important;
-      transition: opacity 0.3s ease-out;
-    }
-    /* --- END NEW LOADER STYLES --- */
-
-    
-    /* --- NEW: SLIDE INDICATOR STYLES --- */
+    .gloader { display: none !important; } /* We are disabling the default loader */
     .gprev, .gnext {
-      opacity: 0.7 !important; /* Make arrows visible by default */
+      opacity: 0.7 !important;
       transform: scale(0.9);
       transition: opacity 0.2s ease, transform 0.2s ease;
     }
@@ -582,6 +542,27 @@
   </style>
 </head>
 <body>
+
+  <div id="loader-cat" style="
+      display:none;
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+      background: #0d1117;
+      z-index:99999;
+      justify-content:center;
+      align-items:center;
+      opacity:0;
+      transition: opacity 0.5s ease;">
+      <div id="cat-animation" style="
+          width:40vmin;
+          max-width:300px;
+          max-height:300px;
+          min-width:150px;
+          min-height:150px;"></div>
+  </div>
   <div class="menu-toggle" id="menu-toggle" title="Toggle Menu">
     <span></span>
     <span></span>
@@ -597,13 +578,13 @@
     <p id="subtitle-carousel">Organizer, Analyzer, Data Specialist</p>
   </header>
 
-<nav id="main-nav">
-  <a href="#about">About</a>
-  <a href="#projects">Projects</a>
-  <a href="#education">Education</a>
-  <a href="#interests">Interests</a>
-  <a href="#contact">Contact</a>
-</nav>
+  <nav id="main-nav">
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#education">Education</a>
+    <a href="#interests">Interests</a>
+    <a href="#contact">Contact</a>
+  </nav>
 
   <section id="about" data-aos="fade-up">
     <h2>About Me</h2>
@@ -681,39 +662,39 @@
     </div>
   </section>
 
-<section id="interests" data-aos="fade-up">
-  <h2>Interests & Activities</h2>
-  
-  <div class="card" data-aos="zoom-in">
-    <h3>Database & Classification Systems</h3>
-    <p>Analyzing and structuring complex information into organized, searchable formats, including practicing with relational databases and hierarchical classification.</p>
-  </div>
-  
-  <div class="card" data-aos="zoom-in" data-aos-delay="100">
-    <h3>Digital Document Archiving</h3>
-    <p>Engaging in the systematic organization, indexing, and preservation of digital documents to ensure accuracy, retrieval speed, and data integrity.</p>
-  </div>
-  
-  <div class="card" data-aos="zoom-in" data-aos-delay="200">
-    <h3>Language Translation & Proofreading</h3>
-    <p>Working with texts in multiple languages, focusing on meticulous proofreading and quality control to ensure accuracy and consistency across different documents.</p>
-  </div>
-  
-  <div class="card" data-aos="zoom-in" data-aos-delay="300">
-    <h3>Advanced Spreadsheet Modeling</h3>
-    <p>Building and maintaining intricate spreadsheet models for budgeting and resource tracking, with an emphasis on formula accuracy and data validation.</p>
-  </div>
-  
-  <div class="card" data-aos="zoom-in" data-aos-delay="400">
-    <h3>Cognitive Training & Focus</h3>
-    <p>Practicing exercises and techniques, such as the Pomodoro method and focused memory games, to enhance concentration, speed, and sustained attention to detail.</p>
-  </div>
-  
-  <div class="card" data-aos="zoom-in" data-aos-delay="500">
-    <h3>Games & Sports</h3>
-    <p>Enjoy playing video games, as well as chess and cricket. These activities help in developing strategic thinking, teamwork, and physical fitness.</p>
-  </div>
-</section>
+  <section id="interests" data-aos="fade-up">
+    <h2>Interests & Activities</h2>
+    
+    <div class="card" data-aos="zoom-in">
+      <h3>Database & Classification Systems</h3>
+      <p>Analyzing and structuring complex information into organized, searchable formats, including practicing with relational databases and hierarchical classification.</p>
+    </div>
+    
+    <div class="card" data-aos="zoom-in" data-aos-delay="100">
+      <h3>Digital Document Archiving</h3>
+      <p>Engaging in the systematic organization, indexing, and preservation of digital documents to ensure accuracy, retrieval speed, and data integrity.</p>
+    </div>
+    
+    <div class="card" data-aos="zoom-in" data-aos-delay="200">
+      <h3>Language Translation & Proofreading</h3>
+      <p>Working with texts in multiple languages, focusing on meticulous proofreading and quality control to ensure accuracy and consistency across different documents.</p>
+    </div>
+    
+    <div class="card" data-aos="zoom-in" data-aos-delay="300">
+      <h3>Advanced Spreadsheet Modeling</h3>
+      <p>Building and maintaining intricate spreadsheet models for budgeting and resource tracking, with an emphasis on formula accuracy and data validation.</p>
+    </div>
+    
+    <div class="card" data-aos="zoom-in" data-aos-delay="400">
+      <h3>Cognitive Training & Focus</h3>
+      <p>Practicing exercises and techniques, such as the Pomodoro method and focused memory games, to enhance concentration, speed, and sustained attention to detail.</p>
+    </div>
+    
+    <div class="card" data-aos="zoom-in" data-aos-delay="500">
+      <h3>Games & Sports</h3>
+      <p>Enjoy playing video games, as well as chess and cricket. These activities help in developing strategic thinking, teamwork, and physical fitness.</p>
+    </div>
+  </section>
 
   <section id="contact" data-aos="fade-up">
     <h2>Contact Me</h2>
@@ -730,7 +711,7 @@
         <a href="https://x.com/imtiajahamed_17" target="_blank" class="contact-btn twitter"><i class="fab fa-twitter"></i> Twitter</a>
         <a href="https://t.me/imtiajahamed17" target="_blank" class="contact-btn telegram"><i class="fab fa-telegram"></i> Telegram</a>
       </div>
-      </div>
+    </div>
   </section>
 
   <footer data-aos="fade-up">
@@ -739,20 +720,17 @@
 
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
-
   <script>
     AOS.init({ duration: 1000, once: true });
 
+    // --- Standard Profile Image Loader ---
     const profileImg = document.getElementById("profilePic");
     const profileWrapper = document.querySelector(".profile-img-wrapper");
-
     if (profileImg && profileWrapper) {
-        
         function showImage() {
             profileImg.classList.add("loaded");
             profileWrapper.classList.add("loaded"); 
         }
-
         if (profileImg.complete) {
             showImage();
         } else {
@@ -760,30 +738,30 @@
         }
     }
 
+    // --- Standard Subtitle Carousel ---
     const subtitleElement = document.getElementById('subtitle-carousel');
-    const subtitles = [
-        "Organizer, Analyzer, Data Specialist",
-        "Where Logic Meets Vision.",
-        "Insight that Anticipates Change.",
-        "Organized Mind. Analytical Vision.",
-        "Analytical Precision. Visionary Thinking.",
-        "Precision in Every Pattern.",
-        "Smart Data. Clear Decisions."
-    ];
-    let subtitleIndex = 0;
+    if (subtitleElement) {
+        const subtitles = [
+            "Organizer, Analyzer, Data Specialist",
+            "Where Logic Meets Vision.",
+            "Insight that Anticipates Change.",
+            "Organized Mind. Analytical Vision.",
+            "Analytical Precision. Visionary Thinking.",
+            "Precision in Every Pattern.",
+            "Smart Data. Clear Decisions."
+        ];
+        let subtitleIndex = 0;
+        setInterval(() => {
+            subtitleElement.style.opacity = 0;
+            setTimeout(() => {
+                subtitleIndex = (subtitleIndex + 1) % subtitles.length;
+                subtitleElement.textContent = subtitles[subtitleIndex];
+                subtitleElement.style.opacity = 1;
+            }, 500);
+        }, 5000);
+    }
 
-    setInterval(() => {
-        subtitleElement.style.opacity = 0;
-
-        setTimeout(() => {
-            subtitleIndex = (subtitleIndex + 1) % subtitles.length;
-            subtitleElement.textContent = subtitles[subtitleIndex];
-            
-            subtitleElement.style.opacity = 1;
-        }, 500);
-
-    }, 5000);
-
+    // --- Standard Menu/Theme/Scroll Logic ---
     const menuToggle = document.getElementById('menu-toggle');
     const mainNav = document.getElementById('main-nav');
     const navLinks = document.querySelectorAll('#main-nav a');
@@ -793,28 +771,23 @@
 
     function checkScrollAndHideButtons() {
         const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-        
         if (currentScroll <= 50) {
             themeToggle.classList.remove('hidden');
             menuToggle.classList.remove('hidden');
         } else {
             themeToggle.classList.add('hidden');
-            
             if (!menuToggle.classList.contains('open')) {
                 menuToggle.classList.add('hidden');
             }
         }
     }
-
     menuToggle.addEventListener('click', () => {
       mainNav.classList.toggle('nav-open');
       menuToggle.classList.toggle('open');
-
       if (!menuToggle.classList.contains('open')) {
           checkScrollAndHideButtons();
       }
     });
-
     navLinks.forEach(link => {
       link.addEventListener('click', () => {
         mainNav.classList.remove('nav-open');
@@ -822,27 +795,73 @@
         checkScrollAndHideButtons();
       });
     });
-
     themeToggle.addEventListener('click', () => {
       const currentTheme = html.getAttribute('data-theme');
       const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
       html.setAttribute('data-theme', newTheme);
       icon.className = newTheme === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
     });
-
     window.addEventListener('scroll', checkScrollAndHideButtons);
     
+    // --- Standard Right-Click Disable ---
     document.addEventListener('contextmenu', event => event.preventDefault());
     
-    /* --- MODIFIED GLIGHTBOX SCRIPT WITH LOTTIE LOADER --- */
+    // --- NEW: FORCED LOADER LOGIC ---
+
+    // 1. Initialize the GLightbox
     const lightbox = GLightbox({
         selector: '[data-gallery="credentials"]',
         touchNavigation: true,
-        loop: true,
-        /* Use Lottie player as the loader, pointing to the absolute path */
-        loader: '<lottie-player src="https://imtiajahamed17.github.io/assets/loader-cat.json" background="transparent" speed="1" style="width: 280px; height: 200px;" loop autoplay></lottie-player>'
+        loop: true
+        // We have REMOVED the 'loader:' option.
     });
-    /* ---------------------------------------------------- */
+
+    // 2. Initialize your Lottie Cat animation
+    const catLoaderElement = document.getElementById('loader-cat');
+    const catAnimation = lottie.loadAnimation({
+        container: document.getElementById('cat-animation'),
+        renderer: 'svg',
+        loop: true,
+        autoplay: false, // We will play it manually
+        path: 'https://imtiajahamed17.github.io/assets/loader-cat.json'
+    });
+
+    // 3. Hijack the clicks on all gallery links
+    const credentialLinks = document.querySelectorAll('.credential-btn[data-gallery="credentials"]');
+    const galleryElements = lightbox.elements; // Get all items GLightbox knows about
+
+    credentialLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            // STOP GLightbox from opening immediately
+            e.preventDefault(); 
+            
+            const clickedHref = e.currentTarget.href;
+            
+            // Find the index of the clicked item in the gallery
+            const clickedIndex = galleryElements.findIndex(el => el.href === clickedHref);
+
+            // Show the full-screen loader
+            catLoaderElement.style.display = 'flex';
+            setTimeout(() => { catLoaderElement.style.opacity = 1; }, 10); // Fade in
+            catAnimation.play();
+
+            // Force a 1.5-second wait
+            setTimeout(() => {
+                // After 1.5s, manually open GLightbox to the correct image
+                if (clickedIndex > -1) {
+                    lightbox.openAt(clickedIndex);
+                } else {
+                    lightbox.open({ href: clickedHref }); // Fallback
+                }
+
+                // Hide the full-screen loader
+                catLoaderElement.style.opacity = 0;
+                catAnimation.stop();
+                setTimeout(() => { catLoaderElement.style.display = 'none'; }, 500); // Hide after fade out
+                
+            }, 3000); // 3-second forced delay
+        });
+    });
     
   </script>
 </body>
