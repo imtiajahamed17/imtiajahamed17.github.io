@@ -23,7 +23,6 @@
   <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
-  
   <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 
   <style>
@@ -484,6 +483,11 @@
         width: 44px;
         height: 44px;
       }
+      
+      /* Hide arrows on mobile (swipe is used) */
+      .gnext, .gprev {
+        display: none !important;
+      }
     }
 
     img {
@@ -517,7 +521,18 @@
         text-decoration: underline;
     }
     
-    /* --- MODIFIED GLIGHTBOX LOADER --- */
+    /* --- NEW: GLIGHTBOX LOADER STYLES --- */
+    @keyframes gFadeIn {
+      from {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.9);
+      }
+      to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+      }
+    }
+
     .gloader {
       display: block !important;
       position: fixed;
@@ -532,26 +547,35 @@
       border-radius: 0;
       z-index: 99999;
       pointer-events: none;
-      animation: none; /* Disable the old pulseGlow animation */
       background: transparent;
       box-shadow: none;
+
+      /* Fade-in animation */
+      opacity: 0;
+      animation: gFadeIn 0.3s ease-out forwards;
     }
     
     .gloader::after {
       content: none; /* Remove the old CSS checkmark */
     }
-    /* ---------------------------------- */
 
-    @keyframes pulseGlow {
-      0% {
-        box-shadow: 0 0 0 0 rgba(88, 166, 255, 0.7);
-      }
-      70% {
-        box-shadow: 0 0 10px 25px rgba(88, 166, 255, 0);
-      }
-      100% {
-        box-shadow: 0 0 0 0 rgba(88, 166, 255, 0);
-      }
+    /* Force fade-out on close */
+    .glightbox-closing .gloader {
+      opacity: 0 !important;
+      transition: opacity 0.3s ease-out;
+    }
+    /* --- END NEW LOADER STYLES --- */
+
+    
+    /* --- NEW: SLIDE INDICATOR STYLES --- */
+    .gprev, .gnext {
+      opacity: 0.7 !important;
+      transform: scale(0.9);
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+    .gprev:hover, .gnext:hover {
+      opacity: 1 !important;
+      transform: scale(1);
     }
     
   </style>
