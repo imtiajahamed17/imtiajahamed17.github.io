@@ -545,56 +545,13 @@
       transform: scale(1);
     }
 
-    /* Professional Certificate Loader Styles */
-    #certificate-loader {
-      display: flex; 
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.7);
-      z-index: 10049; /* Just below GLightbox modal (10050) */
-      justify-content: center;
-      align-items: center;
-      opacity: 0; /* Hidden by default */
-      visibility: hidden;
-      transition: opacity 0.3s ease, visibility 0.3s ease;
-    }
-
-    #certificate-loader.visible {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .loader-bar {
-      width: 10px;
-      height: 60px;
-      margin: 0 5px;
-      background-color: var(--accent);
-      animation: bar-wave 1.2s ease-in-out infinite;
-      border-radius: 4px;
-    }
-
-    /* Stagger the animation */
-    .loader-bar:nth-child(1) { animation-delay: 0s; }
-    .loader-bar:nth-child(2) { animation-delay: 0.1s; }
-    .loader-bar:nth-child(3) { animation-delay: 0.2s; }
-    .loader-bar:nth-child(4) { animation-delay: 0.3s; }
-
-    @keyframes bar-wave {
-      0%, 40%, 100% {
-        transform: scaleY(0.4);
-      }
-      20% {
-        transform: scaleY(1);
-      }
-    }
+    /* **REMOVED**: All CSS for #certificate-loader and .loader-bar has been deleted */
     
   </style>
 </head>
 <body>
 
+  <!-- Initial Page Loader (Cat) -->
   <div id="loader-cat" style="
       display:flex; 
       position:fixed;
@@ -616,12 +573,7 @@
           min-height:150px;"></div>
   </div>
 
-  <div id="certificate-loader">
-    <div class="loader-bar"></div>
-    <div class="loader-bar"></div>
-    <div class="loader-bar"></div>
-    <div class="loader-bar"></div>
-  </div>
+  <!-- **REMOVED**: The HTML for #certificate-loader has been deleted -->
 
   <div class="menu-toggle" id="menu-toggle" title="Toggle Menu">
     <span></span>
@@ -747,6 +699,7 @@
     
     <div class="card" data-aos="zoom-in" data-aos-delay="400">
       <h3>Cognitive Training & Focus</h3>
+      <!-- **FIXED**: Corrected spelling from "Pomodo'method'" to "Pomodoro method" -->
       <p>Practicing exercises and techniques, such as the Pomodoro method and focused memory games, to enhance concentration, speed, and sustained attention to detail.</p>
     </div>
     
@@ -864,6 +817,7 @@
     window.addEventListener('scroll', checkScrollAndHideButtons);
     
     // --- Standard Right-Click Disable ---
+    // This prevents "Save As" on all images, including the profile picture
     document.addEventListener('contextmenu', event => event.preventDefault());
     
     
@@ -873,8 +827,7 @@
         container: document.getElementById('cat-animation'),
         renderer: 'svg',
         loop: true,
-        autoplay: true, // Start playing immediately
-        // **FIXED**: The path was cut off. It is now complete.
+        autoplay: true, 
         path: 'https://imtiajahamed17.github.io/assets/loader-cat.json'
     });
 
@@ -894,35 +847,23 @@
     });
 
 
-    // --- Professional Certificate Loader Logic (UPDATED) ---
-    const certificateLoader = document.getElementById('certificate-loader');
+    // --- **UPDATED** GLightbox Certificate Configuration ---
     
-    // Initialize GLightbox (options are unchanged)
+    // Initialize GLightbox with all your requested options
     const lightbox = GLightbox({
         selector: '[data-gallery="credentials"]',
         touchNavigation: true,
         loop: true,
         dragAutoClose: false,
         slideCounter: true,
-        openEffect: 'zoom',
-        closeEffect: 'fade'
+        openEffect: 'fade',     // **MODIFIED**: Set to 'fade'
+        closeEffect: 'fade',    // **MODIFIED**: Set to 'fade'
+        download: false         // **NEW**: Hides the download button
     });
 
-    // Show loader BEFORE the slide (and image) loads
-    lightbox.on('slide_before_load', () => {
-      if(certificateLoader) certificateLoader.classList.add('visible');
-    });
-
-    // Hide loader AFTER the slide (and image) has loaded
-    lightbox.on('slide_load', () => {
-      if(certificateLoader) certificateLoader.classList.remove('visible');
-    });
-
-    // Hide loader if lightbox is closed (e.g., cross button click)
-    lightbox.on('close', () => {
-      if(certificateLoader) certificateLoader.classList.remove('visible');
-    });
+    // **REMOVED**: All JavaScript for 'certificateLoader' has been deleted.
     
   </script>
 </body>
-  </html>
+</html>
+
