@@ -23,6 +23,7 @@
   <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 
   <style>
     html {
@@ -515,33 +516,30 @@
         text-decoration: underline;
     }
     
+    /* --- MODIFIED GLIGHTBOX LOADER --- */
     .gloader {
       display: block !important;
       position: fixed;
       top: 50%;
       left: 50%;
-      width: 90px;
-      height: 90px;
+      /* Set size for the Lottie player (rocket aspect ratio) */
+      width: 300px;
+      height: 165px;
       margin: 0;
       transform: translate(-50%, -50%);
-      border: 4px solid transparent;
-      border-radius: 50%;
+      border: none;
+      border-radius: 0;
       z-index: 99999;
       pointer-events: none;
-      animation: pulseGlow 1.5s infinite ease-out;
+      animation: none; /* Disable the old pulseGlow animation */
+      background: transparent;
+      box-shadow: none;
     }
     
     .gloader::after {
-      content: '';
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      width: 20px;
-      height: 40px;
-      border: solid var(--accent);
-      border-width: 0 6px 6px 0;
-      transform: translate(-50%, -60%) rotate(45deg);
+      content: none; /* Remove the old CSS checkmark */
     }
+    /* ---------------------------------- */
 
     @keyframes pulseGlow {
       0% {
@@ -602,7 +600,7 @@
     <div class="card" data-aos="zoom-in"><h3>Project Clarity</h3><p>Automated data quality assurance system for large-scale financial records.</p></div>
     <div class="card" data-aos="zoom-in" data-aos-delay="100"><h3>Digital Archive Initiative (DAI)</h3><p>Digitization and indexing of historical paper documents for a public library collection.</p></div>
     <div class="card" data-aos="zoom-in" data-aos-delay="200"><h3>Customer Insight Capture</h3><p>Standardizing and cleansing raw customer feedback data from multiple channels for sentiment analysis.</p></div>
-    <div class="card" data-aos="zoom-in" data-aos-delay="3trim00"><h3>Inventory Streamline</h3><p>Developing a database and process to manage and verify product SKUs and stock levels across warehouses.</p></div>
+    <div class="card" data-aos="zoom-in" data-aos-delay="300"><h3>Inventory Streamline</h3><p>Developing a database and process to manage and verify product SKUs and stock levels across warehouses.</p></div>
     <div class="card" data-aos="zoom-in"><h3>Health Record Validation</h3><p>Secure and HIPAA-compliant system for anonymized medical data input and error checking.</p></div>
   </section>
 
@@ -699,7 +697,7 @@
         <a href="mailto:imtiajahamed.data@gmail.com">imtiajahamed.data@gmail.com</a>
       </div>
       <div class="contact-buttons">
-        <a href="httpshttps://github.com/imtiajahamed17" target="_blank" class="contact-btn github"><i class="fab fa-github"></i> GitHub</a>
+        <a href="https://github.com/imtiajahamed17" target="_blank" class="contact-btn github"><i class="fab fa-github"></i> GitHub</a>
         <a href="https://linkedin.com/in/imtiajahamed17" target="_blank" class="contact-btn linkedin"><i class="fab fa-linkedin"></i> LinkedIn</a>
         <a href="https://www.facebook.com/imtiajahamed17" target="_blank" class="contact-btn facebook"><i class="fab fa-facebook"></i> Facebook</a>
         <a href="https://www.instagram.com/imtiajahamed17" target="_blank" class="contact-btn instagram"><i class="fab fa-instagram"></i> Instagram</a>
@@ -810,11 +808,15 @@
     
     document.addEventListener('contextmenu', event => event.preventDefault());
     
+    /* --- MODIFIED GLIGHTBOX SCRIPT WITH LOTTIE LOADER --- */
     const lightbox = GLightbox({
         selector: '[data-gallery="credentials"]',
         touchNavigation: true,
-        loop: true
+        loop: true,
+        /* Use Lottie player as the loader, pointing to your assets folder */
+        loader: '<lottie-player src="assets/rocket-loading.json" background="transparent" speed="1" style="width: 300px; height: 165px;" loop autoplay></lottie-player>'
     });
+    /* ---------------------------------------------------- */
     
   </script>
 </body>
