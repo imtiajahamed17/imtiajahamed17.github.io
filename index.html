@@ -23,6 +23,7 @@
   <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
+  
   <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 
   <style>
@@ -552,7 +553,7 @@
 
       /* Fade-in animation */
       opacity: 0;
-      animation: gFadeIn 0.3s ease-out forwards;
+      animation: gFadeIn 0.3s ease-out 0.1s forwards; /* Added 0.1s delay to start */
     }
     
     .gloader::after {
@@ -569,7 +570,7 @@
     
     /* --- NEW: SLIDE INDICATOR STYLES --- */
     .gprev, .gnext {
-      opacity: 0.7 !important;
+      opacity: 0.7 !important; /* Make arrows visible by default */
       transform: scale(0.9);
       transition: opacity 0.2s ease, transform 0.2s ease;
     }
