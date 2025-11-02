@@ -33,8 +33,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.10.1/lottie.min.js"></script>
 
   <style>
-    /* ... [All your existing CSS styles are unchanged] ... */
-    
     html {
       scroll-behavior: smooth;
     }
@@ -245,7 +243,6 @@
       font-size: 1.3rem;
       margin-right: 10px;
       margin-top: 4px;
-      animation: floatBounce 1.2s ease-in-out infinite;
     }
 
     .edu-content {
@@ -333,7 +330,6 @@
     .contact-btn i {
       font-size: 1.2rem;
       margin-right: 10px;
-      animation: floatBounce 1.4s ease-in-out infinite;
     }
 
     .contact-btn:hover {
@@ -526,9 +522,8 @@
         text-decoration: underline;
     }
     
-    /* Modal Styles */
     .modal {
-      display: none;
+      display: flex;
       align-items: center;
       justify-content: center;
       position: fixed;
@@ -538,10 +533,15 @@
       width: 100%;
       height: 100%;
       background: rgba(0,0,0,0.9);
+      
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.4s ease, visibility 0.4s ease;
     }
 
     .modal.active {
-      display: flex;
+      opacity: 1;
+      visibility: visible;
     }
 
     .modal-content {
@@ -566,7 +566,6 @@
       z-index: 10000;
     }
 
-    /* Swiper styles */
     .swiper {
       width: 100%;
       height: 100%;
@@ -600,7 +599,6 @@
       background: #ffffff;
     }
 
-    /* Loader styles */
     #loader {
       position: fixed;
       top: 0;
@@ -826,7 +824,6 @@
   <script>
     AOS.init({ duration: 1000, once: true });
 
-    // --- Standard Profile Image Loader ---
     const profileImg = document.getElementById("profilePic");
     const profileWrapper = document.querySelector(".profile-img-wrapper");
     if (profileImg && profileWrapper) {
@@ -841,7 +838,6 @@
         }
     }
 
-    // --- Standard Subtitle Carousel ---
     const subtitleElement = document.getElementById('subtitle-carousel');
     if (subtitleElement) {
         const subtitles = [
@@ -864,7 +860,6 @@
         }, 5000);
     }
 
-    // --- Standard Menu/Theme/Scroll Logic ---
     const menuToggle = document.getElementById('menu-toggle');
     const mainNav = document.getElementById('main-nav');
     const navLinks = document.querySelectorAll('#main-nav a');
@@ -906,11 +901,9 @@
     });
     window.addEventListener('scroll', checkScrollAndHideButtons);
     
-    // --- Standard Right-Click Disable ---
     document.addEventListener('contextmenu', event => event.preventDefault());
     
     
-    // --- Standard Page Load Cat Loader ---
     const catLoaderElement = document.getElementById('loader-cat');
     const catAnimation = lottie.loadAnimation({
         container: document.getElementById('cat-animation'),
@@ -921,7 +914,6 @@
     });
 
     window.addEventListener('load', () => {
-        // 1. Fade out the initial cat loader
         if (catLoaderElement) {
             catLoaderElement.style.opacity = 0;
             setTimeout(() => {
@@ -930,14 +922,11 @@
             }, 500); 
         }
         
-        // 2. MERGED: Preload certificate images dynamically
-        //    (This logic was taken from your new script and improved)
         setTimeout(() => {
             console.log("Preloading certificate images...");
-            const preloadUrls = new Set(); // Use a Set to avoid duplicates
+            const preloadUrls = new Set(); 
             document.querySelectorAll(".view-credential").forEach(button => {
                 try {
-                    // Read paths dynamically from the data-certificates attribute
                     const images = JSON.parse(button.dataset.certificates);
                     images.forEach(imgUrl => preloadUrls.add(imgUrl));
                 } catch (e) {
@@ -945,86 +934,99 @@
                 }
             });
             
-            // Preload each unique image
             preloadUrls.forEach(url => {
                 const img = new Image();
                 img.src = url;
             });
-        }, 1000); // Start preloading 1s after page load (after intro anim)
+        }, 1000); 
     });
-
-
-    // --- REMOVED: GLightbox Certificate Configuration ---
-
     
-    // --- SWIPER.JS MODAL LOGIC (Kept from original file) ---
-    // (This is your working modal logic. The conflicting click
-    // handler from the new script was discarded in favor of this.)
+    
     const modal = document.getElementById("certificateModal");
     const closeModal = document.getElementById("closeModal");
     const swiperWrapper = document.getElementById("swiperWrapper");
     const loader = document.getElementById("loader");
     let swiperInstance = null;
 
-    // View Credential click
     document.querySelectorAll(".view-credential").forEach(button => {
-      button.addEventListener("click", (e) => { 
+      button.addEventListener("click", async (e) => { 
         e.preventDefault(); 
         
         const images = JSON.parse(button.dataset.certificates);
+        if (!images || images.length === 0) {
+            console.error("No certificates found for this button.");
+            return; 
+        }
 
-        // Show loader
         loader.classList.add("active");
+        
+        const startTime = Date.now();
+        const minDelay = 1000;
+        const firstImageSrc = images[0];
 
-        // Simulate loading delay for effect
-        setTimeout(() => {
-          // Clear and load images
-          swiperWrapper.innerHTML = "";
-          images.forEach(src => {
-            const slide = document.createElement("div");
-            slide.className = "swiper-slide";
-            slide.innerHTML = `<img src="${src}" alt="Certificate Credential" />`;
-            swiperWrapper.appendChild(slide);
-          });
+        const delayPromise = new Promise(resolve => setTimeout(resolve, minDelay));
+        
+        const imageLoadPromise = new Promise((resolve, reject) => {
+          const img = new Image();
+          img.onload = resolve;
+          img.onerror = reject;
+          img.src = firstImageSrc;
+        });
 
-          // Initialize Swiper
-          if (swiperInstance) swiperInstance.destroy(true, true);
-          swiperInstance = new Swiper(".mySwiper", {
-            loop: true,
-            navigation: {
-              nextEl: ".swiper-button-next",
-              prevEl: ".swiper-button-prev",
-            },
-            pagination: {
-              el: ".swiper-pagination",
-              clickable: true,
-            },
-            effect: "coverflow",
-            grabCursor: true,
-            centeredSlides: true,
-            slidesPerView: "auto",
-            coverflowEffect: {
-              rotate: 20,
-              stretch: 0,
-              depth: 200,
-              modifier: 1,
-              slideShadows: true,
-            },
-          });
+        try {
+          await Promise.all([imageLoadPromise, delayPromise]);
+        
+        } catch (error) {
+          console.error("Failed to load certificate image:", firstImageSrc, error);
+          const elapsed = Date.now() - startTime;
+          if (elapsed < minDelay) {
+            await new Promise(resolve => setTimeout(resolve, minDelay - elapsed));
+          }
+        } 
+          
+        swiperWrapper.innerHTML = "";
+        images.forEach(src => {
+          const slide = document.createElement("div");
+          slide.className = "swiper-slide";
+          slide.innerHTML = `<img src="${src}" alt="Certificate Credential" />`; 
+          swiperWrapper.appendChild(slide);
+        });
 
-          // Hide loader and open modal
-          loader.classList.remove("active");
-          modal.classList.add("active");
-        }, 1000); // 1s loading delay
+        if (swiperInstance) swiperInstance.destroy(true, true);
+        swiperInstance = new Swiper(".mySwiper", {
+          loop: true,
+          navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+          },
+          pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+          },
+          effect: "coverflow",
+          grabCursor: true,
+          centeredSlides: true,
+          slidesPerView: "auto",
+          coverflowEffect: {
+            rotate: 20,
+            stretch: 0,
+            depth: 200,
+            modifier: 1,
+            slideShadows: true,
+          },
+        });
+
+        loader.classList.remove("active");
+        modal.classList.add("active");
       });
     });
 
-    // Close modal
     closeModal.addEventListener("click", () => modal.classList.remove("active"));
     window.addEventListener("click", e => {
-      if (e.target === modal) modal.classList.remove("active");
+      if (e.target === modal) {
+          modal.classList.remove("active");
+      }
     });
-    // --- END OF JAVASCRIPT ---
     
   </script>
 </body>
