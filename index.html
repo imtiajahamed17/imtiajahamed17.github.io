@@ -10,9 +10,16 @@
   <meta property="og:url" content="https://imtiajahamed17.github.io/" />
   <meta property="og:title" content="Imtiaj Ahamed – Portfolio" />
   <meta property="og:description" content="Professional Data Entry Expert | Fast & Accurate" />
-  <meta property="og:image" content="https://imtiajahamed17.github.io/img/imtiaj.jpg" />
+  
+  <meta property="og:image" content="https://imtiajahamed17.github.io/img/preview.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@imtiajahamed_17" />
+  <meta name="twitter:title" content="Imtiaj Ahamed – Portfolio" />
+  <meta name="twitter:description" content="Professional Data Entry Expert | Fast & Accurate" />
+  <meta name="twitter:image" content="https://imtiajahamed17.github.io/img/preview.png" />
   <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
@@ -22,18 +29,41 @@
   <style>
     :root{
       --bg-dark:#0d1117;--text-dark:#c9d1d9;--card-dark:#161b22;--accent:#58a6ff;
-      --bg-light:#f0f6fc;--text-light:#0d1117;--card-light:#ffffffcc;
+      --bg-light:#f0f6fc;--text-light:#0d1117;--card-light:#ffffff;
+      
+      /* === GOAL 1: ADDED RGB VARS FOR TRANSPARENCY === */
+      --bg-dark-rgb: 13,17,23;
+      --bg-light-rgb: 240,246,252;
     }
-    [data-theme="dark"]{--bg:var(--bg-dark);--text:var(--text-dark);--card:var(--card-dark);}
-    [data-theme="light"]{--bg:var(--bg-light);--text:var(--text-light);--card:var(--card-light);}
+    
+    /* === GOAL 1: ASSIGNED RGB VARS === */
+    [data-theme="dark"]{--bg:var(--bg-dark);--text:var(--text-dark);--card:var(--card-dark);--bg-rgb:var(--bg-dark-rgb);}
+    [data-theme="light"]{--bg:var(--bg-light);--text:var(--text-light);--card:var(--card-light);--bg-rgb:var(--bg-light-rgb);}
+    
     *{box-sizing:border-box;margin:0;padding:0}
     html,body{height:100%;background:var(--bg);color:var(--text);font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;transition:background .4s,color .4s;}
     body.modal-open{overflow:hidden}
     header,nav,section,footer{width:100%;padding:40px 20px;max-width:1200px;margin:auto}
-    header{background:#010409;color:var(--accent);text-align:center;box-shadow:0 4px 8px rgba(0,0,0,.3);padding-top:80px}
+    
+    /* === HEADER THEME (VERIFIED) === */
+    header{background:var(--card);color:var(--accent);text-align:center;box-shadow:0 4px 8px rgba(0,0,0,.3);padding-top:80px;transition:background .4s}
+    
     header h1{font-size:3rem}
     #subtitle-carousel{transition:opacity .5s ease-in-out;min-height:1.2em}
-    nav{position:fixed;top:0;left:0;width:100%;height:100vh;background:rgba(13,17,23,.95);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);z-index:10000;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;visibility:hidden;transform:translateY(-20px);transition:opacity .4s ease,visibility .4s ease,transform .4s ease;padding:0}
+    
+    /* === GOAL 1: THEME-AWARE NAV MENU === */
+    nav{
+      position:fixed;top:0;left:0;width:100%;height:100vh;
+      background:rgba(var(--bg-rgb), .95); /* <-- THE FIX */
+      backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+      z-index:10000;display:flex;flex-direction:column;
+      align-items:center;justify-content:center;
+      opacity:0;visibility:hidden;
+      transform:translateY(-20px);
+      transition:opacity .4s ease,visibility .4s ease,transform .4s ease,background .4s;
+      padding:0
+    }
+    
     nav.nav-open{opacity:1;visibility:visible;transform:translateY(0)}
     nav a{color:var(--accent);margin:20px 0;text-decoration:none;font-weight:700;font-size:2rem;transition:color .25s,transform .25s}
     nav a:hover{color:#f0f6fc;transform:scale(1.05)}
@@ -41,8 +71,14 @@
     .card{background:var(--card);padding:25px;margin-bottom:20px;border-radius:12px;box-shadow:0 2px 10px rgba(0,0,0,.3);transition:transform .3s,box-shadow .3s}
     .card:hover{transform:translateY(-6px);box-shadow:0 6px 18px rgba(0,0,0,.4)}
     .about-card{display:flex;align-items:center;gap:30px;flex-wrap:wrap}
-    .profile-img-wrapper{width:180px;height:180px;border-radius:50%;overflow:hidden;border:4px solid var(--accent);box-shadow:0 6px 18px rgba(0,0,0,.4);position:relative;background:linear-gradient(100deg,#1c2128 30%,#2227e 50%,#1c2128 70%);background-size:200% 100%;animation:shimmer 1.5s infinite}
-    [data-theme="light"] .profile-img-wrapper{background:linear-gradient(100deg,#e0e0e0 30%,#f5f5f5 50%,#e0e0e0 70%)}
+    .profile-img-wrapper{width:180px;height:180px;border-radius:50%;overflow:hidden;border:4px solid var(--accent);box-shadow:0 6px 18px rgba(0,0,0,.4);position:relative;background:linear-gradient(100deg,#1c2128 30%,#2227e 50%,#1c2128 70%);background-size:200% 100%;animation:shimmer 1.5s infinite;transition:box-shadow .4s}
+    
+    /* === PROFILE SHADOW (VERIFIED) === */
+    [data-theme="light"] .profile-img-wrapper{
+      background:linear-gradient(100deg,#e0e0e0 30%,#f5f5f5 50%,#e0e0e0 70%);
+      box-shadow: 0 8px 24px rgba(88, 166, 255, 0.2); 
+    }
+    
     @keyframes shimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}
     .profile-img-wrapper.loaded{animation:none;background:none}
     .profile-img{width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0;filter:blur(10px);opacity:0;transition:filter .6s,opacity .6s}
@@ -57,22 +93,48 @@
     .contact-section{background:linear-gradient(145deg,rgba(255,255,255,.05),rgba(88,166,255,.05));border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:40px;box-shadow:0 8px 20px rgba(0,0,0,.3);display:flex;flex-direction:column;align-items:center;gap:30px}
     .email-box{padding:15px 20px;border:1px solid #30363d;border-radius:10px;text-align:center;background:transparent;color:var(--accent);max-width:500px;width:100%}
     .email-box a{display:inline-block;margin-top:5px;color:var(--text);font-size:1.1rem;font-weight:700;text-decoration:none}
-    .contact-buttons{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;width:100%;max-width:700px}
-    .contact-btn{display:flex;align-items:center;justify-content:center;padding:12px 20px;border-radius:12px;font-weight:700;text-decoration:none;transition:transform .2s,box-shadow .3s;color:#fff;box-shadow:0 4px 12px rgba(0,0,0,.2)}
-    .contact-btn i{font-size:1.2rem;margin-right:10px}
-    .contact-btn:hover{transform:translateY(-4px) scale(1.02);box-shadow:0 8px 20px rgba(0,0,0,.3)}
-    .github{background:#0d1117;border:2px solid #58a6ff}
-    .github:hover{background:#58a6ff;color:#0d1117}
-    .linkedin{background:#0a66c2}
-    .linkedin:hover{background:#084ea1}
-    .facebook{background:#1877f2}
-    .facebook:hover{background:#145ecb}
-    .instagram{background:linear-gradient(45deg,#405DE6,#5851DB,#833AB4)}
-    .instagram:hover{opacity:.9}
-    .twitter{background:#1d9bf0}
-    .twitter:hover{background:#1481c8}
-    .telegram{background:#26A5E4}
-    .telegram:hover{background:#1c8ac0}
+    
+    /* === ICON-ONLY BUTTON CSS (VERIFIED) === */
+    .contact-buttons{
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      gap:16px;
+      width:100%;
+      max-width:700px;
+    }
+    .contact-btn{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      width:60px; 
+      height:60px;
+      border-radius:12px;
+      text-decoration:none;
+      box-shadow:0 4px 12px rgba(0,0,0,.2);
+      transition:transform .3s, box-shadow .3s, background .3s, color .3s, border-color .3s;
+      background: var(--card);
+      border: 1px solid rgba(128,128,128,0.3);
+    }
+    .contact-btn i{
+      font-size:1.5rem;
+      margin-right:0;
+      color: var(--text);
+      transition: color .3s;
+    }
+    [data-theme="light"] .contact-btn:hover{
+      transform:translateY(-4px) scale(1.02);
+      box-shadow:0 8px 20px rgba(0,0,0,.3);
+      background:#f0f6fc;
+    }
+    [data-theme="dark"] .contact-btn:hover{
+      transform:translateY(-4px) scale(1.02);
+      box-shadow:0 8px 20px rgba(0,0,0,.3);
+      background:rgba(255,255,255,0.1);
+      border-color:rgba(255,255,255,0.2);
+    }
+    /* === END OF BUTTON CSS === */
+
     .menu-toggle{position:fixed;top:20px;left:20px;width:48px;height:48px;background:var(--card);border-radius:10px;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:10001;transition:all .3s cubic-bezier(.19,1,.22,1);box-shadow:0 4px 12px rgba(0,0,0,.3);border:1px solid rgba(88,166,255,.1)}
     .menu-toggle:hover{transform:scale(1.05);border-color:var(--accent)}
     .menu-toggle span{display:block;width:24px;height:3px;background:var(--accent);border-radius:3px;transition:all .3s;position:absolute}
@@ -85,7 +147,10 @@
     .theme-toggle:hover{transform:scale(1.05);border-color:var(--accent)}
     .theme-toggle i{color:var(--accent);font-size:1.2rem}
     .theme-toggle.hidden, .menu-toggle.hidden{opacity:0;transform:translateY(100px);pointer-events:none}
-    footer{background:#010409;text-align:center;padding:20px;color:#8b949e}
+    
+    /* === FOOTER THEME (VERIFIED) === */
+    footer{background:var(--card);text-align:center;padding:20px;color:var(--text);opacity:0.8;transition:background .4s, color .4s}
+    
     @media (max-width:768px){header h1{font-size:2rem}h2{font-size:1.5rem}nav a{font-size:1.5rem}.about-card{flex-direction:column;align-items:center;text-align:center}.contact-section{padding:30px 20px}.menu-toggle{top:10px;left:10px;width:44px;height:44px}.theme-toggle{top:10px;right:10px;width:44px;height:44px}}
     img{-webkit-touch-callout:none;-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}
     .credential-btn{background:transparent;color:var(--accent)!important;text-decoration:none;border-radius:6px;display:inline-block;padding:6px 0;font-size:.85rem;font-weight:600;transition:all .3s;cursor:pointer}
@@ -141,10 +206,10 @@
       <h2>About Me</h2>
       <div class="card about-card" data-aos="zoom-in">
         <div class="profile-img-wrapper">
-          <img id="profilePic" class="profile-img" src="https://imtiajahamed17.github.io/img/imtiaj.jpg" alt="Imtiaj Ahamed – Profile" />
+          <img id="profilePic" class="profile-img" src="https://imtiajahamed17.github.io/img/imtiaj.jpg" alt="Imtiaj Ahamed – Profile" oncontextmenu="return false;" />
         </div>
         <div class="about-text">
-          <p>I’m Imtiaj, a dedicated Data Entry Specialist focused on accuracy, efficiency, and organization. I turn raw data into reliable information that helps drive smart decisions.</p>
+          <p>I'm Imtiaj, a dedicated Data Entry Specialist focused on accuracy, efficiency, and organization. I turn raw data into reliable information that helps drive smart decisions.</p>
         </div>
       </div>
     </section>
@@ -216,13 +281,14 @@
           <p><i class="fas fa-envelope"></i> Email me at:</p>
           <a href="mailto:imtiajahamed.data@gmail.com">imtiajahamed.data@gmail.com</a>
         </div>
+        
         <div class="contact-buttons">
-          <a href="https://github.com/imtiajahamed17" target="_blank" rel="noopener" class="contact-btn github"><i class="fab fa-github"></i>GitHub</a>
-          <a href="https://linkedin.com/in/imtiajahamed17" target="_blank" rel="noopener" class="contact-btn linkedin"><i class="fab fa-linkedin"></i>LinkedIn</a>
-          <a href="https://www.facebook.com/imtiajahamed17" target="_blank" rel="noopener" class="contact-btn facebook"><i class="fab fa-facebook"></i>Facebook</a>
-          <a href="https://www.instagram.com/imtiajahamed17" target="_blank" rel="noopener" class="contact-btn instagram"><i class="fab fa-instagram"></i>Instagram</a>
-          <a href="https://x.com/imtiajahamed_17" target="_blank" rel="noopener" class="contact-btn twitter"><i class="fab fa-twitter"></i>Twitter</a>
-          <a href="https://t.me/imtiajahamed17" target="_blank" rel="noopener" class="contact-btn telegram"><i class="fab fa-telegram"></i>Telegram</a>
+          <a href="https://github.com/imtiajahamed17" target="_blank" rel="noopener" class="contact-btn" aria-label="GitHub" title="GitHub"><i class="fab fa-github"></i></a>
+          <a href="https://linkedin.com/in/imtiajahamed17" target="_blank" rel="noopener" class="contact-btn" aria-label="LinkedIn" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+          <a href="https://www.facebook.com/imtiajahamed17" target="_blank" rel="noopener" class="contact-btn" aria-label="Facebook" title="Facebook"><i class="fab fa-facebook"></i></a>
+          <a href="https://www.instagram.com/imtiajahamed17" target="_blank" rel="noopener" class="contact-btn" aria-label="Instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://x.com/imtiajahamed_17" target="_blank" rel="noopener" class="contact-btn" aria-label="Twitter" title="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="https://t.me/imtiajahamed17" target="_blank" rel="noopener" class="contact-btn" aria-label="Telegram" title="Telegram"><i class="fab fa-telegram"></i></a>
         </div>
       </div>
     </section>
@@ -327,7 +393,8 @@
       themeIcon.className = next === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
     });
 
-    document.addEventListener('contextmenu',e=>e.preventDefault());
+    // Global right-click disable has been removed.
+    
     window.addEventListener('scroll', checkScrollAndHideButtons);
     
     const catLoaderElement = document.getElementById('loader-cat');
@@ -411,7 +478,8 @@
         images.forEach(src=>{
           const slide = document.createElement('div');
           slide.className = 'swiper-slide';
-          slide.innerHTML = `<img src="${src}" alt="Certificate credential" />`;
+          // === RIGHT-CLICK DISABLE (VERIFIED) ===
+          slide.innerHTML = `<img src="${src}" alt="Certificate credential" oncontextmenu="return false;" />`;
           swiperWrapper.appendChild(slide);
         });
         
