@@ -41,12 +41,12 @@
       height:100%;background:var(--bg);color:var(--text);
       font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
       transition:background .4s,color .4s;
-      scrollbar-width: none; /* Hides scrollbar for Firefox */
-      -ms-overflow-style: none;  /* Hides scrollbar for IE/Edge */
+      scrollbar-width: none;
+      -ms-overflow-style: none; 
     }
     
     ::-webkit-scrollbar {
-      display: none; /* Hides scrollbar for Webkit */
+      display: none;
     }
     
     body.modal-open{overflow:hidden}
@@ -227,6 +227,16 @@
     <section id="education" data-aos="fade-up">
       <h2>Education</h2>
       <div class="education-card" data-aos="zoom-in">
+      
+        <div class="edu-item">
+          <i class="fas fa-atom edu-icon"></i>
+          <div class="edu-content">
+            <span class="edu-title">B.Sc. (Honours) in Physics</span>
+            <span class="edu-detail">GPA: In Progress<br/>National University</span>
+            <a href="#" class="credential-btn view-credential" data-certificates='["https://imtiajahamed17.github.io/img/honours.jpg"]'><i class="fas fa-file-alt"></i>View Credential</a>
+          </div>
+        </div>
+      
         <div class="edu-item">
           <i class="fas fa-university edu-icon"></i>
           <div class="edu-content">
@@ -324,6 +334,26 @@
     const html = document.documentElement;
     const body = document.body;
     
+    // --- SCROLL LOCK FUNCTIONS (REFACTORED) ---
+    function preventDefault(e){e.preventDefault()}
+    function blockKeys(e){
+      const blocked = ['ArrowUp','ArrowDown','PageUp','PageDown','Home','End',' '];
+      if(blocked.includes(e.code) || blocked.includes(e.key)) e.preventDefault();
+    }
+    function disableScroll(){
+      body.classList.add('modal-open');
+      window.addEventListener('wheel',preventDefault,{passive:false});
+      window.addEventListener('touchmove',preventDefault,{passive:false});
+      window.addEventListener('keydown',blockKeys,{passive:false});
+    }
+    function enableScroll(){
+      body.classList.remove('modal-open');
+      window.removeEventListener('wheel',preventDefault,{passive:false});
+      window.removeEventListener('touchmove',preventDefault,{passive:false});
+      window.removeEventListener('keydown',blockKeys,{passive:false});
+    }
+    // --- END OF SCROLL LOCK ---
+
     const profileImg = document.getElementById('profilePic');
     const profileWrapper = document.querySelector('.profile-img-wrapper');
     if(profileImg && profileWrapper){
@@ -396,6 +426,8 @@
 
     window.addEventListener('scroll', checkScrollAndHideButtons);
     
+    // --- INITIAL PAGE LOADER ---
+    disableScroll(); // Lock scroll on load
     const catLoaderElement = document.getElementById('loader-cat');
     const catAnimation = lottie.loadAnimation({
       container:document.getElementById('cat-animation'),
@@ -411,12 +443,15 @@
 
     Promise.all([pageLoadPromise, animReadyPromise, minTimePromise]).then(() => {
         catLoaderElement.classList.add('hidden');
+        enableScroll(); // Unlock scroll after load
         setTimeout(() => { catAnimation.stop(); }, 1000);
         setTimeout(preloadCredentialImages, 1200);
     }).catch(err => {
         console.error("Loader failed, hiding it anyway.", err);
         catLoaderElement.classList.add('hidden');
+        enableScroll(); // Also unlock on error
     });
+    // --- END OF PAGE LOADER ---
 
     function preloadCredentialImages(){
       const preload = new Set();
@@ -434,24 +469,6 @@
     const swiperWrapper = document.getElementById('swiperWrapper');
     const loader = document.getElementById('loader');
     let swiperInstance = null;
-
-    function preventDefault(e){e.preventDefault()}
-    function blockKeys(e){
-      const blocked = ['ArrowUp','ArrowDown','PageUp','PageDown','Home','End',' '];
-      if(blocked.includes(e.code) || blocked.includes(e.key)) e.preventDefault();
-    }
-    function disableScroll(){
-      body.classList.add('modal-open');
-      window.addEventListener('wheel',preventDefault,{passive:false});
-      window.addEventListener('touchmove',preventDefault,{passive:false});
-      window.addEventListener('keydown',blockKeys,{passive:false});
-    }
-    function enableScroll(){
-      body.classList.remove('modal-open');
-      window.removeEventListener('wheel',preventDefault,{passive:false});
-      window.removeEventListener('touchmove',preventDefault,{passive:false});
-      window.removeEventListener('keydown',blockKeys,{passive:false});
-    }
 
     document.querySelectorAll('.view-credential').forEach(button=>{
       button.addEventListener('click',async(e)=>{
@@ -524,7 +541,7 @@
     (function ensureKeyboardTrap(){
       const focusableElements = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
       document.addEventListener('focusin',e=>{
-        if(modal.classList.contains('active') && !modal.contains(e.target)) {
+        if(modal.classList.contents('active') && !modal.contains(e.target)) {
             const firstFocusableElement = modal.querySelector(focusableElements);
             if(firstFocusableElement) firstFocusableElement.focus();
         }
