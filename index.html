@@ -20,6 +20,7 @@
   <meta name="twitter:title" content="Imtiaj Ahamed – Portfolio" />
   <meta name="twitter:description" content="Professional Data Entry Expert | Fast & Accurate" />
   <meta name="twitter:image" content="https://imtiajahamed17.github.io/img/preview.png" />
+
   <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
@@ -30,31 +31,35 @@
     :root{
       --bg-dark:#0d1117;--text-dark:#c9d1d9;--card-dark:#161b22;--accent:#58a6ff;
       --bg-light:#f0f6fc;--text-light:#0d1117;--card-light:#ffffff;
-      
-      /* === GOAL 1: ADDED RGB VARS FOR TRANSPARENCY === */
       --bg-dark-rgb: 13,17,23;
       --bg-light-rgb: 240,246,252;
     }
-    
-    /* === GOAL 1: ASSIGNED RGB VARS === */
     [data-theme="dark"]{--bg:var(--bg-dark);--text:var(--text-dark);--card:var(--card-dark);--bg-rgb:var(--bg-dark-rgb);}
     [data-theme="light"]{--bg:var(--bg-light);--text:var(--text-light);--card:var(--card-light);--bg-rgb:var(--bg-light-rgb);}
-    
     *{box-sizing:border-box;margin:0;padding:0}
-    html,body{height:100%;background:var(--bg);color:var(--text);font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;transition:background .4s,color .4s;}
+    html,body{
+      height:100%;background:var(--bg);color:var(--text);
+      font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
+      transition:background .4s,color .4s;
+      scrollbar-width: none; /* Hides scrollbar for Firefox */
+      -ms-overflow-style: none;  /* Hides scrollbar for IE/Edge */
+    }
+    
+    ::-webkit-scrollbar {
+      display: none; /* Hides scrollbar for Webkit */
+    }
+    
     body.modal-open{overflow:hidden}
     header,nav,section,footer{width:100%;padding:40px 20px;max-width:1200px;margin:auto}
     
-    /* === HEADER THEME (VERIFIED) === */
     header{background:var(--card);color:var(--accent);text-align:center;box-shadow:0 4px 8px rgba(0,0,0,.3);padding-top:80px;transition:background .4s}
     
     header h1{font-size:3rem}
     #subtitle-carousel{transition:opacity .5s ease-in-out;min-height:1.2em}
     
-    /* === GOAL 1: THEME-AWARE NAV MENU === */
     nav{
       position:fixed;top:0;left:0;width:100%;height:100vh;
-      background:rgba(var(--bg-rgb), .95); /* <-- THE FIX */
+      background:rgba(var(--bg-rgb), .95); 
       backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
       z-index:10000;display:flex;flex-direction:column;
       align-items:center;justify-content:center;
@@ -73,7 +78,6 @@
     .about-card{display:flex;align-items:center;gap:30px;flex-wrap:wrap}
     .profile-img-wrapper{width:180px;height:180px;border-radius:50%;overflow:hidden;border:4px solid var(--accent);box-shadow:0 6px 18px rgba(0,0,0,.4);position:relative;background:linear-gradient(100deg,#1c2128 30%,#2227e 50%,#1c2128 70%);background-size:200% 100%;animation:shimmer 1.5s infinite;transition:box-shadow .4s}
     
-    /* === PROFILE SHADOW (VERIFIED) === */
     [data-theme="light"] .profile-img-wrapper{
       background:linear-gradient(100deg,#e0e0e0 30%,#f5f5f5 50%,#e0e0e0 70%);
       box-shadow: 0 8px 24px rgba(88, 166, 255, 0.2); 
@@ -94,7 +98,6 @@
     .email-box{padding:15px 20px;border:1px solid #30363d;border-radius:10px;text-align:center;background:transparent;color:var(--accent);max-width:500px;width:100%}
     .email-box a{display:inline-block;margin-top:5px;color:var(--text);font-size:1.1rem;font-weight:700;text-decoration:none}
     
-    /* === ICON-ONLY BUTTON CSS (VERIFIED) === */
     .contact-buttons{
       display:flex;
       flex-wrap:wrap;
@@ -133,7 +136,6 @@
       background:rgba(255,255,255,0.1);
       border-color:rgba(255,255,255,0.2);
     }
-    /* === END OF BUTTON CSS === */
 
     .menu-toggle{position:fixed;top:20px;left:20px;width:48px;height:48px;background:var(--card);border-radius:10px;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:10001;transition:all .3s cubic-bezier(.19,1,.22,1);box-shadow:0 4px 12px rgba(0,0,0,.3);border:1px solid rgba(88,166,255,.1)}
     .menu-toggle:hover{transform:scale(1.05);border-color:var(--accent)}
@@ -148,7 +150,6 @@
     .theme-toggle i{color:var(--accent);font-size:1.2rem}
     .theme-toggle.hidden, .menu-toggle.hidden{opacity:0;transform:translateY(100px);pointer-events:none}
     
-    /* === FOOTER THEME (VERIFIED) === */
     footer{background:var(--card);text-align:center;padding:20px;color:var(--text);opacity:0.8;transition:background .4s, color .4s}
     
     @media (max-width:768px){header h1{font-size:2rem}h2{font-size:1.5rem}nav a{font-size:1.5rem}.about-card{flex-direction:column;align-items:center;text-align:center}.contact-section{padding:30px 20px}.menu-toggle{top:10px;left:10px;width:44px;height:44px}.theme-toggle{top:10px;right:10px;width:44px;height:44px}}
@@ -310,7 +311,7 @@
     <lottie-player src="https://imtiajahamed17.github.io/assets/loader-cat.json" background="transparent" speed="1" style="width:200px;height:200px" loop autoplay></lottie-player>
   </div>
 
-  <footer data-aos="fade-up">
+  <footer>
     <p>&copy; 2025 Imtiaj. All rights reserved.</p>
   </footer>
 
@@ -393,8 +394,6 @@
       themeIcon.className = next === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
     });
 
-    // Global right-click disable has been removed.
-    
     window.addEventListener('scroll', checkScrollAndHideButtons);
     
     const catLoaderElement = document.getElementById('loader-cat');
@@ -478,7 +477,6 @@
         images.forEach(src=>{
           const slide = document.createElement('div');
           slide.className = 'swiper-slide';
-          // === RIGHT-CLICK DISABLE (VERIFIED) ===
           slide.innerHTML = `<img src="${src}" alt="Certificate credential" oncontextmenu="return false;" />`;
           swiperWrapper.appendChild(slide);
         });
