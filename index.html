@@ -334,7 +334,6 @@
     const html = document.documentElement;
     const body = document.body;
     
-    // --- SCROLL LOCK FUNCTIONS (REFACTORED) ---
     function preventDefault(e){e.preventDefault()}
     function blockKeys(e){
       const blocked = ['ArrowUp','ArrowDown','PageUp','PageDown','Home','End',' '];
@@ -352,7 +351,6 @@
       window.removeEventListener('touchmove',preventDefault,{passive:false});
       window.removeEventListener('keydown',blockKeys,{passive:false});
     }
-    // --- END OF SCROLL LOCK ---
 
     const profileImg = document.getElementById('profilePic');
     const profileWrapper = document.querySelector('.profile-img-wrapper');
@@ -426,8 +424,7 @@
 
     window.addEventListener('scroll', checkScrollAndHideButtons);
     
-    // --- INITIAL PAGE LOADER ---
-    disableScroll(); // Lock scroll on load
+    disableScroll(); 
     const catLoaderElement = document.getElementById('loader-cat');
     const catAnimation = lottie.loadAnimation({
       container:document.getElementById('cat-animation'),
@@ -443,15 +440,14 @@
 
     Promise.all([pageLoadPromise, animReadyPromise, minTimePromise]).then(() => {
         catLoaderElement.classList.add('hidden');
-        enableScroll(); // Unlock scroll after load
+        enableScroll(); 
         setTimeout(() => { catAnimation.stop(); }, 1000);
         setTimeout(preloadCredentialImages, 1200);
     }).catch(err => {
         console.error("Loader failed, hiding it anyway.", err);
         catLoaderElement.classList.add('hidden');
-        enableScroll(); // Also unlock on error
+        enableScroll();
     });
-    // --- END OF PAGE LOADER ---
 
     function preloadCredentialImages(){
       const preload = new Set();
@@ -469,6 +465,7 @@
     const swiperWrapper = document.getElementById('swiperWrapper');
     const loader = document.getElementById('loader');
     let swiperInstance = null;
+    let modalOpenState = 'closed';
 
     document.querySelectorAll('.view-credential').forEach(button=>{
       button.addEventListener('click',async(e)=>{
@@ -478,7 +475,11 @@
         try{images = JSON.parse(raw)}catch(err){images = []}
         if(!images || images.length===0) return;
         
+        modalOpenState = 'loading';
         loader.classList.add('active');
+        disableScroll();
+        location.hash = 'gallery';
+        
         const minDelay = 1500;
         const delayPromise = new Promise(r=>setTimeout(r,minDelay));
         const loadPromises = images.map(src=>new Promise((resolve, reject)=>{
@@ -488,8 +489,16 @@
           img.src = src;
         }));
         
-        try{await Promise.all([delayPromise,...loadPromises])}catch(err){console.error("Image failed to load:", err)}
+        try{
+          await Promise.all([delayPromise,...loadPromises]);
+        }catch(err){
+          console.error("Image failed to load:", err);
+          closeTheModal(true);
+          return;
+        }
         
+        if (modalOpenState !== 'loading') return;
+
         swiperWrapper.innerHTML = '';
         images.forEach(src=>{
           const slide = document.createElement('div');
@@ -510,6 +519,8 @@
           coverflowEffect:{rotate:20,stretch:0,depth:200,modifier:1,slideShadows:true},
           on:{
             init:function(){
+              if (modalOpenState !== 'loading') return;
+              modalOpenState = 'open';
               loader.classList.remove('active');
               modal.classList.add('active');
               modal.setAttribute('aria-hidden','false');
@@ -523,25 +534,44 @@
       });
     });
 
-    function closeTheModal() {
+    function closeTheModal(isFromHistory = false) {
+        if (modalOpenState === 'closed') return;
+        modalOpenState = 'closed';
+        
         modal.classList.remove('active');
-        modal.setAttribute('aria-hidden','true');
+        loader.classList.remove('active');
         enableScroll();
         checkScrollAndHideButtons();
+        
+        if (!isFromHistory && location.hash === '#gallery') {
+            history.back();
+        }
     }
 
-    closeModal.addEventListener('click', closeTheModal);
+    closeModal.addEventListener('click', () => closeTheModal(false));
+    
     window.addEventListener('click',e=>{
-      if(e.target === modal) closeTheModal();
+      if(e.target === modal) closeTheModal(false);
     });
+    
     document.addEventListener('keydown',e=>{
-      if(e.key === 'Escape' && modal.classList.contains('active')) closeTheModal();
+      if(e.key === 'Escape' && (modal.classList.contains('active') || loader.classList.contains('active'))) {
+        closeTheModal(false);
+      }
+    });
+
+    window.addEventListener('hashchange', function() {
+      if (location.hash !== '#gallery') {
+        if (modalOpenState === 'open' || modalOpenState === 'loading') {
+          closeTheModal(true);
+        }
+      }
     });
 
     (function ensureKeyboardTrap(){
       const focusableElements = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
       document.addEventListener('focusin',e=>{
-        if(modal.classList.contents('active') && !modal.contains(e.target)) {
+        if(modal.classList.contains('active') && !modal.contains(e.target)) {
             const firstFocusableElement = modal.querySelector(focusableElements);
             if(firstFocusableElement) firstFocusableElement.focus();
         }
