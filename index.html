@@ -1,656 +1,125 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Imtiaj Ahamed – Portfolio</title>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Professional Data Entry Expert | Fast & Accurate" />
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
-
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://imtiajahamed17.github.io/">
-  <meta property="og:title" content="Imtiaj Ahamed – Portfolio">
-  <meta property="og:description" content="Professional Data Entry Expert | Fast & Accurate">
-  <meta property="og:image" content="https://imtiajahamed17.github.io/img/imtiaj.jpg">
-  
-  <meta property="twitter:card" content="summary_large_image">
-  <meta property="twitter:url" content="https://imtiajahamed17.github.io/">
-  <meta property="twitter:title" content="Imtiaj Ahamed – Portfolio">
-  <meta property="twitter:description" content="Professional Data Entry Expert | Fast & Accurate">
-  <meta property="twitter:image" content="https://imtiajahamed17.github.io/img/imtiaj.jpg">
-  <meta name="twitter:site" content="@imtiajahamed_17">
-
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://imtiajahamed17.github.io/" />
+  <meta property="og:title" content="Imtiaj Ahamed – Portfolio" />
+  <meta property="og:description" content="Professional Data Entry Expert | Fast & Accurate" />
+  <meta property="og:image" content="https://imtiajahamed17.github.io/img/imtiaj.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@imtiajahamed_17" />
   <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
-  
-  <link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
-  />
-  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
   <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.10.1/lottie.min.js"></script>
 
   <style>
-    html {
-      scroll-behavior: smooth;
-    }
-
-    :root {
-      --bg-dark: #0d1117;
-      --text-dark: #c9d1d9;
-      --card-dark: #161b22;
-      --accent: #58a6ff;
-      --bg-light: #f0f6fc;
-      --text-light: #0d1117;
-      --card-light: #ffffffcc;
-    }
-
-    [data-theme="dark"] {
-      --bg: var(--bg-dark);
-      --text: var(--text-dark);
-      --card: var(--card-dark);
-    }
-
-    [data-theme="light"] {
-      --bg: var(--bg-light);
-      --text: var(--text-light);
-      --card: var(--card-light);
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html, body {
-      height: 100%;
-      background-color: var(--bg);
-      color: var(--text);
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      transition: background 0.4s, color 0.4s;
-    }
-
-    body.modal-open {
-      overflow: hidden;
-    }
-
-    header, nav, section, footer {
-      width: 100%;
-      padding: 40px 20px;
-      max-width: 1200px;
-      margin: auto;
-    }
-
-    header {
-      background: #010409;
-      color: var(--accent);
-      text-align: center;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-      padding-top: 80px;
-    }
-
-    header h1 {
-      font-size: 3rem;
-    }
-
-    #subtitle-carousel {
-      transition: opacity 0.5s ease-in-out;
-      min-height: 1.2em;
-    }
-
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100vh;
-      background: rgba(13, 17, 23, 0.95);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      z-index: 10000;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      
-      opacity: 0;
-      visibility: hidden;
-      transform: translateY(-20px);
-      transition: opacity 0.4s ease, visibility 0.4s ease, transform 0.4s ease;
-      padding: 0;
-    }
-
-    nav.nav-open {
-      opacity: 1;
-      visibility: visible;
-      transform: translateY(0);
-    }
-
-    nav a {
-      color: var(--accent);
-      margin: 20px 0;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 2rem;
-      transition: color 0.3s, transform 0.3s;
-    }
-
-    nav a:hover {
-      color: #f0f6fc;
-      transform: scale(1.1);
-    }
-
-    h2 {
-      font-size: 2rem;
-      margin-bottom: 20px;
-      color: var(--accent);
-    }
-
-    .card {
-      background: var(--card);
-      padding: 25px;
-      margin-bottom: 20px;
-      border-radius: 12px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 6px 18px rgba(0,0,0,0.4);
-    }
-
-    .about-card {
-      display: flex;
-      align-items: center;
-      gap: 30px;
-      flex-wrap: wrap;
-    }
-
-    .profile-img-wrapper {
-      width: 180px;
-      height: 180px;
-      border-radius: 50%;
-      overflow: hidden;
-      
-      border: 4px solid var(--accent);
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
-      transition: transform 0.3s ease, background 0s 0.6s;
-      display: inline-block;
-      vertical-align: middle;
-
-      position: relative;
-      background: linear-gradient(100deg, #1c2128 30%, #22272e 50%, #1c2128 70%);
-      background-size: 200% 100%;
-      animation: shimmer 1.5s infinite;
-    }
-    
-    [data-theme="light"] .profile-img-wrapper {
-        background: linear-gradient(100deg, #e0e0e0 30%, #f5f5f5 50%, #e0e0e0 70%);
-        background-size: 200% 100%;
-    }
-    
-    @keyframes shimmer {
-      0% { background-position: -200% 0; }
-      100% { background-position: 200% 0; }
-    }
-    
-    .profile-img-wrapper.loaded {
-        animation: none;
-        background: none;
-    }
-
-    .profile-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      
-      position: absolute;
-      top: 0;
-      left: 0;
-
-      filter: blur(10px);
-      opacity: 0;
-      transition: filter 0.6s ease, opacity 0.6s ease;
-    }
-
-    .profile-img.loaded {
-      filter: blur(0);
-      opacity: 1;
-    }
-
-    .about-text {
-      flex: 1;
-      min-width: 250px;
-      font-size: 1.05rem;
-      line-height: 1.6;
-    }
-
-    .education-card {
-      background: var(--card);
-      padding: 25px;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-    }
-
-    .edu-item {
-      display: flex;
-      align-items: flex-start;
-      margin-bottom: 20px;
-    }
-
-    .edu-icon {
-      color: var(--accent);
-      font-size: 1.3rem;
-      margin-right: 10px;
-      margin-top: 4px;
-    }
-
-    .edu-content {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-    }
-
-    .edu-title {
-      font-weight: bold;
-      color: var(--text);
-      font-size: 1.1rem;
-    }
-
-    .edu-detail {
-      font-size: 1rem;
-      color: var(--text);
-      margin-top: 2px;
-      line-height: 1.4;
-    }
-
-    .contact-section {
-      background: linear-gradient(145deg, rgba(255, 255, 255, 0.05), rgba(88, 166, 255, 0.05));
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 16px;
-      padding: 40px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 30px;
-    }
-
-    .contact-section:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4);
-    }
-
-    .email-box {
-      padding: 15px 20px;
-      border: 1px solid #30363d;
-      border-radius: 10px;
-      text-align: center;
-      background-color: transparent;
-      color: var(--accent);
-      max-width: 500px;
-      width: 100%;
-    }
-
-    .email-box a {
-      display: inline-block;
-      margin-top: 5px;
-      color: var(--text);
-      font-size: 1.1rem;
-      font-weight: bold;
-      text-decoration: none;
-    }
-
-    .email-box i {
-      margin-right: 8px;
-    }
-
-    .contact-buttons {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 16px;
-      width: 100%;
-      max-width: 700px;
-    }
-
-    .contact-btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 12px 20px;
-      border-radius: 12px;
-      font-weight: bold;
-      text-decoration: none;
-      transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-      color: white;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    }
-
-    .contact-btn i {
-      font-size: 1.2rem;
-      margin-right: 10px;
-    }
-
-    .contact-btn:hover {
-      transform: translateY(-4px) scale(1.03);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-    }
-
-    .github { background: #0d1117; border: 2px solid #58a6ff; }
-    .github:hover { background: #58a6ff; color: #0d1117; }
-
-    .linkedin { background: #0a66c2; }
-    .linkedin:hover { background: #084ea1; }
-
-    .facebook { background: #1877f2; }
-    .facebook:hover { background: #145ecb; }
-
-    .instagram { background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4); }
-    .instagram:hover { opacity: 0.9; }
-
-    .twitter { background: #1d9bf0; }
-    .twitter:hover { background: #1481c8; }
-    
-    .telegram { background: #26A5E4; }
-    .telegram:hover { background: #1c8ac0; }
-    
-    .menu-toggle {
-      position: fixed;
-      top: 20px;
-      left: 20px;
-      width: 48px;
-      height: 48px;
-      background: var(--card);
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      z-index: 10001;
-      transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-      border: 1px solid rgba(88, 166, 255, 0.1);
-    }
-
-    .menu-toggle:hover {
-        transform: scale(1.05);
-        border-color: var(--accent);
-    }
-
-    .menu-toggle span {
-      display: block;
-      width: 24px;
-      height: 3px;
-      background: var(--accent);
-      border-radius: 3px;
-      transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
-      position: absolute;
-    }
-
-    .menu-toggle span:nth-child(1) {
-      transform: translateY(-8px);
-    }
-    .menu-toggle span:nth-child(3) {
-      transform: translateY(8px);
-    }
-
-    .menu-toggle.open {
-        transform: scale(1); 
-        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    }
-    .menu-toggle.open span:nth-child(1) {
-      transform: translateY(0) rotate(45deg);
-    }
-    .menu-toggle.open span:nth-child(2) {
-      transform: scaleX(0);
-      opacity: 0;
-    }
-    .menu-toggle.open span:nth-child(3) {
-      transform: translateY(0) rotate(-45deg);
-    }
-
-    .theme-toggle {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      background: var(--card);
-      border: 1px solid rgba(88, 166, 255, 0.1);
-      border-radius: 10px;
-      width: 48px;
-      height: 48px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      z-index: 9999;
-      transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    }
-    
-    .theme-toggle:hover {
-        transform: scale(1.05);
-        border-color: var(--accent);
-    }
-
-    .theme-toggle i {
-      color: var(--accent);
-      font-size: 1.2rem;
-    }
-
-    .theme-toggle.hidden,
-    .menu-toggle.hidden {
-      opacity: 0;
-      transform: translateY(100px);
-      pointer-events: none;
-    }
-
-    footer {
-      background: #010409;
-      text-align: center;
-      padding: 20px;
-      color: #8b949e;
-    }
-
-    @media (max-width: 768px) {
-      header h1 {
-        font-size: 2rem;
-      }
-
-      h2 {
-        font-size: 1.5rem;
-      }
-
-      nav a {
-        font-size: 1.5rem;
-      }
-
-      .about-card {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-      }
-
-      .contact-section {
-        padding: 30px 20px;
-      }
-
-      .menu-toggle {
-        top: 10px;
-        left: 10px;
-        width: 44px;
-        height: 44px;
-      }
-
-      .theme-toggle {
-        top: 10px;
-        right: 10px;
-        width: 44px;
-        height: 44px;
-      }
-    }
-
-    img {
-      -webkit-touch-callout: none;
-      -webkit-user-select: none;
-      -khtml-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-    }
-
-    .credential-btn {
-      background: transparent;
-      color: var(--accent) !important;
-      text-decoration: none;
-      border-radius: 6px;
-      display: inline-block;
-      padding: 6px 0;
-      font-size: 0.85rem;
-      font-weight: 600;
-      transition: all 0.3s ease;
-      cursor: pointer;
-    }
-    .credential-btn i {
-      color: var(--accent) !important;
-      margin-right: 6px;
-      transition: all 0.3s ease;
-    }
-    
-    .credential-btn:hover {
-        transform: translateY(-2px);
-        text-decoration: underline;
-    }
-    
-    .modal {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: fixed;
-      z-index: 9999;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.9);
-      
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.4s ease, visibility 0.4s ease;
-    }
-
-    .modal.active {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .modal-content {
-      position: relative;
-      width: 90%;
-      max-width: 850px;
-    }
-
-    .modal-content img {
-      width: 100%;
-      border-radius: 12px;
-    }
-
-    #closeModal {
-      position: absolute;
-      top: -40px;
-      right: 0;
-      font-size: 35px;
-      color: white;
-      cursor: pointer;
-      user-select: none;
-      z-index: 10000;
-    }
-
-    .swiper {
-      width: 100%;
-      height: 100%;
-    }
-
-    .swiper-slide {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .swiper-slide img {
-      width: 100%;
-      height: auto;
-      object-fit: contain;
-      border-radius: 10px;
-    }
-    
-    .swiper-button-next,
-    .swiper-button-prev {
-      color: #ffffff;
-      opacity: 0.7;
-      transition: opacity 0.2s ease;
-    }
-    .swiper-button-next:hover,
-    .swiper-button-prev:hover {
-      opacity: 1;
-    }
-    
-    .swiper-pagination-bullet {
-      background: #ffffff;
-    }
-
-    #loader {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      background: rgba(0,0,0,0.95);
-      z-index: 10000;
-    }
-
-    #loader.active {
-      display: flex;
-    }
+    :root{
+      --bg-dark:#0d1117;--text-dark:#c9d1d9;--card-dark:#161b22;--accent:#58a6ff;
+      --bg-light:#f0f6fc;--text-light:#0d1117;--card-light:#ffffffcc;
+    }
+    [data-theme="dark"]{--bg:var(--bg-dark);--text:var(--text-dark);--card:var(--card-dark);}
+    [data-theme="light"]{--bg:var(--bg-light);--text:var(--text-light);--card:var(--card-light);}
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%;background:var(--bg);color:var(--text);font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;transition:background .4s,color .4s;}
+    body.modal-open{overflow:hidden}
+    header,nav,section,footer{width:100%;padding:40px 20px;max-width:1200px;margin:auto}
+    header{background:#010409;color:var(--accent);text-align:center;box-shadow:0 4px 8px rgba(0,0,0,.3);padding-top:80px}
+    header h1{font-size:3rem}
+    #subtitle-carousel{transition:opacity .5s ease-in-out;min-height:1.2em}
+    nav{position:fixed;top:0;left:0;width:100%;height:100vh;background:rgba(13,17,23,.95);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);z-index:10000;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;visibility:hidden;transform:translateY(-20px);transition:opacity .4s ease,visibility .4s ease,transform .4s ease;padding:0}
+    nav.nav-open{opacity:1;visibility:visible;transform:translateY(0)}
+    nav a{color:var(--accent);margin:20px 0;text-decoration:none;font-weight:700;font-size:2rem;transition:color .25s,transform .25s}
+    nav a:hover{color:#f0f6fc;transform:scale(1.05)}
+    h2{font-size:2rem;margin-bottom:20px;color:var(--accent)}
+    .card{background:var(--card);padding:25px;margin-bottom:20px;border-radius:12px;box-shadow:0 2px 10px rgba(0,0,0,.3);transition:transform .3s,box-shadow .3s}
+    .card:hover{transform:translateY(-6px);box-shadow:0 6px 18px rgba(0,0,0,.4)}
+    .about-card{display:flex;align-items:center;gap:30px;flex-wrap:wrap}
+    .profile-img-wrapper{width:180px;height:180px;border-radius:50%;overflow:hidden;border:4px solid var(--accent);box-shadow:0 6px 18px rgba(0,0,0,.4);position:relative;background:linear-gradient(100deg,#1c2128 30%,#2227e 50%,#1c2128 70%);background-size:200% 100%;animation:shimmer 1.5s infinite}
+    [data-theme="light"] .profile-img-wrapper{background:linear-gradient(100deg,#e0e0e0 30%,#f5f5f5 50%,#e0e0e0 70%)}
+    @keyframes shimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}
+    .profile-img-wrapper.loaded{animation:none;background:none}
+    .profile-img{width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0;filter:blur(10px);opacity:0;transition:filter .6s,opacity .6s}
+    .profile-img.loaded{filter:blur(0);opacity:1}
+    .about-text{flex:1;min-width:250px;font-size:1.05rem;line-height:1.6}
+    .education-card{background:var(--card);padding:25px;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,.4)}
+    .edu-item{display:flex;align-items:flex-start;margin-bottom:20px}
+    .edu-icon{color:var(--accent);font-size:1.3rem;margin-right:10px;margin-top:4px}
+    .edu-content{display:flex;flex-direction:column;align-items:flex-start}
+    .edu-title{font-weight:700;color:var(--text);font-size:1.1rem}
+    .edu-detail{font-size:1rem;color:var(--text);margin-top:2px;line-height:1.4}
+    .contact-section{background:linear-gradient(145deg,rgba(255,255,255,.05),rgba(88,166,255,.05));border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:40px;box-shadow:0 8px 20px rgba(0,0,0,.3);display:flex;flex-direction:column;align-items:center;gap:30px}
+    .email-box{padding:15px 20px;border:1px solid #30363d;border-radius:10px;text-align:center;background:transparent;color:var(--accent);max-width:500px;width:100%}
+    .email-box a{display:inline-block;margin-top:5px;color:var(--text);font-size:1.1rem;font-weight:700;text-decoration:none}
+    .contact-buttons{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;width:100%;max-width:700px}
+    .contact-btn{display:flex;align-items:center;justify-content:center;padding:12px 20px;border-radius:12px;font-weight:700;text-decoration:none;transition:transform .2s,box-shadow .3s;color:#fff;box-shadow:0 4px 12px rgba(0,0,0,.2)}
+    .contact-btn i{font-size:1.2rem;margin-right:10px}
+    .contact-btn:hover{transform:translateY(-4px) scale(1.02);box-shadow:0 8px 20px rgba(0,0,0,.3)}
+    .github{background:#0d1117;border:2px solid #58a6ff}
+    .github:hover{background:#58a6ff;color:#0d1117}
+    .linkedin{background:#0a66c2}
+    .linkedin:hover{background:#084ea1}
+    .facebook{background:#1877f2}
+    .facebook:hover{background:#145ecb}
+    .instagram{background:linear-gradient(45deg,#405DE6,#5851DB,#833AB4)}
+    .instagram:hover{opacity:.9}
+    .twitter{background:#1d9bf0}
+    .twitter:hover{background:#1481c8}
+    .telegram{background:#26A5E4}
+    .telegram:hover{background:#1c8ac0}
+    .menu-toggle{position:fixed;top:20px;left:20px;width:48px;height:48px;background:var(--card);border-radius:10px;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:10001;transition:all .3s cubic-bezier(.19,1,.22,1);box-shadow:0 4px 12px rgba(0,0,0,.3);border:1px solid rgba(88,166,255,.1)}
+    .menu-toggle:hover{transform:scale(1.05);border-color:var(--accent)}
+    .menu-toggle span{display:block;width:24px;height:3px;background:var(--accent);border-radius:3px;transition:all .3s;position:absolute}
+    .menu-toggle span:nth-child(1){transform:translateY(-8px)}
+    .menu-toggle span:nth-child(3){transform:translateY(8px)}
+    .menu-toggle.open span:nth-child(1){transform:translateY(0) rotate(45deg)}
+    .menu-toggle.open span:nth-child(2){transform:scaleX(0);opacity:0}
+    .menu-toggle.open span:nth-child(3){transform:translateY(0) rotate(-45deg)}
+    .theme-toggle{position:fixed;top:20px;right:20px;background:var(--card);border:1px solid rgba(88,166,255,.1);border-radius:10px;width:48px;height:48px;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:10001;transition:all .3s cubic-bezier(.19,1,.22,1);box-shadow:0 4px 12px rgba(0,0,0,.3)}
+    .theme-toggle:hover{transform:scale(1.05);border-color:var(--accent)}
+    .theme-toggle i{color:var(--accent);font-size:1.2rem}
+    .theme-toggle.hidden, .menu-toggle.hidden{opacity:0;transform:translateY(100px);pointer-events:none}
+    footer{background:#010409;text-align:center;padding:20px;color:#8b949e}
+    @media (max-width:768px){header h1{font-size:2rem}h2{font-size:1.5rem}nav a{font-size:1.5rem}.about-card{flex-direction:column;align-items:center;text-align:center}.contact-section{padding:30px 20px}.menu-toggle{top:10px;left:10px;width:44px;height:44px}.theme-toggle{top:10px;right:10px;width:44px;height:44px}}
+    img{-webkit-touch-callout:none;-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}
+    .credential-btn{background:transparent;color:var(--accent)!important;text-decoration:none;border-radius:6px;display:inline-block;padding:6px 0;font-size:.85rem;font-weight:600;transition:all .3s;cursor:pointer}
+    .credential-btn i{color:var(--accent)!important;margin-right:6px;transition:all .3s}
+    .credential-btn:hover{transform:translateY(-2px);text-decoration:underline}
+    .modal{display:flex;align-items:center;justify-content:center;position:fixed;z-index:11000;left:0;top:0;width:100%;height:100%;background:rgba(0,0,0,.9);opacity:0;visibility:hidden;transition:opacity .5s ease,visibility .5s ease}
+    .modal.active{opacity:1;visibility:visible}
+    .modal-content{position:relative;width:90%;max-width:850px;transform:translateY(10px) scale(.98);transition:transform .45s cubic-bezier(.2,.8,.2,1)}
+    .modal.active .modal-content{transform:translateY(0) scale(1)}
+    .modal-content img{width:100%;border-radius:12px;display:block}
+    #closeModal{position:absolute;top:-40px;right:0;font-size:35px;color:#fff;cursor:pointer;user-select:none;z-index:10000}
+    .swiper{width:100%;height:100%}
+    .swiper-slide{display:flex;justify-content:center;align-items:center;padding:10px}
+    .swiper-slide img{width:100%;height:auto;object-fit:contain;border-radius:10px}
+    .swiper-button-next,.swiper-button-prev{color:#fff;opacity:.8;transition:opacity .2s}
+    .swiper-button-next:hover,.swiper-button-prev:hover{opacity:1}
+    .swiper-pagination-bullet{background:#fff}
+    #loader{position:fixed;top:0;left:0;right:0;bottom:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.95);z-index:10500;opacity:0;visibility:hidden;transition:opacity 1s ease,visibility 1s ease}
+    #loader.active{opacity:1;visibility:visible}
+    #loader-cat{position:fixed;top:0;left:0;width:100%;height:100%;background:#0d1117;z-index:12000;display:flex;align-items:center;justify-content:center;opacity:1;visibility:visible;transition:opacity 1s ease,visibility 1s ease}
+    #loader-cat.hidden{opacity:0;visibility:hidden}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
   </style>
 </head>
 <body>
-
-  <div id="loader-cat" style="
-      display:flex; 
-      position:fixed;
-      top:0;
-      left:0;
-      width:100%;
-      height:100%;
-      background: #0d1117;
-      z-index:99999;
-      justify-content:center;
-      align-items:center;
-      opacity:1; 
-      transition: opacity 0.5s ease;">
-      <div id="cat-animation" style="
-          width:40vmin;
-          max-width:300px;
-          max-height:300px;
-          min-width:150px;
-          min-height:150px;"></div>
+  <div id="loader-cat" aria-hidden="false">
+    <div id="cat-animation" style="width:40vmin;max-width:300px;max-height:300px;min-width:150px;min-height:150px"></div>
   </div>
 
-  <div class="menu-toggle" id="menu-toggle" title="Toggle Menu">
-    <span></span>
-    <span></span>
-    <span></span>
+  <div class="menu-toggle" id="menu-toggle" title="Toggle Menu" aria-label="Toggle Menu" role="button">
+    <span></span><span></span><span></span>
   </div>
 
-  <div class="theme-toggle" id="themeToggle" title="Toggle Theme">
+  <div class="theme-toggle" id="themeToggle" title="Toggle Theme" aria-label="Toggle Theme" role="button">
     <i class="fas fa-moon" id="themeIcon"></i>
   </div>
 
@@ -659,7 +128,7 @@
     <p id="subtitle-carousel">Organizer, Analyzer, Data Specialist</p>
   </header>
 
-  <nav id="main-nav">
+  <nav id="main-nav" aria-hidden="true">
     <a href="#about">About</a>
     <a href="#projects">Projects</a>
     <a href="#education">Education</a>
@@ -667,209 +136,154 @@
     <a href="#contact">Contact</a>
   </nav>
 
-  <section id="about" data-aos="fade-up">
-    <h2>About Me</h2>
-    <div class="card about-card" data-aos="zoom-in">
-       
-       <div class="profile-img-wrapper">
-         <img src="https://imtiajahamed17.github.io/img/imtiaj.jpg"
-              class="profile-img"
-              id="profilePic"
-              alt="Imtiaj Ahamed – Profile">
-       </div>
-       <div class="about-text">
-        <p>I’m Imtiaj, a dedicated Data Entry Specialist focused on accuracy, efficiency, and organization. I turn raw data into reliable information that helps drive smart decisions.</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="projects" data-aos="fade-up">
-    <h2>Projects</h2>
-    <div class="card" data-aos="zoom-in"><h3>Project Clarity</h3><p>Automated data quality assurance system for large-scale financial records.</p></div>
-    <div class="card" data-aos="zoom-in" data-aos-delay="100"><h3>Digital Archive Initiative (DAI)</h3><p>Digitization and indexing of historical paper documents for a public library collection.</p></div>
-    <div class="card" data-aos="zoom-in" data-aos-delay="200"><h3>Customer Insight Capture</h3><p>Standardizing and cleansing raw customer feedback data from multiple channels for sentiment analysis.</p></div>
-    <div class="card" data-aos="zoom-in" data-aos-delay="300"><h3>Inventory Streamline</h3><p>Developing a database and process to manage and verify product SKUs and stock levels across warehouses.</p></div>
-    <div class="card" data-aos="zoom-in"><h3>Health Record Validation</h3><p>Secure and HIPAA-compliant system for anonymized medical data input and error checking.</p></div>
-  </section>
-
-  <section id="education" data-aos="fade-up">
-    <h2>Education</h2>
-    <div class="education-card" data-aos="zoom-in">
-      
-      <div class="edu-item" style="padding-left: 4px;">
-        <i class="fas fa-university edu-icon"></i>
-        <div class="edu-content">
-          <span class="edu-title">Higher Secondary (HSC)</span>
-          <span class="edu-detail">GPA 5.00 (A+)<br> Cumilla Cantonment College</span>
-          <a href="#" class="credential-btn view-credential" style="margin-top: 10px;" data-certificates='["img/HSC.png"]'>
-            <i class="fas fa-file-alt"></i> View Credential
-          </a>
+  <main>
+    <section id="about" data-aos="fade-up">
+      <h2>About Me</h2>
+      <div class="card about-card" data-aos="zoom-in">
+        <div class="profile-img-wrapper">
+          <img id="profilePic" class="profile-img" src="https://imtiajahamed17.github.io/img/imtiaj.jpg" alt="Imtiaj Ahamed – Profile" />
+        </div>
+        <div class="about-text">
+          <p>I’m Imtiaj, a dedicated Data Entry Specialist focused on accuracy, efficiency, and organization. I turn raw data into reliable information that helps drive smart decisions.</p>
         </div>
       </div>
-      
-      <div class="edu-item">
-        <i class="fas fa-graduation-cap edu-icon"></i>
-        <div class="edu-content">
-          <span class="edu-title">Secondary (SSC)</span>
-          <span class="edu-detail">GPA 5.00 (A+)<br> Monohorganj High School And College</span>
-          <a href="#" class="credential-btn view-credential" style="margin-top: 10px;" data-certificates='["img/SSC.jpg"]'>
-            <i class="fas fa-file-alt"></i> View Credential
-          </a>
+    </section>
+
+    <section id="projects" data-aos="fade-up">
+      <h2>Projects</h2>
+      <div class="card" data-aos="zoom-in"><h3>Project Clarity</h3><p>Automated data quality assurance system for large-scale financial records.</p></div>
+      <div class="card" data-aos="zoom-in" data-aos-delay="100"><h3>Digital Archive Initiative (DAI)</h3><p>Digitization and indexing of historical paper documents for a public library collection.</p></div>
+      <div class="card" data-aos="zoom-in" data-aos-delay="200"><h3>Customer Insight Capture</h3><p>Standardizing and cleansing raw customer feedback data from multiple channels for sentiment analysis.</p></div>
+      <div class="card" data-aos="zoom-in" data-aos-delay="300"><h3>Inventory Streamline</h3><p>Developing a database and process to manage and verify product SKUs and stock levels across warehouses.</p></div>
+      <div class="card" data-aos="zoom-in"><h3>Health Record Validation</h3><p>Secure and HIPAA-compliant system for anonymized medical data input and error checking.</p></div>
+    </section>
+
+    <section id="education" data-aos="fade-up">
+      <h2>Education</h2>
+      <div class="education-card" data-aos="zoom-in">
+        <div class="edu-item">
+          <i class="fas fa-university edu-icon"></i>
+          <div class="edu-content">
+            <span class="edu-title">Higher Secondary (HSC)</span>
+            <span class="edu-detail">GPA 5.00 (A+)<br/>Cumilla Cantonment College</span>
+            <a href="#" class="credential-btn view-credential" data-certificates='["https://imtiajahamed17.github.io/img/HSC.png"]'><i class="fas fa-file-alt"></i>View Credential</a>
+          </div>
+        </div>
+
+        <div class="edu-item">
+          <i class="fas fa-graduation-cap edu-icon"></i>
+          <div class="edu-content">
+            <span class="edu-title">Secondary (SSC)</span>
+            <span class="edu-detail">GPA 5.00 (A+)<br/>Monohorganj High School And College</span>
+            <a href="#" class="credential-btn view-credential" data-certificates='["https://imtiajahamed17.github.io/img/SSC.jpg"]'><i class="fas fa-file-alt"></i>View Credential</a>
+          </div>
+        </div>
+
+        <div class="edu-item">
+          <i class="fas fa-school edu-icon"></i>
+          <div class="edu-content">
+            <span class="edu-title">Junior Secondary (JSC)</span>
+            <span class="edu-detail">GPA 5.00 (A+)<br/>Monohorganj High School And College</span>
+            <a href="#" class="credential-btn view-credential" data-certificates='["https://imtiajahamed17.github.io/img/JSC.png"]'><i class="fas fa-file-alt"></i>View Credential</a>
+          </div>
+        </div>
+
+        <div class="edu-item">
+          <i class="fas fa-desktop edu-icon"></i>
+          <div class="edu-content">
+            <span class="edu-title">Computer Application</span>
+            <span class="edu-detail">GPA 5.00 (A+)<br/>Global Village ICT Park</span>
+            <a href="#" class="credential-btn view-credential" data-certificates='["https://imtiajahamed17.github.io/img/computer.png"]'><i class="fas fa-file-alt"></i>View Credential</a>
+          </div>
         </div>
       </div>
-      
-      <div class="edu-item">
-        <i class="fas fa-school edu-icon"></i>
-        <div class="edu-content">
-          <span class="edu-title">Junior Secondary (JSC)</span>
-          <span class="edu-detail">GPA 5.00 (A+)<br> Monohorganj High School And College</span>
-          <a href="#" class="credential-btn view-credential" style="margin-top: 10px;" data-certificates='["img/JSC.png"]'>
-            <i class="fas fa-file-alt"></i> View Credential
-          </a>
+    </section>
+
+    <section id="interests" data-aos="fade-up">
+      <h2>Interests & Activities</h2>
+      <div class="card" data-aos="zoom-in"><h3>Database & Classification Systems</h3><p>Analyzing and structuring complex information into organized, searchable formats, applying relational database principles and hierarchical classification.</p></div>
+      <div class="card" data-aos="zoom-in" data-aos-delay="100"><h3>Digital Document Archiving</h3><p>Practicing the systematic organization, indexing, and preservation of digital documents to ensure accuracy, retrieval speed, and data integrity.</p></div>
+      <div class="card" data-aos="zoom-in" data-aos-delay="200"><h3>Language Translation & Proofreading</h3><p>Working with texts in multiple languages, focusing on meticulous proofreading and quality control to ensure accuracy and consistency across different documents.</p></div>
+      <div class="card" data-aos="zoom-in" data-aos-delay="300"><h3>Advanced Spreadsheet Modeling</h3><p>Building and maintaining intricate spreadsheet models for budgeting and resource tracking, with an emphasis on formula accuracy and data validation.</p></div>
+      <div class="card" data-aos="zoom-in" data-aos-delay="400"><h3>Cognitive Training & Focus</h3><p>Practicing exercises and techniques, such as the Pomodoro method and focused memory games, to enhance concentration, speed, and sustained attention to detail.</p></div>
+      <div class="card" data-aos="zoom-in" data-aos-delay="500"><h3>Strategic & Logic Games</h3><p>Engaging in activities like chess and cricket that require deep focus, pattern recognition, and forward-planning.</p></div>
+    </section>
+
+    <section id="contact" data-aos="fade-up">
+      <h2>Contact Me</h2>
+      <div class="contact-section">
+        <div class="email-box">
+          <p><i class="fas fa-envelope"></i> Email me at:</p>
+          <a href="mailto:imtiajahamed.data@gmail.com">imtiajahamed.data@gmail.com</a>
+        </div>
+        <div class="contact-buttons">
+          <a href="https://github.com/imtiajahamed17" target="_blank" rel="noopener" class="contact-btn github"><i class="fab fa-github"></i>GitHub</a>
+          <a href="https://linkedin.com/in/imtiajahamed17" target="_blank" rel="noopener" class="contact-btn linkedin"><i class="fab fa-linkedin"></i>LinkedIn</a>
+          <a href="https://www.facebook.com/imtiajahamed17" target="_blank" rel="noopener" class="contact-btn facebook"><i class="fab fa-facebook"></i>Facebook</a>
+          <a href="https://www.instagram.com/imtiajahamed17" target="_blank" rel="noopener" class="contact-btn instagram"><i class="fab fa-instagram"></i>Instagram</a>
+          <a href="https://x.com/imtiajahamed_17" target="_blank" rel="noopener" class="contact-btn twitter"><i class="fab fa-twitter"></i>Twitter</a>
+          <a href="https://t.me/imtiajahamed17" target="_blank" rel="noopener" class="contact-btn telegram"><i class="fab fa-telegram"></i>Telegram</a>
         </div>
       </div>
-      
-      <div class="edu-item">
-        <i class="fas fa-desktop edu-icon"></i>
-        <div class="edu-content">
-          <span class="edu-title">Computer Application</span>
-          <span class="edu-detail">GPA 5.00 (A+)<br> Global Village ICT Park</span>
-          <a href="#" class="credential-btn view-credential" style="margin-top: 10px;" data-certificates='["img/computer.png"]'>
-            <i class="fas fa-file-alt"></i> View Credential
-          </a>
-        </div>
-      </div>
+    </section>
+  </main>
 
-    </div>
-  </section>
-
-  <section id="interests" data-aos="fade-up">
-    <h2>Interests & Activities</h2>
-    
-    <div class="card" data-aos="zoom-in">
-      <h3>Database & Classification Systems</h3>
-      <p>Analyzing and structuring complex information into organized, searchable formats, applying relational database principles and hierarchical classification.</p>
-    </div>
-    
-    <div class="card" data-aos="zoom-in" data-aos-delay="100">
-      <h3>Digital Document Archiving</h3>
-      <p>Practicing the systematic organization, indexing, and preservation of digital documents to ensure accuracy, retrieval speed, and data integrity.</p>
-    </div>
-    
-    <div class="card" data-aos="zoom-in" data-aos-delay="200">
-      <h3>Language Translation & Proofreading</h3>
-      <p>Working with texts in multiple languages, focusing on meticulous proofreading and quality control to ensure accuracy and consistency across different documents.</p>
-    </div>
-    
-    <div class="card" data-aos="zoom-in" data-aos-delay="300">
-      <h3>Advanced Spreadsheet Modeling</h3>
-      <p>Building and maintaining intricate spreadsheet models for budgeting and resource tracking, with an emphasis on formula accuracy and data validation.</p>
-    </div>
-    
-    <div class="card" data-aos="zoom-in" data-aos-delay="400">
-      <h3>Cognitive Training & Focus</h3>
-      <p>Practicing exercises and techniques, such as the Pomodoro method and focused memory games, to enhance concentration, speed, and sustained attention to detail.</p>
-    </div>
-    
-    <div class="card" data-aos="zoom-in" data-aos-delay="500">
-      <h3>Strategic & Logic Games</h3>
-      <p>Engaging in activities like chess and cricket that require deep focus, pattern recognition, and forward-planning.</p>
-    </div>
-  </section>
-
-  <section id="contact" data-aos="fade-up">
-    <h2>Contact Me</h2>
-    <div class="contact-section">
-      <div class="email-box">
-        <p><i class="fas fa-envelope"></i> Email me at:</p>
-        <a href="mailto:imtiajahamed.data@gmail.com">imtiajahamed.data@gmail.com</a>
-      </div>
-      <div class="contact-buttons">
-        <a href="https://github.com/imtiajahamed17" target="_blank" class="contact-btn github"><i class="fab fa-github"></i> GitHub</a>
-        <a href="https://linkedin.com/in/imtiajahamed17" target="_blank" class="contact-btn linkedin"><i class="fab fa-linkedin"></i> LinkedIn</a>
-        <a href="https://www.facebook.com/imtiajahamed17" target="_blank" class="contact-btn facebook"><i class="fab fa-facebook"></i> Facebook</a>
-        <a href="https://www.instagram.com/imtiajahamed17" target="_blank" class="contact-btn instagram"><i class="fab fa-instagram"></i> Instagram</a>
-        <a href="https://x.com/imtiajahamed_17" target="_blank" class="contact-btn twitter"><i class="fab fa-twitter"></i> Twitter</a>
-        <a href="https://t.me/imtiajahamed17" target="_blank"class="contact-btn telegram"><i class="fab fa-telegram"></i> Telegram</a>
-      </div>
-    </div>
-  </section>
-
-  <div id="certificateModal" class="modal">
-    <div class="modal-content">
-      <span id="closeModal">&times;</span>
-      <div class="swiper mySwiper">
+  <div id="certificateModal" class="modal" aria-hidden="true">
+    <div class="modal-content" role="dialog" aria-modal="true" aria-label="Certificate viewer">
+      <span id="closeModal" role="button" aria-label="Close certificate viewer">&times;</span>
+      <div class="swiper mySwiper" aria-live="polite">
         <div class="swiper-wrapper" id="swiperWrapper"></div>
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-pagination"></div>
+        <div class="swiper-button-next" aria-label="Next slide"></div>
+        <div class="swiper-button-prev" aria-label="Previous slide"></div>
+        <div class="swiper-pagination" role="navigation" aria-label="Certificate pagination"></div>
       </div>
     </div>
   </div>
 
-  <div id="loader">
-    <lottie-player
-      src="https://imtiajahamed17.github.io/assets/loader-cat.json"
-      background="transparent"
-      speed="1"
-      style="width: 200px; height: 200px;"
-      loop
-      autoplay>
-    </lottie-player>
+  <div id="loader" aria-hidden="true">
+    <lottie-player src="https://imtiajahamed17.github.io/assets/loader-cat.json" background="transparent" speed="1" style="width:200px;height:200px" loop autoplay></lottie-player>
   </div>
+
   <footer data-aos="fade-up">
     <p>&copy; 2025 Imtiaj. All rights reserved.</p>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-  
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
   <script>
-    AOS.init({ duration: 1000, once: true });
+    AOS.init({duration:1000,once:true});
 
-    const profileImg = document.getElementById("profilePic");
-    const profileWrapper = document.querySelector(".profile-img-wrapper");
-    if (profileImg && profileWrapper) {
-        function showImage() {
-            profileImg.classList.add("loaded");
-            profileWrapper.classList.add("loaded"); 
-        }
-        if (profileImg.complete) {
-            showImage();
-        } else {
-            profileImg.addEventListener("load", showImage);
-        }
+    const html = document.documentElement;
+    const body = document.body;
+    
+    const profileImg = document.getElementById('profilePic');
+    const profileWrapper = document.querySelector('.profile-img-wrapper');
+    if(profileImg && profileWrapper){
+      function showProfile(){profileImg.classList.add('loaded');profileWrapper.classList.add('loaded')}
+      if(profileImg.complete){showProfile()}else{profileImg.addEventListener('load',showProfile)}
     }
 
     const subtitleElement = document.getElementById('subtitle-carousel');
-    if (subtitleElement) {
-        const subtitles = [
-            "Organizer, Analyzer, Data Specialist",
-            "Where Logic Meets Vision.",
-            "Insight that Anticipates Change.",
-            "Organized Mind. Analytical Vision.",
-            "Analytical Precision. Visionary Thinking.",
-            "Precision in Every Pattern.",
-            "Smart Data. Clear Decisions."
-        ];
-        let subtitleIndex = 0;
-        setInterval(() => {
-            subtitleElement.style.opacity = 0;
-            setTimeout(() => {
-                subtitleIndex = (subtitleIndex + 1) % subtitles.length;
-                subtitleElement.textContent = subtitles[subtitleIndex];
-                subtitleElement.style.opacity = 1;
-            }, 500);
-        }, 5000);
+    if(subtitleElement){
+      const subtitles = [
+        "Organizer, Analyzer, Data Specialist",
+        "Where Logic Meets Vision.",
+        "Insight that Anticipates Change.",
+        "Organized Mind. Analytical Vision.",
+        "Analytical Precision. Visionary Thinking.",
+        "Precision in Every Pattern.",
+        "Smart Data. Clear Decisions."
+      ];
+      let subtitleIndex = 0;
+      setInterval(()=>{subtitleElement.style.opacity=0;setTimeout(()=>{subtitleIndex=(subtitleIndex+1)%subtitles.length;subtitleElement.textContent=subtitles[subtitleIndex];subtitleElement.style.opacity=1},500)},5000);
     }
 
     const menuToggle = document.getElementById('menu-toggle');
     const mainNav = document.getElementById('main-nav');
     const navLinks = document.querySelectorAll('#main-nav a');
     const themeToggle = document.getElementById('themeToggle');
-    const icon = document.getElementById('themeIcon');
-    const html = document.documentElement;
+    const themeIcon = document.getElementById('themeIcon');
 
     function checkScrollAndHideButtons() {
         const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
@@ -883,170 +297,173 @@
             }
         }
     }
-    menuToggle.addEventListener('click', () => {
-      mainNav.classList.toggle('nav-open');
+
+    menuToggle.addEventListener('click',()=>{
+      const open = mainNav.classList.toggle('nav-open');
       menuToggle.classList.toggle('open');
-      if (!menuToggle.classList.contains('open')) {
-          checkScrollAndHideButtons();
+      mainNav.setAttribute('aria-hidden', !open);
+      if(open) {
+        disableScroll();
+      } else {
+        enableScroll();
+        checkScrollAndHideButtons();
       }
     });
-    navLinks.forEach(link => {
-      link.addEventListener('click', () => {
+
+    navLinks.forEach(link=>{
+      link.addEventListener('click',()=>{
         mainNav.classList.remove('nav-open');
         menuToggle.classList.remove('open');
+        mainNav.setAttribute('aria-hidden','true');
+        enableScroll();
         checkScrollAndHideButtons();
       });
     });
-    themeToggle.addEventListener('click', () => {
-      const currentTheme = html.getAttribute('data-theme');
-      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-      html.setAttribute('data-theme', newTheme);
-      icon.className = newTheme === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
+
+    themeToggle.addEventListener('click',()=>{
+      const current = html.getAttribute('data-theme');
+      const next = current === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', next);
+      themeIcon.className = next === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
     });
+
+    document.addEventListener('contextmenu',e=>e.preventDefault());
     window.addEventListener('scroll', checkScrollAndHideButtons);
-    
-    document.addEventListener('contextmenu', event => event.preventDefault());
-    
     
     const catLoaderElement = document.getElementById('loader-cat');
     const catAnimation = lottie.loadAnimation({
-        container: document.getElementById('cat-animation'),
-        renderer: 'svg',
-        loop: true,
-        autoplay: true, 
-        path: 'https://imtiajahamed17.github.io/assets/loader-cat.json'
+      container:document.getElementById('cat-animation'),
+      renderer:'svg',
+      loop:true,
+      autoplay:true,
+      path:'https://imtiajahamed17.github.io/assets/loader-cat.json'
+    });
+    
+    const pageLoadPromise = new Promise(resolve => window.addEventListener('load', resolve));
+    const animReadyPromise = new Promise(resolve => catAnimation.addEventListener('DOMLoaded', resolve));
+    const minTimePromise = new Promise(resolve => setTimeout(resolve, 1500));
+
+    Promise.all([pageLoadPromise, animReadyPromise, minTimePromise]).then(() => {
+        catLoaderElement.classList.add('hidden');
+        setTimeout(() => { catAnimation.stop(); }, 1000);
+        setTimeout(preloadCredentialImages, 1200);
+    }).catch(err => {
+        console.error("Loader failed, hiding it anyway.", err);
+        catLoaderElement.classList.add('hidden');
     });
 
-    window.addEventListener('load', () => {
-        if (catLoaderElement) {
-            catLoaderElement.style.opacity = 0;
-            setTimeout(() => {
-                catLoaderElement.style.display = 'none';
-                catAnimation.stop();
-            }, 500); 
-        }
-        
-        setTimeout(() => {
-            console.log("Preloading certificate images...");
-            const preloadUrls = new Set(); 
-            document.querySelectorAll(".view-credential").forEach(button => {
-                try {
-                    const images = JSON.parse(button.dataset.certificates);
-                    images.forEach(imgUrl => preloadUrls.add(imgUrl));
-                } catch (e) {
-                    console.error("Failed to parse certificates for preloading:", e);
-                }
-            });
-            
-            preloadUrls.forEach(url => {
-                const img = new Image();
-                img.src = url;
-            });
-        }, 1000); 
-    });
-    
-    
-    const modal = document.getElementById("certificateModal");
-    const closeModal = document.getElementById("closeModal");
-    const swiperWrapper = document.getElementById("swiperWrapper");
-    const loader = document.getElementById("loader");
+    function preloadCredentialImages(){
+      const preload = new Set();
+      document.querySelectorAll('.view-credential').forEach(btn=>{
+        try{
+          const arr = JSON.parse(btn.dataset.certificates);
+          if(Array.isArray(arr)) arr.forEach(u=>preload.add(u));
+        }catch(e){}
+      });
+      preload.forEach(url=>{const i=new Image();i.src=url});
+    }
+
+    const modal = document.getElementById('certificateModal');
+    const closeModal = document.getElementById('closeModal');
+    const swiperWrapper = document.getElementById('swiperWrapper');
+    const loader = document.getElementById('loader');
     let swiperInstance = null;
 
-    document.querySelectorAll(".view-credential").forEach(button => {
-      button.addEventListener("click", async (e) => { 
-        e.preventDefault(); 
-        
-        const images = JSON.parse(button.dataset.certificates);
-        if (!images || images.length === 0) {
-            console.error("No certificates found for this button.");
-            return; 
-        }
+    function preventDefault(e){e.preventDefault()}
+    function blockKeys(e){
+      const blocked = ['ArrowUp','ArrowDown','PageUp','PageDown','Home','End',' '];
+      if(blocked.includes(e.code) || blocked.includes(e.key)) e.preventDefault();
+    }
+    function disableScroll(){
+      body.classList.add('modal-open');
+      window.addEventListener('wheel',preventDefault,{passive:false});
+      window.addEventListener('touchmove',preventDefault,{passive:false});
+      window.addEventListener('keydown',blockKeys,{passive:false});
+    }
+    function enableScroll(){
+      body.classList.remove('modal-open');
+      window.removeEventListener('wheel',preventDefault,{passive:false});
+      window.removeEventListener('touchmove',preventDefault,{passive:false});
+      window.removeEventListener('keydown',blockKeys,{passive:false});
+    }
 
-        loader.classList.add("active");
+    document.querySelectorAll('.view-credential').forEach(button=>{
+      button.addEventListener('click',async(e)=>{
+        e.preventDefault();
+        const raw = button.dataset.certificates || '[]';
+        let images;
+        try{images = JSON.parse(raw)}catch(err){images = []}
+        if(!images || images.length===0) return;
         
-        const startTime = Date.now();
-        const minDelay = 1000;
-
-        const delayPromise = new Promise(resolve => setTimeout(resolve, minDelay));
+        loader.classList.add('active');
+        const minDelay = 1500;
+        const delayPromise = new Promise(r=>setTimeout(r,minDelay));
+        const loadPromises = images.map(src=>new Promise((resolve, reject)=>{
+          const img = new Image();
+          img.onload = ()=>resolve();
+          img.onerror = ()=>reject();
+          img.src = src;
+        }));
         
-        const imageLoadPromises = images.map(src => {
-            return new Promise((resolve, reject) => {
-                const img = new Image();
-                img.onload = resolve;
-                img.onerror = reject;
-                img.src = src;
-            });
-        });
-
-        try {
-          await Promise.all([delayPromise, ...imageLoadPromises]);
+        try{await Promise.all([delayPromise,...loadPromises])}catch(err){console.error("Image failed to load:", err)}
         
-        } catch (error) {
-          console.error("Failed to load certificate images:", error);
-          const elapsed = Date.now() - startTime;
-          if (elapsed < minDelay) {
-            await new Promise(resolve => setTimeout(resolve, minDelay - elapsed));
-          }
-        } 
-          
-        swiperWrapper.innerHTML = "";
-        images.forEach(src => {
-          const slide = document.createElement("div");
-          slide.className = "swiper-slide";
-          slide.innerHTML = `<img src="${src}" alt="Certificate Credential" />`; 
+        swiperWrapper.innerHTML = '';
+        images.forEach(src=>{
+          const slide = document.createElement('div');
+          slide.className = 'swiper-slide';
+          slide.innerHTML = `<img src="${src}" alt="Certificate credential" />`;
           swiperWrapper.appendChild(slide);
         });
-
-        if (swiperInstance) swiperInstance.destroy(true, true);
         
-        swiperInstance = new Swiper(".mySwiper", {
-          loop: true,
-          navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-          },
-          pagination: {
-            el: ".swiper-pagination",
-            clickable: true,
-          },
-          effect: "coverflow",
-          grabCursor: true,
-          centeredSlides: true,
-          slidesPerView: "auto",
-          coverflowEffect: {
-            rotate: 20,
-            stretch: 0,
-            depth: 200,
-            modifier: 1,
-            slideShadows: true,
-          },
-          on: {
-            init: function () {
-              loader.classList.remove("active");
-              modal.classList.add("active");
-              document.body.classList.add("modal-open");
+        if(swiperInstance) swiperInstance.destroy(true,true);
+        swiperInstance = new Swiper('.mySwiper',{
+          loop:true,
+          navigation:{nextEl:'.swiper-button-next',prevEl:'.swiper-button-prev'},
+          pagination:{el:'.swiper-pagination',clickable:true},
+          effect:'coverflow',
+          grabCursor:true,
+          centeredSlides:true,
+          slidesPerView:'auto',
+          coverflowEffect:{rotate:20,stretch:0,depth:200,modifier:1,slideShadows:true},
+          on:{
+            init:function(){
+              loader.classList.remove('active');
+              modal.classList.add('active');
+              modal.setAttribute('aria-hidden','false');
+              disableScroll();
               themeToggle.classList.add('hidden');
               menuToggle.classList.add('hidden');
-            },
-          },
+              closeModal.focus();
+            }
+          }
         });
       });
     });
 
-    closeModal.addEventListener("click", () => {
-        modal.classList.remove("active");
-        document.body.classList.remove("modal-open");
+    function closeTheModal() {
+        modal.classList.remove('active');
+        modal.setAttribute('aria-hidden','true');
+        enableScroll();
         checkScrollAndHideButtons();
+    }
+
+    closeModal.addEventListener('click', closeTheModal);
+    window.addEventListener('click',e=>{
+      if(e.target === modal) closeTheModal();
     });
-    
-    window.addEventListener("click", e => {
-      if (e.target === modal) {
-          modal.classList.remove("active");
-          document.body.classList.remove("modal-open");
-          checkScrollAndHideButtons();
-      }
+    document.addEventListener('keydown',e=>{
+      if(e.key === 'Escape' && modal.classList.contains('active')) closeTheModal();
     });
-    
+
+    (function ensureKeyboardTrap(){
+      const focusableElements = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
+      document.addEventListener('focusin',e=>{
+        if(modal.classList.contains('active') && !modal.contains(e.target)) {
+            const firstFocusableElement = modal.querySelector(focusableElements);
+            if(firstFocusableElement) firstFocusableElement.focus();
+        }
+      });
+    })();
   </script>
 </body>
 </html>
