@@ -33,7 +33,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.10.1/lottie.min.js"></script>
 
   <style>
-    /* ... [All your existing CSS styles are unchanged, e.g., :root, body, header, nav, card...] ... */
+    /* ... [All your existing CSS styles are unchanged] ... */
     
     html {
       scroll-behavior: smooth;
@@ -513,7 +513,7 @@
       font-size: 0.85rem;
       font-weight: 600;
       transition: all 0.3s ease;
-      cursor: pointer; /* ADDED: Make <a> tag behave like a button */
+      cursor: pointer;
     }
     .credential-btn i {
       color: var(--accent) !important;
@@ -525,8 +525,6 @@
         transform: translateY(-2px);
         text-decoration: underline;
     }
-    
-    /* --- ADDED: STYLES FOR NEW MODAL, SWIPER, AND LOADER --- */
     
     /* Modal Styles */
     .modal {
@@ -565,7 +563,7 @@
       color: white;
       cursor: pointer;
       user-select: none;
-      z-index: 10000; /* Ensure it's above swiper */
+      z-index: 10000;
     }
 
     /* Swiper styles */
@@ -586,11 +584,10 @@
       object-fit: contain;
       border-radius: 10px;
     }
-
-    /* Style for Swiper Nav Buttons */
+    
     .swiper-button-next,
     .swiper-button-prev {
-      color: #ffffff; /* Make arrows white */
+      color: #ffffff;
       opacity: 0.7;
       transition: opacity 0.2s ease;
     }
@@ -600,7 +597,7 @@
     }
     
     .swiper-pagination-bullet {
-      background: #ffffff; /* Make pagination dots white */
+      background: #ffffff;
     }
 
     /* Loader styles */
@@ -620,9 +617,6 @@
     #loader.active {
       display: flex;
     }
-    
-    /* --- END OF ADDED STYLES --- */
-
   </style>
 </head>
 <body>
@@ -794,7 +788,7 @@
         <a href="https://www.facebook.com/imtiajahamed17" target="_blank" class="contact-btn facebook"><i class="fab fa-facebook"></i> Facebook</a>
         <a href="https://www.instagram.com/imtiajahamed17" target="_blank" class="contact-btn instagram"><i class="fab fa-instagram"></i> Instagram</a>
         <a href="https://x.com/imtiajahamed_17" target="_blank" class="contact-btn twitter"><i class="fab fa-twitter"></i> Twitter</a>
-        <a href="https://t.me/imtiajahamed17" target="_blank" class="contact-btn telegram"><i class="fab fa-telegram"></i> Telegram</a>
+        <a href="https://t.me/imtiajahamed17" target="_blank"class="contact-btn telegram"><i class="fab fa-telegram"></i> Telegram</a>
       </div>
     </div>
   </section>
@@ -927,6 +921,7 @@
     });
 
     window.addEventListener('load', () => {
+        // 1. Fade out the initial cat loader
         if (catLoaderElement) {
             catLoaderElement.style.opacity = 0;
             setTimeout(() => {
@@ -934,13 +929,37 @@
                 catAnimation.stop();
             }, 500); 
         }
+        
+        // 2. MERGED: Preload certificate images dynamically
+        //    (This logic was taken from your new script and improved)
+        setTimeout(() => {
+            console.log("Preloading certificate images...");
+            const preloadUrls = new Set(); // Use a Set to avoid duplicates
+            document.querySelectorAll(".view-credential").forEach(button => {
+                try {
+                    // Read paths dynamically from the data-certificates attribute
+                    const images = JSON.parse(button.dataset.certificates);
+                    images.forEach(imgUrl => preloadUrls.add(imgUrl));
+                } catch (e) {
+                    console.error("Failed to parse certificates for preloading:", e);
+                }
+            });
+            
+            // Preload each unique image
+            preloadUrls.forEach(url => {
+                const img = new Image();
+                img.src = url;
+            });
+        }, 1000); // Start preloading 1s after page load (after intro anim)
     });
 
 
     // --- REMOVED: GLightbox Certificate Configuration ---
 
     
-    // --- ADDED: SWIPER.JS MODAL LOGIC ---
+    // --- SWIPER.JS MODAL LOGIC (Kept from original file) ---
+    // (This is your working modal logic. The conflicting click
+    // handler from the new script was discarded in favor of this.)
     const modal = document.getElementById("certificateModal");
     const closeModal = document.getElementById("closeModal");
     const swiperWrapper = document.getElementById("swiperWrapper");
@@ -949,8 +968,8 @@
 
     // View Credential click
     document.querySelectorAll(".view-credential").forEach(button => {
-      button.addEventListener("click", (e) => { // Added 'e'
-        e.preventDefault(); // Stop the <a> tag from navigating
+      button.addEventListener("click", (e) => { 
+        e.preventDefault(); 
         
         const images = JSON.parse(button.dataset.certificates);
 
@@ -972,7 +991,6 @@
           if (swiperInstance) swiperInstance.destroy(true, true);
           swiperInstance = new Swiper(".mySwiper", {
             loop: true,
-            // FIXED: Added navigation and pagination
             navigation: {
               nextEl: ".swiper-button-next",
               prevEl: ".swiper-button-prev",
@@ -1006,7 +1024,7 @@
     window.addEventListener("click", e => {
       if (e.target === modal) modal.classList.remove("active");
     });
-    // --- END OF ADDED JAVASCRIPT ---
+    // --- END OF JAVASCRIPT ---
     
   </script>
 </body>
