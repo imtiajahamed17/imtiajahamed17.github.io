@@ -73,6 +73,10 @@
       transition: background 0.4s, color 0.4s;
     }
 
+    body.modal-open {
+      overflow: hidden;
+    }
+
     header, nav, section, footer {
       width: 100%;
       padding: 40px 20px;
@@ -962,22 +966,23 @@
         
         const startTime = Date.now();
         const minDelay = 1000;
-        const firstImageSrc = images[0];
 
         const delayPromise = new Promise(resolve => setTimeout(resolve, minDelay));
         
-        const imageLoadPromise = new Promise((resolve, reject) => {
-          const img = new Image();
-          img.onload = resolve;
-          img.onerror = reject;
-          img.src = firstImageSrc;
+        const imageLoadPromises = images.map(src => {
+            return new Promise((resolve, reject) => {
+                const img = new Image();
+                img.onload = resolve;
+                img.onerror = reject;
+                img.src = src;
+            });
         });
 
         try {
-          await Promise.all([imageLoadPromise, delayPromise]);
+          await Promise.all([delayPromise, ...imageLoadPromises]);
         
         } catch (error) {
-          console.error("Failed to load certificate image:", firstImageSrc, error);
+          console.error("Failed to load certificate images:", error);
           const elapsed = Date.now() - startTime;
           if (elapsed < minDelay) {
             await new Promise(resolve => setTimeout(resolve, minDelay - elapsed));
@@ -993,6 +998,7 @@
         });
 
         if (swiperInstance) swiperInstance.destroy(true, true);
+        
         swiperInstance = new Swiper(".mySwiper", {
           loop: true,
           navigation: {
@@ -1014,17 +1020,30 @@
             modifier: 1,
             slideShadows: true,
           },
+          on: {
+            init: function () {
+              loader.classList.remove("active");
+              modal.classList.add("active");
+              document.body.classList.add("modal-open");
+              themeToggle.classList.add('hidden');
+              menuToggle.classList.add('hidden');
+            },
+          },
         });
-
-        loader.classList.remove("active");
-        modal.classList.add("active");
       });
     });
 
-    closeModal.addEventListener("click", () => modal.classList.remove("active"));
+    closeModal.addEventListener("click", () => {
+        modal.classList.remove("active");
+        document.body.classList.remove("modal-open");
+        checkScrollAndHideButtons();
+    });
+    
     window.addEventListener("click", e => {
       if (e.target === modal) {
           modal.classList.remove("active");
+          document.body.classList.remove("modal-open");
+          checkScrollAndHideButtons();
       }
     });
     
